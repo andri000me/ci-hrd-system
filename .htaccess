@@ -1,0 +1,8 @@
+RewriteEngine On
+
+#line dibawah berfungsi untuk meng ignore folder agar tdk direwrite dgan index.Php
+
+RewriteCond $1 !^(index.php|image|css|public|files|robots.txt)
+
+#ini untuk mengabaikan index.php
+RewriteRule ^(.*)$ index.php/$1 [L]
