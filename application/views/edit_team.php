@@ -88,18 +88,18 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
   <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow"
   role="navigation" data-menu="menu-wrapper">
   <!-- menu navbar dahsboard dll -->
-    <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
+  <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
       <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
         <!--<li class="nav-item" data-menu="">
           <a class="nav-link" href="dashboard.html" data-toggle=""><i class="icon-home"></i>
             <span>DASHBOARD</span>
           </a>
         </li>-->
-        <li class="nav-item" data-menu=""><a class="nav-link" href="team-list.html" data-toggle=""><i class="icon-list"></i><span>TEAM LIST</span></a>
+        <li class="nav-item" data-menu=""><a class="nav-link" href="#" data-toggle=""><i class="icon-list"></i><span>TEAM LIST</span></a>
         </li>
-        <li class="nav-item" data-menu=""><a class="nav-link" href="dashboard.html" data-toggle=""><i class="icon-grid"></i><span>HRD SYSTEM</span></a>
+        <li class="nav-item" data-menu=""><a class="nav-link" href="<?=base_url()?>dashboard" data-toggle=""><i class="icon-grid"></i><span>HRD SYSTEM</span></a>
         </li>
-        <li class="nav-item" data-menu=""><a class="nav-link" href="project-report.html" data-toggle=""><i class="icon-note"></i><span>PROJECT LIST</span></a>
+        <li class="nav-item" data-menu=""><a class="nav-link" href="#" data-toggle=""><i class="icon-note"></i><span>PROJECT LIST</span></a>
         </li>
       </ul>
     </div>

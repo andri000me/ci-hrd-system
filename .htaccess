@@ -1,8 +1,12 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+ RewriteEngine On
 
-#line dibawah berfungsi untuk meng ignore folder agar tdk direwrite dgan index.Php
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
 
-RewriteCond $1 !^(index.php|image|css|public|files|robots.txt)
+<IfModule !mod_rewrite.c>
 
-#ini untuk mengabaikan index.php
-RewriteRule ^(.*)$ index.php/$1 [L]
+ ErrorDocument 404 /index.php
+</IfModule>

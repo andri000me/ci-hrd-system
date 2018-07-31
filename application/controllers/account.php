@@ -5,6 +5,7 @@ class Account extends MY_Controller {
     function Account()
     {
         parent::__construct();
+        $this->load->helper('url');
         $this->load->model('teamlist_mod');
     }
 
