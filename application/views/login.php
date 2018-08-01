@@ -51,20 +51,21 @@ data-open="click" data-menu="horizontal-menu" data-col="1-column">
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                     <span>Login with Username</span>
                   </h6>
+                  <h6 class="card-subtitle text-muted text-center font-small-3 pt-2">
+                    <span><?=$msg?></span>
+                  </h6>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form class="form-horizontal form-simple" action="<?=base_url()?>login" novalidate>
+                    <form class="form-horizontal form-simple" method="POST" novalidate>
                       <fieldset class="form-group position-relative has-icon-left mb-0">
-                        <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username"
-                        required>
+                        <input name="email" type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="password" class="form-control form-control-lg input-lg" id="user-password"
-                        placeholder="Enter Password" required>
+                        <input name="password" type="password" class="form-control form-control-lg input-lg" id="user-password" placeholder="Enter Password" required>
                         <div class="form-control-position">
                           <i class="ft-lock"></i>
                         </div>
