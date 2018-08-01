@@ -54,7 +54,7 @@ data-open="click" data-menu="horizontal-menu" data-col="1-column">
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form class="form-horizontal form-simple" action="dashboard.html" novalidate>
+                    <form class="form-horizontal form-simple" action="<?=base_url()?>login" novalidate>
                       <fieldset class="form-group position-relative has-icon-left mb-0">
                         <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username"
                         required>
