@@ -101,6 +101,12 @@ class Teamlist_mod extends CI_Model {
         return $return;
     }
 
+    function update($data,$user_id=0)
+    {
+        $this->db->where('id',  mysql_real_escape_string($user_id));
+        $this->db->update('ds_users', $data);
+    }
+
 
     function delete($id=0)
     {
