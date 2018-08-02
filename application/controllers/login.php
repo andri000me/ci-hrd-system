@@ -36,7 +36,7 @@ class Login extends MY_Controller {
                             'is_logged_in' => true,
                             'lastlogin' => $user->last_loggedin_date
                     );
-                    $this->session->unset_userdata($data_session);
+                    $this->session->set_userdata($data_session);
 
                     $url = $this->input->get("url");
                     if(!empty ($url)){
@@ -53,6 +53,19 @@ class Login extends MY_Controller {
         }
         
     	$this->load->view('login',$data);
+    }
+
+    function logout()
+    {
+        $data_session = array(
+                'user_id' => 0,
+                'full_name' => NULL,
+                'is_logged_in' => FALSE,
+                'lastlogin' => NULL,
+                'rule' => NULL
+        );
+        $this->unset_session($data_session);
+        redirect(base_url().'login');
     }
 
 
