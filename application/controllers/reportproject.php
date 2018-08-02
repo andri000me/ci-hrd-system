@@ -12,4 +12,8 @@ class Reportproject extends MY_Controller {
     {
     	$this->load->view('reportproject');
     }
+
+    function add () {
+        $this ->load->view('add_reportproject');
+    }
 }

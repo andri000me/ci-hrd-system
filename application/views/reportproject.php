@@ -128,7 +128,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
               <div class="card">
                 <div class="card-header">
                   <div class="heading-elements">
-                    <a href="create-project.html"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> CREATE PROJECT</button></a>
+                    <a href="<?=base_url()?>reportproject/add"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> CREATE PROJECT</button></a>
                   </div>
                 </div>
                 <div class="card-content">
