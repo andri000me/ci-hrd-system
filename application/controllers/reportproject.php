@@ -5,6 +5,7 @@ class Reportproject extends MY_Controller {
     function Reportproject()
     {
         parent::__construct();
+        $this->load->model('report_mod');
         
     }
 
@@ -13,7 +14,11 @@ class Reportproject extends MY_Controller {
     	$this->load->view('reportproject');
     }
 
-    function add () {
-        $this ->load->view('add_reportproject');
+    function add() {
+        $this->load->view('add_reportproject');
+    }
+
+    function detail() {
+        $this->load->view('detail_reportproject');
     }
 }
