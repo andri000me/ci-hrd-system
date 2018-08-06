@@ -141,7 +141,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
               <div class="card">
                 <div class="card-header">
                   <div class="heading-elements">
-                    <a href="<?=base_url()?>account/add"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> NEW TEAM</button></a>
+                    <a href="<?=base_url()?>teamlist/add"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> NEW TEAM</button></a>
                   </div>
                 </div>
                 <div class="card-content">
@@ -315,9 +315,9 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           $diff = date_diff( $awal, $akhir );
                         ?>
                         <tr>
-                            <td><a href="#" class="text-bold-600"><?php echo $i; ?></a></td>
+                            <td><a class="text-bold-600"><?php echo $i; ?></a></td>
                             <td>
-                                <a href="team-detail.html" class="text-bold-600"><h5><?=$isi['name']?></h5></a>
+                                <a href="<?=base_url()?>teamlist/detail/<?=$isi['id']?>" class="text-bold-600"><h5><?=$isi['name']?></h5></a>
                             </td>
                             <td class="text-center">
                                 <a href="mailto:<?=$isi['email']?>" class="text-bold-600"><?=$isi['email']?></a>
@@ -353,10 +353,10 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                                     <i class="ft-eye">View</i>
                                   </button>
                                   <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-                                    <a href="<?=base_url()?>account/edit/<?=$isi['id']?>" class="dropdown-item">
+                                    <a href="<?=base_url()?>teamlist/edit/<?=$isi['id']?>" class="dropdown-item">
                                       <i class="ft-edit-2"></i> Edit
                                     </a>
-                                    <a onclick="return confirm('User Akan Di hapus, Lanjutkan?')"href="<?=base_url()?>account/delete/<?=$isi['id']?>" class="dropdown-item">
+                                    <a onclick="return confirm('User Akan Di hapus, Lanjutkan?')" href="<?=base_url()?>teamlist/delete/<?=$isi['id']?>" class="dropdown-item">
                                       <i class="ft-trash"></i> Delete
                                     </a>
                                   </span>
