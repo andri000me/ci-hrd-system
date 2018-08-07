@@ -101,6 +101,18 @@ class Teamlist_mod extends CI_Model {
         return $return;
     }
 
+    function add_cuti($data=null)
+    {
+        $return = 0;
+        if($data != null){
+            $this->db->insert('ds_jumlah_cuti',$data);
+
+            $return = $this->db->insert_id();
+        }
+
+        return $return;
+    }
+
     function update($data,$user_id=0)
     {
         $this->db->where('id',  mysql_real_escape_string($user_id));

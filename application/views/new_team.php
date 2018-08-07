@@ -223,7 +223,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                           <div class="col-md-6 pb-xl-1 py-xl-1">
                               <h5 class="pb-xl-1 py-xl-1">Total Cuti</h5>
-                          	<input type="text" id="projectinput9" class="form-control" placeholder="Total Cuti">
+                          	<input type="text" id="projectinput9" name="cuti" class="form-control" placeholder="Total Cuti">
                           </div>
                         </div>
 

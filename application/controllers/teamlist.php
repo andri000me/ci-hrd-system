@@ -106,6 +106,7 @@ class Teamlist extends MY_Controller {
         $this->form_validation->set_rules('rule', 'Rule', 'required');
         $this->form_validation->set_rules('company', 'Company', 'required');
         $this->form_validation->set_rules('since', 'Since', 'required');
+        $this->form_validation->set_rules('cuti', 'Cuti', 'required');
         
         $data["msg"] = '';
         if ($this->form_validation->run() == TRUE)
@@ -116,6 +117,7 @@ class Teamlist extends MY_Controller {
             $rule = $this->input->post('rule');
             $company = $this->input->post('company');
             $since = $this->input->post('since');
+            $cuti = $this->input->post('cuti');
 
             $is_active = $this->teamlist_mod->get_byemail($email);
             if(!$is_active)
@@ -131,10 +133,19 @@ class Teamlist extends MY_Controller {
                     'since' => $since
                 );
                 
+                
                 $user_id = $this->teamlist_mod->add($data_add);
                 if($user_id)
                 {
-                    redirect('teamlist');
+                    $ambilid = $this->teamlist_mod->get_byemail($email);
+                    $cuti_add = array('cuti' => $cuti, 'id_user' => $ambilid->id);
+                    $addcuti = $this->teamlist_mod->add_cuti($cuti_add);
+                    if ($addcuti) {
+                        redirect('teamlist');
+                    }
+                    else{
+                        $data['msg'] = "There are problems with our server, please edit the 'Cuti' section of the user you just add.";
+                    }
                 }
                 else{
                     $data['msg'] = "There are problems with our server, please re-registration.";
