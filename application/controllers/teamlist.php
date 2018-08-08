@@ -133,6 +133,16 @@ class Teamlist extends MY_Controller {
                     'since' => $since
                 );
                 
+                if(!empty($_FILES["upload1"]["tmp_name"]))
+                {
+                    $file = $this->do_upload1();
+                    if ($file['status']) {
+                        $data_add['img'] = $file['file_name'];
+
+                    }
+
+                }
+                
                 
                 $user_id = $this->teamlist_mod->add($data_add);
                 if($user_id)
@@ -275,5 +285,58 @@ class Teamlist extends MY_Controller {
         }
 
 
+    }
+
+    function do_upload1()
+    {
+
+        $config['upload_path']          = '././clients/user/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 5000;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        if (!is_dir('././clients')) {
+            mkdir('././clients');
+            mkdir('././clients/user');
+        }
+        else{
+            if (!is_dir('././clients/user')) {
+                mkdir('././clients/user');
+            }
+        }
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('upload1'))
+        {
+            return array('status' => false, 'error' => $this->upload->display_errors());
+        }
+        else
+        {
+            $data = $this->upload->data();
+
+            $file_name = $data['file_name'];
+
+            $file_type = $data['file_type'];
+
+            $file_size = $data['file_size'];
+
+            $array = array(
+
+                'status'    => true,
+
+                'error'       => '',
+
+                'file_name' => $file_name,
+
+                'file_type' => $file_type,
+
+                'file_size' => $file_size
+
+            );
+
+            return $array;
+        }
     }
 }
