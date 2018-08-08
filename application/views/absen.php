@@ -242,11 +242,32 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               <div class="card-header">
                 <h2 class="card-title-center">ABSEN</h2>
               </div>
-              <div class="pr-xl-1 px-xl-1">
-                <button class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element"> CHECK IN</button>
+              
+
+          <div class="pr-xl-1 px-xl-1">
+            <?php
+                $punch_in_class = 'btn';
+                if($punch_in=='1'){
+                    $punch_in_class = 'btn-success';
+                }
+                if($punch_in=='2'){
+                    $punch_in_class = 'btn-danger';
+                }
+
+                $punch_out_class = 'btn';
+                if($punch_out=='1'){
+                    $punch_out_class = 'btn-success';
+                }
+                if($punch_out=='2'){
+                    $punch_out_class = 'btn-danger';
+                }
+            ?>
+              
+                <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element <?=$punch_in_class?>"><span class="glyphicon glyphicon-ok"></span> CHECK IN <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></a>
+              
               </div>
               <div class="pl-xl-1 px-xl-1">
-                <button class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element"> CHECK OUT</button>
+              <a <?=$h=$punch_out=='0' ? 'href="'.base_url().'absen/punch_out"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element <?=$punch_out_class?>"><span class="glyphicon glyphicon-off"></span> CHECK OUT<?=$t=($punch_out!='0') ? '('.substr($punch_out_time,0,5).')':''?></a>
               </div>
             </div>
           </div>
@@ -254,19 +275,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
           <div id="recent-transactions" class="col-xl-4 col-lg-6 col-12">
             <div class="card">
               <div class="card-header">
+                
+
+              
                 <h4 class="card-title-center">JUNE 2018</h4>
                 <h5 class="p-xl-1"><b>TOTAL ABSEN : 20</b></h5>
                 <div class="pl-xl-1 pr-xl-1 px-xl-1">
-                  <b>JUNE 5, 2018</b>
-                  <p class="m-xl-0">CHECK IN : 08.20 - LATE (-1)</p>
-                  <p class="m-xl-0">CHECK OUT : 17.20 - OOW (-1)</p>
+                <?php foreach($ambil_absen as $absen){ ?>
+                 <br>
+                
+
+                  <b><?php echo date('d F Y', strtotime($absen['punch_date'])) ;?></b>
+                  <p class="m-xl-0">CHECK IN :  <?php echo  $absen['punch_in'];?></p>
+                  <p class="m-xl-0">CHECK OUT : <?php echo  $absen['punch_out'];?></p>
+
+                  <?php } ?>
                 </div>
 
-                <div class="p-xl-1">
-                  <b>JUNE 4, 2018</b>
-                  <p class="m-xl-0">CHECK IN : 08.00 - OK (+1)</p>
-                  <p class="m-xl-0">CHECK OUT : 17.00 - OK (+1)</p>
-                </div>
               </div>
             </div>
           </div>
