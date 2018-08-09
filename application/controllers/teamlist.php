@@ -89,7 +89,9 @@ class Teamlist extends MY_Controller {
         elseif ($i->rule == 4) {
             $data['rule'] = 'CLIENT';
         }
+        $cuti = $this->teamlist_mod->get_cuti($id);
         $data['info'] = $i;
+        $data['totalcuti'] = $cuti->cuti;
 
         $this->load->view('team_detail', $data);
     }
@@ -133,7 +135,7 @@ class Teamlist extends MY_Controller {
                     'since' => $since
                 );
                 
-                if(!empty($_FILES["upload1"]["tmp_name"]))
+                /*if(!empty($_FILES["upload1"]["tmp_name"]))
                 {
                     $file = $this->do_upload1();
                     if ($file['status']) {
@@ -141,7 +143,7 @@ class Teamlist extends MY_Controller {
 
                     }
 
-                }
+                }*/
                 
                 
                 $user_id = $this->teamlist_mod->add($data_add);
@@ -194,10 +196,11 @@ class Teamlist extends MY_Controller {
 
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[passconf]');
+        $this->form_validation->set_rules('password', 'Password', 'min_length[5]|matches[passconf]');
         $this->form_validation->set_rules('rule', 'Rule', 'required');
         $this->form_validation->set_rules('company', 'Company', 'required');
         $this->form_validation->set_rules('since', 'Since', 'required');
+        $this->form_validation->set_rules('cuti', 'Cuti', 'required');
         
         $data["msg"] = '';
         if ($this->form_validation->run() == TRUE)
@@ -208,6 +211,7 @@ class Teamlist extends MY_Controller {
             $rule = $this->input->post('rule');
             $company = $this->input->post('company');
             $since = $this->input->post('since');
+            $cuti = $this->input->post('cuti');
             
             if($user->email != $email){
                 $is_active = $this->teamlist_mod->get_byemail($email);
@@ -223,11 +227,13 @@ class Teamlist extends MY_Controller {
                     'company' => $company,
                     'since' => $since
                 );
+                $data_update_cuti = array('cuti' => $cuti);
                 if(!empty($password)){
                     $data_update['password'] = $this->_encode_password($password);
                 }
                 
                 $this->teamlist_mod->update($data_update,$user->id);
+                $this->teamlist_mod->update_cuti($data_update_cuti,$user->id);
                 redirect('teamlist');
             }
             else{
@@ -236,6 +242,7 @@ class Teamlist extends MY_Controller {
         }
         $data['row'] = $user;
         $data['rule'] = $this->teamlist_mod->get_rule();
+        $data['cuti'] = $this->teamlist_mod->get_cuti($user_id);
         $data['page'] = 'setting';
         $this->load->view('edit_team',$data);
     }
@@ -287,7 +294,7 @@ class Teamlist extends MY_Controller {
 
     }
 
-    function do_upload1()
+    /*function do_upload1()
     {
 
         $config['upload_path']          = '././clients/user/';
@@ -338,5 +345,5 @@ class Teamlist extends MY_Controller {
 
             return $array;
         }
-    }
+    }*/
 }

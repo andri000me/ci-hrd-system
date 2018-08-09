@@ -89,6 +89,15 @@ class Teamlist_mod extends CI_Model {
         }
     }
 
+    function get_cuti($data=null)
+    {
+        $this->db->select('*');
+        $this->db->where('id_user', mysql_real_escape_string($data));
+        $i = $this->db->get('ds_jumlah_cuti', 1, 0);
+
+        return $var = ($i->num_rows() > 0) ? $i->row() : false;
+    }
+
     function add($data=null)
     {
         $return = 0;
@@ -117,6 +126,12 @@ class Teamlist_mod extends CI_Model {
     {
         $this->db->where('id',  mysql_real_escape_string($user_id));
         $this->db->update('ds_users', $data);
+    }
+
+    function update_cuti($data,$user_id=0)
+    {
+        $this->db->where('id_user',  mysql_real_escape_string($user_id));
+        $this->db->update('ds_jumlah_cuti', $data);
     }
 
 
