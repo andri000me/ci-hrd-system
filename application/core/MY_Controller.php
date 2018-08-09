@@ -110,4 +110,6 @@ class  MY_Controller  extends  CI_Controller {
         
         return $is_allow;
     }
+
+
 }

@@ -14,3 +14,4 @@ $config['utc_id'] = 7;
  * Folder File UPLOAD
  */
 $config["dir_upload"] = "clients/";
+// CONFIG Upload
