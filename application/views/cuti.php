@@ -253,7 +253,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       				  <div class="card">
       					<div class="card-content collapse show">
       					  <div class="card-body">
-      						<form action="#">
+      						<form method="POST">
       						  <div class="row">
       							<div class="col-md-12 col-sm-6 col-12">
       							  <div class="form-group">
@@ -266,7 +266,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       											<span class="input-group-text"><i class="ft-calendar"></i></span>
       										</div>
       									  </div>
-      									  <input id="picker_from" class="form-control datepicker" type="date">
+      									  <input id="picker_from" name="tanggal_mulai" class="form-control datepicker" type="date">
       									</div>
       								  </div>
       								  <div class="col-lg-6">
@@ -277,15 +277,15 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       											<span class="input-group-text"><i class="ft-calendar"></i></span>
       										</div>
       									  </div>
-      									  <input id="picker_to" class="form-control datepicker" type="date">
+      									  <input id="picker_to"  name="tanggal_akhir" class="form-control datepicker" type="date">
       									</div>
       								  </div>
       								  <div class="col-lg-12">
       									  <h5 class="pb-xl-1 py-xl-1">Alasan</h5>
-      									  <textarea id="" rows="5" class="form-control" name="comment" placeholder="Tulis Alasan Anda"></textarea>
+      									  <textarea id="" rows="5"   name="alasan" class="form-control" name="comment" placeholder="Tulis Alasan Anda"></textarea>
       								  </div>
       								  <div class="col-lg-12 pb-xl-1 py-xl-1">
-      									<input type="text" id="" class="form-control" placeholder="Cuti Disetujui Oleh :" name="">
+      								
       								  </div>
                         <div class="pr-xl-1 px-xl-1">
                           <button type="submit" class="btn btn-info btn-lg btn-block float-right"><i class="ft-check-circle"></i> SUBMIT</button>
