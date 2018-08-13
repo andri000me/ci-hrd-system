@@ -263,11 +263,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                 }
             ?>
               
-                <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element <?=$punch_in_class?>"><span class="glyphicon glyphicon-ok"></span> CHECK IN <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></a>
+                <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-success mb-1 block-element <?=$punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
               
               </div>
               <div class="pl-xl-1 px-xl-1">
-              <a <?=$h=$punch_out=='0' ? 'href="'.base_url().'absen/punch_out"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-outline-success mb-1 block-element <?=$punch_out_class?>"><span class="glyphicon glyphicon-off"></span> CHECK OUT<?=$t=($punch_out!='0') ? '('.substr($punch_out_time,0,5).')':''?></a>
+              <a <?=$h=$punch_out=='0' ? 'href="'.base_url().'absen/punch_out"' : ''?> class="btn btn-lg btn-block font-medium-1 btn-success mb-1 block-element <?=$punch_out_class?>"><span class="glyphicon glyphicon-off" style="color:white;"><i class="ft-power"> </i> CHECK OUT<?=$t=($punch_out!='0') ? '('.substr($punch_out_time,0,5).')':''?></span></a>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ class Cuti extends MY_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 		
-	    $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
 	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
         

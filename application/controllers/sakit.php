@@ -1,13 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include_once (APPPATH.'libraries/Backend_Core'.EXT);
+include_once (APPPATH.'libraries/Xml'.EXT);
+
 class Sakit extends MY_Controller {
 
     function Sakit()
     {
         parent::__construct();
         $this->load->model('sakit_mod');
-        $this->load->library('upload');
-        
     }
 
     function index()
@@ -27,10 +28,11 @@ class Sakit extends MY_Controller {
             $alasan = $this->input->post("alasan");
             $approve = $this->input->post("approve");
             $id_user = $this->session->userdata('user_id');
-			
-		 // $file = $this->do_upload();
-            if($this->upload->upload('file_upload')) 
-            {
+            
+            $this->load->library('upload');
+		  $file = $this->upload();
+            if($file['status']) 
+           {
                 $add_data = array(
                     'tanggal_mulai' => $tanggalmulai,
                     'tanggal_akhir' => $tanggalakhir,
@@ -41,17 +43,19 @@ class Sakit extends MY_Controller {
 
                 $this->sakit_mod->add($add_data);
             }
-            $data['error'] = $file['msg'];  
 
         }
         $data['page'] = 'module';
         $this->load->view('sakit',$data);
     }
 
+
     private function upload()
     {
-        $path = '././clients/user';
-        $config['gambar']          = 'suratsakit'.time();
+        $path = xml('dir_upload');
+        create_folder_upload($path);//Create folder jika belum ada
+        
+        $config['gambar']          = 'uploadanak'.time();
         $config['upload_path']       = $path;
         $config['allowed_types']    = 'jpg|png|gif';
         $config['max_size']            = '2500';
@@ -83,18 +87,5 @@ class Sakit extends MY_Controller {
             );
             return $array;
         }
-    }
-
-    function create_folder($folder=null)
-    {
-            if (!is_dir('././clients')) {
-                    mkdir('././clients',0777, TRUE);
-                    mkdir('././clients/'.$folder, 0777, TRUE);
-            }
-            else{
-                    if (!is_dir('././clients/'.$folder)) {
-                            mkdir('././clients/'.$folder, 0777, TRUE);
-                    }
-            }
     }
 }

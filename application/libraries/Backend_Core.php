@@ -160,6 +160,5 @@ class  Backend_Core  extends  CI_Controller {
 	// Return the SHA-1 encryption
         return sha1($string);
     }
-
-
+    
 }

@@ -254,6 +254,8 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       					<div class="card-content collapse show">
       					  <div class="card-body">
       						<form method="POST">
+                  <?=validation_errors()?>
+                      <?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?>
       						  <div class="row">
       							<div class="col-md-12 col-sm-6 col-12">
       							  <div class="form-group">
