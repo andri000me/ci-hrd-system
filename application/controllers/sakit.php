@@ -19,7 +19,7 @@ class Sakit extends MY_Controller {
         $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
 	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
-
+        $data['msg'] = '';
         if ($this->form_validation->run() == TRUE)
         { 
 	
@@ -30,7 +30,7 @@ class Sakit extends MY_Controller {
             $id_user = $this->session->userdata('user_id');
             
             $this->load->library('upload');
-		  $file = $this->upload();
+		  $file = $this->do_upload1();
             if($file['status']) 
            {
                 $add_data = array(
@@ -43,6 +43,9 @@ class Sakit extends MY_Controller {
 
                 $this->sakit_mod->add($add_data);
             }
+            else{
+                $data['msg'] = $file['error'];
+            }
 
         }
         $data['page'] = 'module';
@@ -50,41 +53,48 @@ class Sakit extends MY_Controller {
     }
 
 
-    private function upload()
+    private function do_upload1()
     {
-        $path = xml('dir_upload');
-        create_folder_upload($path);//Create folder jika belum ada
+
+        $config['upload_path']          = '././clients/sakit/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_size']             = 5000;
+       // $config['max_width']            = 1024;
+       // $config['max_height']           = 768;
+        $config['overwrite']            = TRUE;
+
         
-        $config['gambar']          = 'uploadanak'.time();
-        $config['upload_path']       = $path;
-        $config['allowed_types']    = 'jpg|png|gif';
-        $config['max_size']            = '2500';
-	//	$config['max_width']  = '1440';
-	//	$config['max_height']  = '637';
 
-        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
 
-        if ( ! $this->upload->do_upload('file_upload')) 
+        if ( ! $this->upload->do_upload('userfile'))
         {
-            $err = str_replace('<p>','',$this->upload->display_errors());
-            $err = str_replace('</p>','',$err);
-
-            return array('status' => false ,'msg' => $err);
+            return array('status' => false, 'error' => $this->upload->display_errors());
         }
         else
         {
             $data = $this->upload->data();
+
             $file_name = $data['file_name'];
+
             $file_type = $data['file_type'];
+
             $file_size = $data['file_size'];
 
             $array = array(
-                'status'	=> true,
-                'msg'		=> '',
-                'file_name'	=> $file_name,
-                'file_type'	=> $file_type,
-                'file_size'	=> $file_size
+
+                'status'    => true,
+
+                'error'       => '',
+
+                'file_name' => $file_name,
+
+                'file_type' => $file_type,
+
+                'file_size' => $file_size
+
             );
+
             return $array;
         }
     }

@@ -255,6 +255,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       					  <div class="card-body">
       						<form method="POST" enctype="multipart/form-data">
                   <?=validation_errors()?>
+                  <?=$msg?>
       						  <div class="row">
       							<div class="col-md-12 col-sm-6 col-12">
       							  <div class="form-group">
