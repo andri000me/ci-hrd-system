@@ -130,7 +130,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="btn-group float-md-right pb-xl-2 my-1">
-        <a href="team-list.html">
+        <a href="<?=base_url()?>teamlist">
               <button class="btn btn-info round" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
       </a>
           </div>
@@ -147,7 +147,9 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                     <div class="form-group row">
                       <div class="col-md-2">
-                        <img id="blah" src="http://placehold.it/400x500" alt="your image" width="100%" />
+                        <?php if(!empty($info->img)){ ?>
+                        <img id="blah" src="<?=base_url()?>clients/user/<?php echo $info->img; ?>" alt="your image" width="100%" />
+                        <?php } ?>
                       </div>
                       <div class="col-md-5">
                         <div class="col-md-12 pb-xl-1 py-xl-1">

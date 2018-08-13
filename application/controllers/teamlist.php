@@ -91,7 +91,11 @@ class Teamlist extends MY_Controller {
         }
         $cuti = $this->teamlist_mod->get_cuti($id);
         $data['info'] = $i;
-        $data['totalcuti'] = $cuti->cuti;
+        $data['totalcuti'] = '';
+        if (!empty($cuti)) {
+            $data['totalcuti'] = $cuti->cuti;
+        }
+        
 
         $this->load->view('team_detail', $data);
     }
@@ -265,9 +269,13 @@ class Teamlist extends MY_Controller {
                 $data['msg'] = "This email is already in use!";
             }
         }
+        $ambilcuti = $this->teamlist_mod->get_cuti($user_id);
         $data['row'] = $user;
         $data['rule'] = $this->teamlist_mod->get_rule();
-        $data['cuti'] = $this->teamlist_mod->get_cuti($user_id);
+        $data['cuti'] = '';
+        if (!empty($ambilcuti)) {
+            $data['cuti'] = $ambilcuti->cuti;
+        }
         $data['page'] = 'setting';
         $this->load->view('edit_team',$data);
     }
