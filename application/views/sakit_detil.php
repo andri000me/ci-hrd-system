@@ -141,60 +141,24 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($ambil_sakit as $a => $sakit){ ?>
-                  <p class="m-xl-0">MULAI :  <?php echo  $sakit['tanggal_mulai'];?></p>
-                  <p class="m-xl-0">SAMPAI : <?php echo  $sakit['tanggal_akhir'];?></p>
-                  <p class="m-xl-0">SAMPAI : <?php echo  $sakit['img'];?></p>
 
-                  <?php } ?>
+                  <?php foreach( $ambil_sakit as $a => $sakit){ ?>
                           <tr>
                             <td><a href="#" class="text-bold-600">1</a></td>
                             <td>
                               <a href="team-detail.html" class="text-bold-600"><h5>Ajeng Nuraeni</h5></a>
                             </td>
                             <td>
-                              <h5>15 August, 2018</h5>
+                              <h5><?php echo  $sakit['tanggal_mulai'];?></h5>
                             </td>
 							              <td>
-                              <h5>20 August, 2018</h5>
+                              <h5><?php echo  $sakit['tanggal_akhir'];?></h5>
                             </td>
 							              <td>
-                              <h5><a href="#">surat-dokter-harapan.jpg</a></h5>
+                              <h5><a href="#"><?php echo  $sakit['img'];?></a></h5>
                             </td>
                           </tr>
-
-						              <tr>
-                            <td><a href="#" class="text-bold-600">2</a></td>
-                            <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Muhammad Tison</h5></a>
-                            </td>
-                            </td>
-                            <td>
-                              <h5>10 June, 2018</h5>
-                            </td>
-							              <td>
-                              <h5>13 June, 2018</h5>
-                            </td>
-							              <td>
-                              <h5><a href="#">surat-dokter-harapan-kita.jpg</a></h5>
-                            </td>
-                          </tr>
-						  
-						              <tr>
-                            <td><a href="#" class="text-bold-600">3</a></td>
-                            <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Yusuf Iskandar</h5></a>
-                            </td>
-                            <td>
-                              <h5>19 April, 2018</h5>
-                            </td>
-							              <td>
-                              <h5>23 April, 2018</h5>
-                            </td>
-							              <td>
-                              <h5><a href="#">surat-dokter-harapan-bersama.jpg</a></h5>
-                            </td>
-                          </tr>
+                  <?php } ?>
                         </tbody>
                       </table>
                     </div>
