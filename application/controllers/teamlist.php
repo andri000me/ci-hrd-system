@@ -146,7 +146,7 @@ class Teamlist extends MY_Controller {
                             mkdir('././clients/user');
                         }
                     }
-                    $file = $this->do_upload1('upload1');
+                    $file = $this->do_upload1();
                     if ($file['status']) {
                         $data_add['img'] = $file['file_name'];
                     }
@@ -235,6 +235,23 @@ class Teamlist extends MY_Controller {
                     'company' => $company,
                     'since' => $since
                 );
+                if($_FILES["upload1"]['size'] != 0)
+                {
+                    if (!is_dir('././clients')) {
+                        mkdir('././clients');
+                        mkdir('././clients/user');
+                    }
+                    else{
+                        if (!is_dir('././clients/user')) {
+                            mkdir('././clients/user');
+                        }
+                    }
+                    $file = $this->do_upload1();
+                    if ($file['status']) {
+                        $data_update['img'] = $file['file_name'];
+                    }
+
+                }
                 $data_update_cuti = array('cuti' => $cuti);
                 if(!empty($password)){
                     $data_update['password'] = $this->_encode_password($password);
@@ -302,9 +319,10 @@ class Teamlist extends MY_Controller {
 
     }
 
-    private function do_upload1($file='upload1')
+    private function do_upload1()
     {
-
+        $new_name                       = time().$_FILES["upload1"]['name'];
+        $config['file_name']            = $new_name;
         $config['upload_path']          = '././clients/user/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 5000;
@@ -316,7 +334,7 @@ class Teamlist extends MY_Controller {
 
         $this->upload->initialize($config);
 
-        if ( ! $this->upload->do_upload($file))
+        if ( ! $this->upload->do_upload('upload1'))
         {
             return array('status' => false, 'error' => $this->upload->display_errors());
         }

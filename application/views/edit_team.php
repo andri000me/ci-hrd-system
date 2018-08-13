@@ -200,8 +200,8 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                           <div class="col-md-6 pb-xl-1 py-xl-1">
                           	<h4><b>Photo Attach :</b></h4>
-              								<input type='file' onchange="readURL(this);" style="padding:10px 0 10px 0;" />
-              							<img id="blah" src="http://placehold.it/200" alt="your image" width="200px" />
+              								<input type='file' name="upload1" onchange="readURL(this);" style="padding:10px 0 10px 0;" />
+              							<img id="blah" src="<?=base_url()?>clients/user/<?=$row->img?>" alt="your image" width="200px" />
                                         </div>
 
                                         <!-- js upload file profile -->
