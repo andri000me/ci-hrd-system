@@ -9,7 +9,11 @@ class Sakit extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('sakit_mod');
+        $this->load->library('pagination');
+        
     }
+
+
 
     function index()
     {
@@ -55,6 +59,28 @@ class Sakit extends MY_Controller {
         $this->load->view('sakit',$data);
     }
 
+    function _set_pagination()
+    {
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $config['next_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+        $config['prev_tag_close'] = '</li>';
+        $config['full_tag_open'] = '<ul class="pagination" style="justify-content: flex-end;">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li class="custompagination paginate_button page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="paginate_button page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        return $config;
+    }
+    
     function detil_sakit () {
         $ambilid = $this->session->userdata('user_id');
         $ambilnama = $this->session->userdata('full_name');
@@ -68,7 +94,7 @@ class Sakit extends MY_Controller {
 
         $config['base_url'] = base_url(FALSE).'sakit/detil_sakit?';
 
-        $config['total_rows'] = $this->sakit_mod->get_teamlist(true,$where);
+        $config['total_rows'] = $this->sakit_mod->get_sakit(true,$where);
 
         $config['per_page'] = 5;
 

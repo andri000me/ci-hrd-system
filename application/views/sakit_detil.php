@@ -117,8 +117,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
       <div class="content-header row">
         <div class="content-header-left col-md-12 col-12 mb-2">
           <div>
-      <h1 class="text-center" style="padding:40px 0 40px 0;"><b>SAKIT</b></h1>
-      </div>
+			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>SAKIT</b></h1>
+		  </div>
         </div>
       </div>
       <div class="content-detached content-right">
@@ -137,7 +137,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <th>NAME</th>
                             <th>MULAI TANGGAL</th>
                             <th>SAMPAI TANGGAL</th>
-                            <th>SURAT SAKIT</th>
+              							<th>SURAT SAKIT</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -158,15 +158,16 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <td>
                               <h5><?=$sakit['tanggal_mulai']?></h5>
                             </td>
-                            <td>
+							              <td>
                               <h5><?=$sakit['tanggal_akhir']?></h5>
                             </td>
-                            <td>
+							              <td>
                               <h5><a href="#"><?=$sakit['img']?></a></h5>
                             </td>
                           </tr>
                           <?php $i++; ?>
                           <?php } ?>
+
                         </tbody>
                       </table>
                     <div class="row">
