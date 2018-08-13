@@ -135,15 +135,23 @@ class Teamlist extends MY_Controller {
                     'since' => $since
                 );
                 
-                /*if(!empty($_FILES["upload1"]["tmp_name"]))
+                if($_FILES["upload1"]['size'] != 0)
                 {
-                    $file = $this->do_upload1();
+                    if (!is_dir('././clients')) {
+                        mkdir('././clients');
+                        mkdir('././clients/user');
+                    }
+                    else{
+                        if (!is_dir('././clients/user')) {
+                            mkdir('././clients/user');
+                        }
+                    }
+                    $file = $this->do_upload1('upload1');
                     if ($file['status']) {
                         $data_add['img'] = $file['file_name'];
-
                     }
 
-                }*/
+                }
                 
                 
                 $user_id = $this->teamlist_mod->add($data_add);
@@ -294,7 +302,7 @@ class Teamlist extends MY_Controller {
 
     }
 
-    /*function do_upload1()
+    private function do_upload1($file='upload1')
     {
 
         $config['upload_path']          = '././clients/user/';
@@ -302,20 +310,13 @@ class Teamlist extends MY_Controller {
         $config['max_size']             = 5000;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;
+        $config['overwrite']            = TRUE;
 
-        if (!is_dir('././clients')) {
-            mkdir('././clients');
-            mkdir('././clients/user');
-        }
-        else{
-            if (!is_dir('././clients/user')) {
-                mkdir('././clients/user');
-            }
-        }
+        
 
-        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
 
-        if ( ! $this->upload->do_upload('upload1'))
+        if ( ! $this->upload->do_upload($file))
         {
             return array('status' => false, 'error' => $this->upload->display_errors());
         }
@@ -345,5 +346,5 @@ class Teamlist extends MY_Controller {
 
             return $array;
         }
-    }*/
+    }
 }

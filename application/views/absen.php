@@ -96,7 +96,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <span>DASHBOARD</span>
           </a>
         </li>-->
-        <li class="nav-item" data-menu=""><a class="nav-link" href="#" data-toggle=""><i class="icon-list"></i><span>TEAM LIST</span></a>
+        <li class="nav-item" data-menu=""><a class="nav-link" href="<?=base_url()?>teamlist" data-toggle=""><i class="icon-list"></i><span>TEAM LIST</span></a>
         </li>
         <li class="nav-item" data-menu=""><a class="nav-link" href="<?=base_url()?>dashboard" data-toggle=""><i class="icon-grid"></i><span>HRD SYSTEM</span></a>
         </li>
