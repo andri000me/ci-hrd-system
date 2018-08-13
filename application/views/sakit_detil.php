@@ -117,8 +117,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
       <div class="content-header row">
         <div class="content-header-left col-md-12 col-12 mb-2">
           <div>
-			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>SAKIT</b></h1>
-		  </div>
+      <h1 class="text-center" style="padding:40px 0 40px 0;"><b>SAKIT</b></h1>
+      </div>
         </div>
       </div>
       <div class="content-detached content-right">
@@ -137,30 +137,10 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <th>NAME</th>
                             <th>MULAI TANGGAL</th>
                             <th>SAMPAI TANGGAL</th>
-              							<th>SURAT SAKIT</th>
+                            <th>SURAT SAKIT</th>
                           </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
-
-                  <?php foreach( $ambil_sakit as $a => $sakit){ ?>
-                          <tr>
-                            <td><a href="#" class="text-bold-600">1</a></td>
-                            <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Ajeng Nuraeni</h5></a>
-                            </td>
-                            <td>
-                              <h5><?php echo  $sakit['tanggal_mulai'];?></h5>
-                            </td>
-							              <td>
-                              <h5><?php echo  $sakit['tanggal_akhir'];?></h5>
-                            </td>
-							              <td>
-                              <h5><a href="#"><?php echo  $sakit['img'];?></a></h5>
-                            </td>
-                          </tr>
-                  <?php } ?>
-=======
                           <?php 
                           if ($number != null) {
                             $i = $number+1;
@@ -178,16 +158,15 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <td>
                               <h5><?=$sakit['tanggal_mulai']?></h5>
                             </td>
-							              <td>
+                            <td>
                               <h5><?=$sakit['tanggal_akhir']?></h5>
                             </td>
-							              <td>
+                            <td>
                               <h5><a href="#"><?=$sakit['img']?></a></h5>
                             </td>
                           </tr>
                           <?php $i++; ?>
                           <?php } ?>
->>>>>>> 4e5b4defc6dbb12f38662d6ee7a8b9029e78e820
                         </tbody>
                       </table>
                     <div class="row">

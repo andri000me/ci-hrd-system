@@ -68,7 +68,7 @@ class Sakit extends MY_Controller {
 
         $config['base_url'] = base_url(FALSE).'sakit/detil_sakit?';
 
-        $config['total_rows'] = $this->teamlist_mod->get_teamlist(true,$where);
+        $config['total_rows'] = $this->sakit_mod->get_teamlist(true,$where);
 
         $config['per_page'] = 5;
 
