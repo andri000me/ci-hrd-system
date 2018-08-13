@@ -42,6 +42,9 @@ class Sakit extends MY_Controller {
                 );
 
                 $this->sakit_mod->add($add_data);
+
+                redirect('sakit/detil_sakit');
+                
             }
             else{
                 $data['msg'] = $file['error'];
@@ -52,6 +55,14 @@ class Sakit extends MY_Controller {
         $this->load->view('sakit',$data);
     }
 
+    function detil_sakit () {
+
+        $ambilid = $this->session->userdata('user_id');
+        $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
+
+        $this->load->view('sakit_detil',$data);
+
+    }
 
     private function do_upload1()
     {
