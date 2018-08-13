@@ -134,7 +134,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               <div class="card">
                 <div class="card-content collpase show">
                   <div class="card-body">
-                    <form class="form form-horizontal" method="POST">
+                    <form class="form form-horizontal" method="POST" enctype="multipart/form-data">
                       <?=validation_errors()?>
                       <?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?>
                       <div class="form-body">
@@ -200,7 +200,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                           <div class="col-md-6 pb-xl-1 py-xl-1">
                           	<h4><b>Photo Attach :</b></h4>
-              								<input type='file' name="upload1" onchange="readURL(this);" style="padding:10px 0 10px 0;" />
+                              <input type='file' name="upload1" onchange="readURL(this);" style="padding:10px 0 10px 0;" />
               							<img id="blah" src="http://placehold.it/200" alt="your image" width="200px" />
                                         </div>
 
