@@ -56,9 +56,51 @@ class Sakit extends MY_Controller {
     }
 
     function detil_sakit () {
-
         $ambilid = $this->session->userdata('user_id');
-        $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
+        $ambilnama = $this->session->userdata('full_name');
+
+        $where=array('id_user' => $ambilid);
+
+        $id = $this->input->get('per_page');
+
+        $url = '?';
+
+
+        $config['base_url'] = base_url(FALSE).'sakit/detil_sakit?';
+
+        $config['total_rows'] = $this->teamlist_mod->get_teamlist(true,$where);
+
+        $config['per_page'] = 5;
+
+        $config['cur_page'] = empty($id) ? 0 : $id;
+
+        $config['page_query_string'] = TRUE;
+
+        foreach ($this->_set_pagination() as $key=>$val){
+
+            $config[$key] = $val;
+
+        }
+
+        $this->pagination->initialize($config);
+
+
+
+        $skip = $config['cur_page'];
+
+        $take = $config['per_page'];
+
+        $data['number'] = $config['cur_page'];
+
+        $data['namauser'] = $ambilnama;
+
+        $data['datacount'] = $this->sakit_mod->get_sakit(true,$where);
+
+        $data['pagination'] = $this->pagination->create_links();
+
+        $data['ambil_sakit'] = $this->sakit_mod->get_sakit(false,$where,true,$skip,$take);
+
+        /*$data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);*/
 
         $this->load->view('sakit_detil',$data);
 

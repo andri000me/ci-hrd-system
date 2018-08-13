@@ -141,62 +141,52 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($ambil_sakit as $a => $sakit){ ?>
-                  <p class="m-xl-0">MULAI :  <?php echo  $sakit['tanggal_mulai'];?></p>
-                  <p class="m-xl-0">SAMPAI : <?php echo  $sakit['tanggal_akhir'];?></p>
-                  <p class="m-xl-0">SAMPAI : <?php echo  $sakit['img'];?></p>
-
-                  <?php } ?>
+                          <?php 
+                          if ($number != null) {
+                            $i = $number+1;
+                          }
+                          else{
+                            $i = 1;
+                          } 
+                          ?>
+                          <?php foreach($ambil_sakit as $a => $sakit){ ?>
                           <tr>
-                            <td><a href="#" class="text-bold-600">1</a></td>
+                            <td><a href="#" class="text-bold-600"><?php echo $i; ?></a></td>
                             <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Ajeng Nuraeni</h5></a>
+                              <a href="team-detail.html" class="text-bold-600"><h5><?=$namauser?></h5></a>
                             </td>
                             <td>
-                              <h5>15 August, 2018</h5>
+                              <h5><?=$sakit['tanggal_mulai']?></h5>
                             </td>
 							              <td>
-                              <h5>20 August, 2018</h5>
+                              <h5><?=$sakit['tanggal_akhir']?></h5>
                             </td>
 							              <td>
-                              <h5><a href="#">surat-dokter-harapan.jpg</a></h5>
+                              <h5><a href="#"><?=$sakit['img']?></a></h5>
                             </td>
                           </tr>
-
-						              <tr>
-                            <td><a href="#" class="text-bold-600">2</a></td>
-                            <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Muhammad Tison</h5></a>
-                            </td>
-                            </td>
-                            <td>
-                              <h5>10 June, 2018</h5>
-                            </td>
-							              <td>
-                              <h5>13 June, 2018</h5>
-                            </td>
-							              <td>
-                              <h5><a href="#">surat-dokter-harapan-kita.jpg</a></h5>
-                            </td>
-                          </tr>
-						  
-						              <tr>
-                            <td><a href="#" class="text-bold-600">3</a></td>
-                            <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5>Yusuf Iskandar</h5></a>
-                            </td>
-                            <td>
-                              <h5>19 April, 2018</h5>
-                            </td>
-							              <td>
-                              <h5>23 April, 2018</h5>
-                            </td>
-							              <td>
-                              <h5><a href="#">surat-dokter-harapan-bersama.jpg</a></h5>
-                            </td>
-                          </tr>
+                          <?php $i++; ?>
+                          <?php } ?>
                         </tbody>
                       </table>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                          <div class="dataTables_info" id="project-bugs-list_info" role="status" aria-live="polite" style="padding-top: 0.85em;">
+                            <?php
+                              $hitungdata = $number+5;
+                              if ($hitungdata > $datacount) {
+                                $hitungdata = $datacount;
+                              }
+                            ?>
+                            Showing <?php echo $number+1; ?> to <?php echo $hitungdata; ?> of <?php echo $datacount; ?> entries
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="project-bugs-list_paginate">
+                            <?=$pagination?>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -224,7 +214,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
   <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
   
-  <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"
   type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.responsive.min.js"
