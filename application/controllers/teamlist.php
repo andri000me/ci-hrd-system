@@ -31,8 +31,37 @@ class Teamlist extends MY_Controller {
         return $config;
     }
 
+    function cek_login(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+    }
+
+    function cek_rule(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+        else{
+            $rule = $this->session->userdata('rule');
+            if ($rule != 1 && $rule != 2) {
+                redirect(base_url().'teamlist/detail/'.$this->session->userdata('user_id'));
+            }
+        }
+        
+    }
+
     function index()
     {
+        
+
+        $this->cek_rule();
+
     	$where = null;
 
         $id = $this->input->get('per_page');
@@ -76,6 +105,10 @@ class Teamlist extends MY_Controller {
     }
 
     function detail($id=0){
+        $this->cek_login();
+        if ($id == 0) {
+            redirect('teamlist');
+        }
         $i = $this->teamlist_mod->get_byuid($id);
         if ($i->rule == 1) {
             $data['rule'] = 'BOS';
@@ -84,20 +117,25 @@ class Teamlist extends MY_Controller {
             $data['rule'] = 'HRD';
         }
         elseif ($i->rule == 3) {
-            $data['rule'] = 'TEAM';
+            $data['rule'] = 'STAFF';
         }
         elseif ($i->rule == 4) {
             $data['rule'] = 'CLIENT';
         }
         $cuti = $this->teamlist_mod->get_cuti($id);
         $data['info'] = $i;
-        $data['totalcuti'] = $cuti->cuti;
+        $data['sisacuti'] = '';
+        if (!empty($cuti)) {
+            $data['sisacuti'] = $cuti->cuti;
+        }
+        
 
         $this->load->view('team_detail', $data);
     }
 
     function add()
     {
+        $this->cek_rule();
     	$this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger error">', '</div>');
 
@@ -181,7 +219,7 @@ class Teamlist extends MY_Controller {
 
     function edit($user_id=0)
     {
-        $this->is_logged_in();
+        $this->cek_rule();
         #Cek rule akses
         /*if($this->is_filter_rule(TRUE)){
             $this->_redirect_member();
@@ -265,15 +303,20 @@ class Teamlist extends MY_Controller {
                 $data['msg'] = "This email is already in use!";
             }
         }
+        $ambilcuti = $this->teamlist_mod->get_cuti($user_id);
         $data['row'] = $user;
         $data['rule'] = $this->teamlist_mod->get_rule();
-        $data['cuti'] = $this->teamlist_mod->get_cuti($user_id);
+        $data['cuti'] = '';
+        if (!empty($ambilcuti)) {
+            $data['cuti'] = $ambilcuti->cuti;
+        }
         $data['page'] = 'setting';
         $this->load->view('edit_team',$data);
     }
 
     function delete($user_id=0)
     {
+        $this->cek_rule();
         /*$this->is_logged_in();
         #Cek rule akses
         if($this->is_filter_rule(TRUE)){

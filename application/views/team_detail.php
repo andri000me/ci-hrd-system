@@ -71,7 +71,9 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                   <span class="user-name text-bold-700">Naufal</span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="<?=base_url()?>assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span>
+                  <?php if (!empty($this->session->userdata('img'))) { ?>
+                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><i></i></span>
+                  <?php } ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
                 <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
@@ -130,7 +132,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="btn-group float-md-right pb-xl-2 my-1">
-        <a href="team-list.html">
+        <a href="<?=base_url()?>teamlist">
               <button class="btn btn-info round" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
       </a>
           </div>
@@ -147,7 +149,9 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                     <div class="form-group row">
                       <div class="col-md-2">
-                        <img id="blah" src="http://placehold.it/400x500" alt="your image" width="100%" />
+                        <?php if(!empty($info->img)){ ?>
+                        <img id="blah" src="<?=base_url()?>clients/user/<?php echo $info->img; ?>" alt="your image" width="100%" />
+                        <?php } ?>
                       </div>
                       <div class="col-md-5">
                         <div class="col-md-12 pb-xl-1 py-xl-1">
@@ -180,7 +184,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                         </div>
 
                         <div class="col-md-12 pb-xl-1 py-xl-1">
-                          <input type="text" id="" class="form-control" placeholder="Total Cuti : 6 Hari" disabled="">
+                          <input type="text" id="" class="form-control" placeholder="Sisa Cuti : <?=$sisacuti?> Hari" disabled="">
                         </div>
                       </div>
                     </div>

@@ -134,7 +134,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               <div class="card">
                 <div class="card-content collpase show">
                   <div class="card-body">
-                    <form class="form form-horizontal" method="POST">
+                    <form class="form form-horizontal" method="POST" enctype="multipart/form-data">
                       <?=validation_errors()?>
                       <?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?>
                       <div class="form-body">
@@ -201,7 +201,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <div class="col-md-6 pb-xl-1 py-xl-1">
                           	<h4><b>Photo Attach :</b></h4>
               								<input type='file' name="upload1" onchange="readURL(this);" style="padding:10px 0 10px 0;" />
+                              <?php if(!empty($row->img)){ ?>
               							<img id="blah" src="<?=base_url()?>clients/user/<?=$row->img?>" alt="your image" width="200px" />
+                            <?php } else { ?>
+                            <img id="blah" src="http://placehold.it/200" alt="your image" width="200px" />
+                            <?php } ?>
                                         </div>
 
                                         <!-- js upload file profile -->
@@ -223,7 +227,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                           <div class="col-md-6 pb-xl-1 py-xl-1">
                               <h5 class="pb-xl-1 py-xl-1">Total Cuti</h5>
-                          	<input type="text" name="cuti" value="<?=$cuti->cuti?>" id="projectinput9" class="form-control" placeholder="Total Cuti">
+                          	<input type="text" name="cuti" value="<?=$cuti?>" id="projectinput9" class="form-control" placeholder="Total Cuti">
                           </div>
                         </div>
 
