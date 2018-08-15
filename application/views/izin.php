@@ -319,7 +319,8 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <p class="m-xl-0">January 30, 2018</p>
                   <p class="m-xl-0">February 15, 2018</p>
                   <p class="m-xl-0">February 25, 2018</p>
-                </div>
+                </div><br>
+                <a class="btn btn-block btn-success " href="<?=base_url()?>izin/detil_izin">Detil</a>
               </div>
             </div>
           </div>

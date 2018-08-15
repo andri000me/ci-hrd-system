@@ -55,6 +55,8 @@ class Sakit extends MY_Controller {
             }
 
         }
+        $ambilid = $this->session->userdata('user_id');
+        $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
         $data['page'] = 'module';
         $this->load->view('sakit',$data);
     }

@@ -48,4 +48,76 @@ class Cuti extends MY_Controller {
     $this->load->view('cuti',$data);
 }
    
+function _set_pagination()
+{
+    $config['next_link'] = 'Next';
+    $config['prev_link'] = 'Prev';
+    $config['next_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+    $config['next_tag_close'] = '</li>';
+    $config['prev_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+    $config['prev_tag_close'] = '</li>';
+    $config['full_tag_open'] = '<ul class="pagination" style="justify-content: flex-end;">';
+    $config['full_tag_close'] = '</ul>';
+    $config['num_tag_open'] = '<li class="custompagination paginate_button page-item">';
+    $config['num_tag_close'] = '</li>';
+    $config['first_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+    $config['first_tag_close'] = '</li>';
+    $config['last_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+    $config['last_tag_close'] = '</li>';
+    $config['cur_tag_open'] = '<li class="paginate_button page-item active"><a class="page-link">';
+    $config['cur_tag_close'] = '</a></li>';
+
+    return $config;
+}
+
+function detil_cuti () {
+    $ambilid = $this->session->userdata('user_id');
+    $ambilnama = $this->session->userdata('full_name');
+
+    $where=array('id_user' => $ambilid);
+
+    $id = $this->input->get('per_page');
+
+    $url = '?';
+
+
+    $config['base_url'] = base_url(FALSE).'cuti/detil_cuti?';
+
+    $config['total_rows'] = $this->cuti_mod->get_cuti(true,$where);
+
+    $config['per_page'] = 5;
+
+    $config['cur_page'] = empty($id) ? 0 : $id;
+
+    $config['page_query_string'] = TRUE;
+
+    foreach ($this->_set_pagination() as $key=>$val){
+
+        $config[$key] = $val;
+
+    }
+
+    $this->pagination->initialize($config);
+
+
+
+    $skip = $config['cur_page'];
+
+    $take = $config['per_page'];
+
+    $data['number'] = $config['cur_page'];
+
+    $data['namauser'] = $ambilnama;
+
+    $data['datacount'] = $this->cuti_mod->get_cuti(true,$where);
+
+    $data['pagination'] = $this->pagination->create_links();
+
+    $data['ambil_cuti'] = $this->cuti_mod->get_cuti(false,$where,true,$skip,$take);
+
+    /*$data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);*/
+
+    $this->load->view('cuti_detil',$data);
+
+}
 }

@@ -282,10 +282,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
       									  <input id="picker_to" name="tanggal_akhir" class="form-control datepicker" type="date">
       									</div>
       								  </div>
-      								  <div class="col-lg-12">
+      								  <!-- <div class="col-lg-12">
       									  <h5 class="pb-xl-1 py-xl-1">Alasan</h5>
       									  <textarea id="" rows="5"  name="alasan" class="form-control" name="comment" placeholder="Tulis Alasan Anda"></textarea>
-      								  </div>
+      								  </div> -->
       								  <div class="col-lg-12 pb-xl-1 py-xl-1">
                             <h5>Silahkan Upload Surat Sakit Anda :</h5>
                             <fieldset class="form-group">
@@ -319,11 +319,18 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                 </h5>
 
                 <div class="pl-xl-1 pr-xl-1 px-xl-1">
-                  <b>HARI:</b>
-                  <p class="m-xl-0">January 30, 2018</p>
-                  <p class="m-xl-0">February 15, 2018</p>
-                  <p class="m-xl-0">February 25, 2018</p>
+                  <b>LAMA SAKIT:</b>
+                  <?php if(!empty($ambil_sakit)){ ?>
+                  <?php foreach($ambil_sakit as $getsakit){ ?>
+
+                 <p class="m-xl-0">
+                   <?php echo  $getsakit['tanggal_mulai'];?> - <?php echo  $getsakit['tanggal_akhir'];?>
+                 </p>
+                  <?php } ?>
+                  <?php } ?>
                 </div>
+                <br>
+                <a class="btn btn-block btn-success " href="<?=base_url()?>sakit/detil_sakit">Detil</a>
               </div>
             </div>
           </div>
