@@ -33,7 +33,7 @@ class Login extends MY_Controller {
                             'user_id' => $user->id,
                             'full_name' => $user->name,
                             'rule' => $user->rule,
-                            'is_logged_in' => true,
+                            'img' => $user->img,
                             'lastlogin' => $user->last_loggedin_date
                     );
                     $this->session->set_userdata($data_session);
@@ -57,14 +57,8 @@ class Login extends MY_Controller {
 
     function logout()
     {
-        $data_session = array(
-                'user_id' => 0,
-                'full_name' => NULL,
-                'is_logged_in' => FALSE,
-                'lastlogin' => NULL,
-                'rule' => NULL
-        );
-        $this->unset_session($data_session);
+        /*$data_session = array('user_id','full_name','rule','is_logged_in','lastlogin');*/
+        $this->session->sess_destroy();
         redirect(base_url().'login');
     }
 

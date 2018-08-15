@@ -66,7 +66,9 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <span class="user-name text-bold-700">Naufal</span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="<?=base_url()?>assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span>
+                  <?php if (!empty($this->session->userdata('img'))) { ?>
+                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><i></i></span>
+                  <?php } ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
                 <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
