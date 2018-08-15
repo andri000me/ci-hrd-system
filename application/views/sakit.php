@@ -315,7 +315,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title-center">JUNE 2018</h4>
-                <h5 class="p-xl-1"><b>TOTAL SAKIT : 3</b>
+                <h5 class="p-xl-1"><b>TOTAL SAKIT : <?php echo $jumlahtotalsakit; ?></b>
                 </h5>
 
                 <div class="pl-xl-1 pr-xl-1 px-xl-1">
@@ -356,7 +356,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script>
-  <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.date.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.time.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/legacy.js" type="text/javascript"></script>

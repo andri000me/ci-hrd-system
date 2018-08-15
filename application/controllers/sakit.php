@@ -22,14 +22,14 @@ class Sakit extends MY_Controller {
 
         $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
-	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
+	    /*$this->form_validation->set_rules('alasan', 'Alasan', 'required');*/
         $data['msg'] = '';
         if ($this->form_validation->run() == TRUE)
         { 
 	
             $tanggalmulai = $this->input->post("tanggal_mulai");
             $tanggalakhir = $this ->input->post("tanggal_akhir");
-            $alasan = $this->input->post("alasan");
+            /*$alasan = $this->input->post("alasan");*/
             $approve = $this->input->post("approve");
             $id_user = $this->session->userdata('user_id');
             
@@ -40,7 +40,7 @@ class Sakit extends MY_Controller {
                 $add_data = array(
                     'tanggal_mulai' => $tanggalmulai,
                     'tanggal_akhir' => $tanggalakhir,
-                    'alasan' => $alasan,
+                    /*'alasan' => $alasan,*/
                     'id_user' => $id_user,
                     'img' => $file['file_name'],
                 );
@@ -57,6 +57,25 @@ class Sakit extends MY_Controller {
         }
         $ambilid = $this->session->userdata('user_id');
         $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
+
+        //START HITUNG TOTAL CUTI
+        $jumlahsakit = $this->sakit_mod->get_sakit(false,array('id_user' => $ambilid),false);
+        $datasakit = $jumlahsakit;
+        $data['jumlahtotalsakit'] = 0;
+        if (!empty($datasakit)) {
+            $i = 1;
+            foreach ($datasakit as $value) {
+                $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+
+                $a[$i] = $diff[$i]->d + 1;
+                $i++;
+            }
+            $x = array_sum($a);
+            $data['jumlahtotalsakit'] = $x;
+        }
+        //END HITUNG TOTAL CUTI
         $data['page'] = 'module';
         $this->load->view('sakit',$data);
     }
@@ -136,7 +155,8 @@ class Sakit extends MY_Controller {
 
     private function do_upload1()
     {
-
+        $new_name                       = time().$_FILES["userfile"]['name'];
+        $config['file_name']            = $new_name;
         $config['upload_path']          = '././clients/sakit/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['max_size']             = 5000;
