@@ -45,7 +45,32 @@ class Cuti extends MY_Controller {
 
                 
     }
+                                    //START HITUNG TOTAL CUTI
+                                    $ambilid = $this->session->userdata('user_id');
+                                    $jumlahcuti = $this->cuti_mod->get_cuti(false,array('id_user' => $ambilid),false);
+                                    $datacuti= $jumlahcuti;
+                                    $data['jumlahtotalcuti'] = 0;
+                                    if (!empty($datacuti)) {
+                                        $i = 1;
+                                        foreach ($datacuti as $value) {
+                                            $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                                            $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                                            $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+                            
+                                            $a[$i] = $diff[$i]->d + 1;
+                                            $i++;
+                                        }
+                                        $x = array_sum($a);
+                                        $data['jumlahtotalcuti'] = $x;
+                                    }
+
+   
+    $data['ambil_cuti'] = $this->cuti_mod->get_cuti($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
+    $data['ambil_bulantahun'] = date('F Y');
+
     $this->load->view('cuti',$data);
+
+
 }
    
 function _set_pagination()

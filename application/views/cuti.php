@@ -312,16 +312,40 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
           <div id="recent-transactions" class="col-xl-4 col-lg-6 col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title-center">JUNE 2018</h4>
+                <h4 class="card-title-center"><?php echo $ambil_bulantahun; ?></h4>
                 <h5 class="p-xl-1"><b>TOTAL CUTI : 12<br>
-                  SISA CUTI : 5</b>
+                <?php
+                
+                $maxcuti = 12;
+                $jumlah =  (int)$maxcuti - (int)$jumlahtotalcuti; 
+                
+               ?>
+                  SISA CUTI : <?=$jumlah?></b>
                 </h5>
 
                 <div class="pl-xl-1 pr-xl-1 px-xl-1">
                   <b>CUTI YANG DIAMBIL PADA TANGGAL:</b>
-                  <p class="m-xl-0">January 30, 2018</p>
-                  <p class="m-xl-0">February 15, 2018</p>
-                  <p class="m-xl-0">February 25, 2018</p>
+                  <?php if(!empty($ambil_cuti)){ ?>
+                  <?php foreach($ambil_cuti as $getcuti){ ?>
+
+                                            <?php 
+                          if($getcuti['approved'] == 0) {
+                              $status = 'Pending';
+                          }
+                          elseif($getcuti['approved'] == 1) {
+                              $status = 'Approved';
+                          }
+                          else {
+                            $status = 'Rejected';
+                          }
+
+                          ?>
+
+                 <p class="m-xl-0">
+                   <?php echo  $getcuti['tanggal_mulai'];?> - <?php echo  $getcuti['tanggal_akhir'];?> (<?php echo  $status ?>)
+                 </p>
+                  <?php } ?>
+                  <?php } ?>
                 </div><br>
                 <a class="btn btn-block btn-success " href="<?=base_url()?>cuti/detil_cuti">Detil</a>
               </div>
@@ -349,7 +373,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script>
-  <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.date.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.time.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/legacy.js" type="text/javascript"></script>

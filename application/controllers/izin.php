@@ -46,6 +46,27 @@ class Izin extends MY_Controller {
 
         }
 
+        $ambilid = $this->session->userdata('user_id');
+        $data['ambil_izin'] = $this->izin_mod->get_izin($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
+
+                //START HITUNG TOTAL CUTI
+                $jumlahizin = $this->izin_mod->get_izin(false,array('id_user' => $ambilid),false);
+                $dataizin = $jumlahizin;
+                $data['jumlahtotalizin'] = 0;
+                if (!empty($dataizin)) {
+                    $i = 1;
+                    foreach ($dataizin as $value) {
+                        $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                        $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                        $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+        
+                        $a[$i] = $diff[$i]->d + 1;
+                        $i++;
+                    }
+                    $x = array_sum($a);
+                    $data['jumlahtotalizin'] = $x;
+                }
+
     	$this->load->view('izin', $data);
     }
 

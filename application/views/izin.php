@@ -311,14 +311,19 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title-center">JUNE 2018</h4>
-                <h5 class="p-xl-1"><b>TOTAL IZIN : 12</b>
+                <h5 class="p-xl-1"><b>TOTAL IZIN : <?= $jumlahtotalizin ?></b>
                 </h5>
 
                 <div class="pl-xl-1 pr-xl-1 px-xl-1">
-                  <b>HARI :</b>
-                  <p class="m-xl-0">January 30, 2018</p>
-                  <p class="m-xl-0">February 15, 2018</p>
-                  <p class="m-xl-0">February 25, 2018</p>
+                  <b>LOG IZIN : </b>
+                  <?php if(!empty($ambil_izin)){ ?>
+                  <?php foreach($ambil_izin as $getizin){ ?>
+
+                 <p class="m-xl-0">
+                   <?php echo  $getizin['tanggal_mulai'];?> - <?php echo  $getizin['tanggal_akhir'];?>
+                 </p>
+                  <?php } ?>
+                  <?php } ?>
                 </div><br>
                 <a class="btn btn-block btn-success " href="<?=base_url()?>izin/detil_izin">Detil</a>
               </div>
@@ -346,7 +351,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script>
-  <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.date.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/picker.time.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/pickers/pickadate/legacy.js" type="text/javascript"></script>

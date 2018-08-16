@@ -150,6 +150,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $i = 1;
                           } 
                           ?>
+                          <?php if(!empty($ambil_cuti)){ ?>
                           <?php foreach($ambil_cuti as $a => $cuti){ ?>
                           <?php 
                           if($cuti['approved'] == 0) {
@@ -182,6 +183,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             </td>
                           </tr>
                           <?php $i++; ?>
+                          <?php } ?>
                           <?php } ?>
 
                         </tbody>

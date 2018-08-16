@@ -149,6 +149,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $i = 1;
                           } 
                           ?>
+                          <?php if(!empty($ambil_sakit)){ ?>
                           <?php foreach($ambil_sakit as $a => $sakit){ ?>
                           <tr>
                             <td><a href="#" class="text-bold-600"><?php echo $i; ?></a></td>
@@ -166,6 +167,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             </td>
                           </tr>
                           <?php $i++; ?>
+                          <?php } ?>
                           <?php } ?>
 
                         </tbody>

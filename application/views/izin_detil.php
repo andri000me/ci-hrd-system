@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="POWER MANAGEMENT">
-  <title>Sakit - Dewanstudio Power Management</title>
+  <title>Izin - Dewanstudio Power Management</title>
   <link rel="apple-touch-icon" href="<?=base_url()?>assets/images/ico/apple-touch-icon-72-precomposed.png">
   <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>assets/images/ico/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
@@ -150,6 +150,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $i = 1;
                           } 
                           ?>
+                          <?php if(!empty($ambil_izin)){ ?>
                           <?php foreach($ambil_izin as $a => $izin){ ?>
                           <?php 
                           if($izin['approved'] == 0) {
@@ -182,6 +183,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             </td>
                           </tr>
                           <?php $i++; ?>
+                          <?php } ?>
                           <?php } ?>
 
                         </tbody>
