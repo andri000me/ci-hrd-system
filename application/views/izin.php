@@ -320,7 +320,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <?php foreach($ambil_izin as $getizin){ ?>
 
                  <p class="m-xl-0">
-                   <?php echo  $getizin['tanggal_mulai'];?> - <?php echo  $getizin['tanggal_akhir'];?>
+                   <?php 
+                      $tanggalmulai = date('d F Y', strtotime($getizin['tanggal_mulai']));
+                      $tanggalakhir = date('d F Y', strtotime($getizin['tanggal_akhir']));
+                   ?>
+                   <?php echo  $tanggalmulai;?> - <?php echo  $tanggalakhir;?>
                  </p>
                   <?php } ?>
                   <?php } ?>

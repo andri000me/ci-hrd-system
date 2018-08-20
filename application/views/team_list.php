@@ -203,13 +203,13 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                                 <h5>500</h5>
                             </td>
                             <td>
-                                <h5>500</h5>
+                                <h5><?=$isi['sakit']?></h5>
                             </td>
                             <td>
                                 <h5>500</h5>
                             </td>
                             <td>
-                                <h5>500</h5>
+                                <h5><?=$isi['izin']?></h5>
                             </td>
                             <td>
                                 <h5>500</h5>

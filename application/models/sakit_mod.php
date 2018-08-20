@@ -19,6 +19,12 @@ class Sakit_mod extends CI_Model {
         return $return;
     }
 
+    //EDIT DATA SAKIT DARI TEAMLIST
+    function add_sakit_touser($data=null,$id=null){
+        $this->db->where('id',  mysql_real_escape_string($id));
+        $this->db->update('ds_users', $data);
+    }
+    //EDIT DATA SAKIT DARI TEAMLIST
 
     function get_sakit($rows=false,$where=null,$limit=true,$skip=0,$take=5)
     {

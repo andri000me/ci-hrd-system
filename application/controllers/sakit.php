@@ -17,6 +17,27 @@ class Sakit extends MY_Controller {
 
     function index()
     {
+        $ambilid = $this->session->userdata('user_id');
+
+        //START HITUNG TOTAL SAKIT
+        $jumlahsakit = $this->sakit_mod->get_sakit(false,array('id_user' => $ambilid),false);
+        $datasakit = $jumlahsakit;
+        $data['jumlahtotalsakit'] = 0;
+        if (!empty($datasakit)) {
+            $i = 1;
+            foreach ($datasakit as $value) {
+                $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+
+                $a[$i] = $diff[$i]->d + 1;
+                $i++;
+            }
+            $x = array_sum($a);
+            $data['jumlahtotalsakit'] = $x;
+        }
+        //END HITUNG TOTAL SAKIT
+
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 
@@ -46,6 +67,13 @@ class Sakit extends MY_Controller {
                 );
 
                 $this->sakit_mod->add($add_data);
+                //PERHITUNGAN AMBIL TANGGAL DARI TEAMLIST DAN MENJUMLAHKAN DENGAN YANG BARU DIINPUT
+                $tanggalawal = date_create(date('Y-m-d', strtotime($tanggalmulai)));
+                $tanggalterakhir = date_create(date('Y-m-d', strtotime($tanggalakhir)));
+                $hitungtanggal = date_diff($tanggalawal, $tanggalterakhir);
+                $hitungsakit = (int)$data['jumlahtotalsakit'] + $hitungtanggal->d + 1;
+                $addsakituser = array('sakit' => $hitungsakit);
+                $this->sakit_mod->add_sakit_touser($addsakituser,$ambilid);
 
                 redirect('sakit/detil_sakit');
                 
@@ -55,27 +83,8 @@ class Sakit extends MY_Controller {
             }
 
         }
-        $ambilid = $this->session->userdata('user_id');
-        $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
 
-        //START HITUNG TOTAL CUTI
-        $jumlahsakit = $this->sakit_mod->get_sakit(false,array('id_user' => $ambilid),false);
-        $datasakit = $jumlahsakit;
-        $data['jumlahtotalsakit'] = 0;
-        if (!empty($datasakit)) {
-            $i = 1;
-            foreach ($datasakit as $value) {
-                $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
-                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
-                $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
-
-                $a[$i] = $diff[$i]->d + 1;
-                $i++;
-            }
-            $x = array_sum($a);
-            $data['jumlahtotalsakit'] = $x;
-        }
-        //END HITUNG TOTAL CUTI
+        $data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);        
         $data['page'] = 'module';
         $this->load->view('sakit',$data);
     }

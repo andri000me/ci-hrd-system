@@ -89,6 +89,18 @@ class Teamlist_mod extends CI_Model {
         }
     }
 
+    function get_sakit($data=null,$rows=false){
+        $this->db->select('*');
+        $this->db->where('id_user', mysql_real_escape_string($data));
+        $i = $this->db->get('ds_sakit', 1, 0);
+
+        if($rows){
+            return $i->num_rows();
+        }else{
+            return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
+        }
+    }
+
     function get_cuti($data=null)
     {
         $this->db->select('*');

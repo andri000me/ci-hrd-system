@@ -11,7 +11,25 @@ class Izin extends MY_Controller {
 
     function index()
     {
-
+        $ambilid = $this->session->userdata('user_id');
+        //START HITUNG TOTAL IZIN
+        $jumlahizin = $this->izin_mod->get_izin(false,array('id_user' => $ambilid),false);
+        $dataizin = $jumlahizin;
+        $data['jumlahtotalizin'] = 0;
+        if (!empty($dataizin)) {
+            $i = 1;
+            foreach ($dataizin as $value) {
+                $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+        
+                $a[$i] = $diff[$i]->d + 1;
+                $i++;
+            }
+        $x = array_sum($a);
+        $data['jumlahtotalizin'] = $x;
+        }
+        //END HITUNG TOTAL IZIN
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 		
@@ -37,6 +55,13 @@ class Izin extends MY_Controller {
                 );
                 $tambah_izin = $this->izin_mod->add($add_data);
                 if ($tambah_izin != 0){
+                    //PERHITUNGAN AMBIL TANGGAL DARI TEAMLIST DAN MENJUMLAHKAN DENGAN YANG BARU DIINPUT
+                    $tanggalawal = date_create(date('Y-m-d', strtotime($tanggalmulai)));
+                    $tanggalterakhir = date_create(date('Y-m-d', strtotime($tanggalakhir)));
+                    $hitungtanggal = date_diff($tanggalawal, $tanggalterakhir);
+                    $hitungizin = (int)$data['jumlahtotalizin'] + $hitungtanggal->d + 1;
+                    $addizinuser = array('izin' => $hitungizin);
+                    $this->izin_mod->add_izin_touser($addizinuser,$ambilid);
                     redirect('izin');
                 }
                 else{
@@ -46,26 +71,8 @@ class Izin extends MY_Controller {
 
         }
 
-        $ambilid = $this->session->userdata('user_id');
-        $data['ambil_izin'] = $this->izin_mod->get_izin($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
-
-                //START HITUNG TOTAL CUTI
-                $jumlahizin = $this->izin_mod->get_izin(false,array('id_user' => $ambilid),false);
-                $dataizin = $jumlahizin;
-                $data['jumlahtotalizin'] = 0;
-                if (!empty($dataizin)) {
-                    $i = 1;
-                    foreach ($dataizin as $value) {
-                        $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
-                        $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
-                        $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
         
-                        $a[$i] = $diff[$i]->d + 1;
-                        $i++;
-                    }
-                    $x = array_sum($a);
-                    $data['jumlahtotalizin'] = $x;
-                }
+        $data['ambil_izin'] = $this->izin_mod->get_izin($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
 
     	$this->load->view('izin', $data);
     }
