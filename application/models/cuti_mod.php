@@ -19,7 +19,7 @@ class Cuti_mod extends CI_Model {
         return $return;
     }
 
-    function get_cuti($rows=false,$where=null,$limit=true,$skip=0,$take=5)
+    function get_cuti($rows=false,$where=null,$limit=false,$skip=0,$take=5)
     {
         $this->db->select("*");
         $this->db->order_by('id','desc');

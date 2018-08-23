@@ -210,7 +210,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-6 col-12">
+          <!-- <div class="col-xl-2 col-lg-6 col-12">
             <div class="card pull-up">
               <div class="card-content">
               <a href="<?=base_url()?>penilaian">
@@ -227,7 +227,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                 </a>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!-- end menu absen dll -->

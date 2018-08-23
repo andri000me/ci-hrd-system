@@ -25,7 +25,19 @@
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/tables/extensions/rowReorder.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/tables/extensions/responsive.dataTables.min.css">
   <!-- END CSS -->
-
+  <!-- CUSTOM CSS -->
+  <style type="text/css">
+    .custompagination a {
+      border: 1px solid #BABFC7;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      display: block;
+      line-height: 1.25;
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+  </style>
+  <!-- END CUSTOM CSS -->
 </head>
 
 

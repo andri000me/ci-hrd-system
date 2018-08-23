@@ -303,7 +303,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                   <div class="card-body">
                     <div>
                       <h4><b>PENILAIAN 2018</b></h4>
-                      <a href="penilaian.html" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
+                      <a href="<?=base_url()?>penilaian" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
                     </div>
                   </div>
                 </div>
