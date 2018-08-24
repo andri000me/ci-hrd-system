@@ -150,8 +150,9 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <th>NAME</th>
                             <th>MULAI TANGGAL</th>
                             <th>SAMPAI TANGGAL</th>
-              				<th>ALASAN</th>
+              				      <th>ALASAN</th>
                             <th>STATUS</th>
+                            <th>ACTION</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -163,8 +164,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $i = 1;
                           } 
                           ?>
-                          <?php if(!empty($ambil_cuti)){ ?>
-                          <?php foreach($ambil_cuti as $a => $cuti){ ?>
+                          <?php if(!empty($row)){ ?>
+                          <?php foreach($row as $a => $cuti){ ?>
                           <?php 
                           if($cuti['approved'] == 0) {
                               $status = 'Pending';
@@ -176,23 +177,44 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $status = 'Rejected';
                           }
 
+                          $tanggalmulai = date('d F Y', strtotime($cuti['tanggal_mulai']));
+                          $tanggalselesai = date('d F Y', strtotime($cuti['tanggal_akhir']));
+
+                          if ($tanggalmulai == $tanggalselesai) {
+                            $tanggalselesai = '-';
+                          }
                           ?>
                           <tr>
                             <td><a href="#" class="text-bold-600"><?php echo $i; ?></a></td>
                             <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5><?=$namauser?></h5></a>
+                              <a href="team-detail.html" class="text-bold-600"><h5><?=$cuti['name']?></h5></a>
                             </td>
                             <td>
-                              <h5><?=$cuti['tanggal_mulai']?></h5>
+                              <h5><?=$tanggalmulai?></h5>
                             </td>
 							              <td>
-                              <h5><?=$cuti['tanggal_akhir']?></h5>
+                              <h5><?=$tanggalselesai?></h5>
                             </td>
-							<td>
-                              <h5><a href="#"><?=$cuti['alasan']?></a></h5>
+							              <td>
+                              <h5><?=$cuti['alasan']?></h5>
                             </td>
                             <td>
-                              <h5><a href="#"><?=$status?></a></h5>
+                              <h5><?=$status?></h5>
+                            </td>
+                            <td>
+                              <span class="dropdown">
+                                  <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info">
+                                    <i class="ft-eye">Approval</i>
+                                  </button>
+                                  <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
+                                    <a href="<?=base_url()?>cuti/approve?a=<?=$cuti['id']?>&x=1" class="dropdown-item info">
+                                      Approve
+                                    </a>
+                                    <a href="<?=base_url()?>cuti/reject?a=<?=$cuti['id']?>&x=2" class="dropdown-item danger">
+                                      Reject
+                                    </a>
+                                  </span>
+                                </span>
                             </td>
                           </tr>
                           <?php $i++; ?>

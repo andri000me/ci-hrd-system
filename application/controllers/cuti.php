@@ -146,4 +146,79 @@ function detil_cuti () {
 
 }
 
+function approval(){
+    $where =null;
+
+    $id = $this->input->get('per_page');
+
+    $url = '?';
+
+
+    $config['base_url'] = base_url(FALSE).'cuti/approval?';
+
+    $config['total_rows'] = $this->cuti_mod->get_cuti_all(true,$where);
+
+    $config['per_page'] = 5;
+
+    $config['cur_page'] = empty($id) ? 0 : $id;
+
+    $config['page_query_string'] = TRUE;
+
+    foreach ($this->_set_pagination() as $key=>$val){
+
+        $config[$key] = $val;
+
+    }
+
+    $this->pagination->initialize($config);
+
+
+
+    $skip = $config['cur_page'];
+
+    $take = $config['per_page'];
+
+    $data['number'] = $config['cur_page'];
+
+    $data['datacount'] = $this->cuti_mod->get_cuti_all(true,$where);
+
+    $data['pagination'] = $this->pagination->create_links();
+
+    $data['row'] = $this->cuti_mod->get_cuti_all(false,$where,true,$skip,$take);
+
+    $this->load->view('cuti_admin', $data);
+}
+
+function approve(){
+    $id = $this->input->get('a');
+    $data = $this->input->get('x');
+    if ($id != null) {
+        if ($data != null) {
+            $data_update = array('approved' => $data);
+
+            $this->cuti_mod->update_status($data_update,$id);
+
+            redirect(base_url().'cuti/approval');
+        }
+        else{redirect(base_url().'cuti');}
+    }
+    else{redirect(base_url().'cuti');}
+}
+
+function reject(){
+    $id = $this->input->get('a');
+    $data = $this->input->get('x');
+    if ($id != null) {
+        if ($data != null) {
+            $data_update = array('approved' => $data);
+
+            $this->cuti_mod->update_status($data_update,$id);
+
+            redirect(base_url().'cuti/approval');
+        }
+        else{redirect(base_url().'cuti');}
+    }
+    else{redirect(base_url().'cuti');}
+}
+
 }

@@ -348,6 +348,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <?php } ?>
                 </div><br>
                 <a class="btn btn-block btn-success " href="<?=base_url()?>cuti/detil_cuti">Detil</a>
+                <a class="btn btn-block btn-success " href="<?=base_url()?>cuti/approval">Approval</a>
               </div>
             </div>
           </div>
