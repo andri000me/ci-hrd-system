@@ -241,7 +241,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                     <div class="card-header">
                       <h2 class="card-title-center">PENILAIAN</h2>
                     </div>
-                    <form action="#" class="number-tab-steps wizard-circle">
+                    <form method="POST" action="<?=base_url()?>penilaian/add" class="number-tab-steps wizard-circle">
                       <!-- Step 1 -->
                       <h6>PEMAHAMAN TERHADAP TUGAS</h6>
                       <fieldset>
@@ -998,14 +998,14 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
 <!-- JS -->
   <script src="<?=base_url()?>assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script>
-  <script src="<?=base_url()?>assets/js/core/app-menu.min.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script> -->
+  <!-- <script src="<?=base_url()?>assets/js/core/app-menu.min.js" type="text/javascript"></script> -->
+  <!-- <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script> -->
+  <!-- <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script> -->
   <!-- JS -->
   <script src="<?=base_url()?>assets/vendors/js/extensions/jquery.steps.min.js" type="text/javascript"></script>
 
-  <script src="<?=base_url()?>assets/js/scripts/forms/wizard-steps.min.js" type="text/javascript"></script>
+ <script src="<?=base_url()?>assets/js/scripts/forms/wizard-steps.min.js" type="text/javascript"></script>
 </body>
 
 </html>
