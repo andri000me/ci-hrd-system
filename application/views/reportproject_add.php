@@ -136,15 +136,16 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               <div class="card">
                 <div class="card-content collpase show">
                   <div class="card-body">
-                    <form class="form form-horizontal">
+                    <form method="POST" enctype="multipart/form-data" class="form form-horizontal">
                       <div class="form-body">
                         <!-- <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4> -->
-
+                        <h4><?=validation_errors()?></h4>
+                        <h4><?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?></h4>
                         <div class="form-group row">
                         	<div class="col-md-12 pb-xl-1 py-xl-1">
                         	  <h5 class="pb-xl-1 py-xl-1">Project Name</h5>
 	                            <input type="text" id="projectinput1" class="form-control" placeholder="Project Name"
-	                            name="fname">
+	                            name="name">
                           	</div>
 
                           	<div class="col-md-6 pb-xl-1 py-xl-1">
@@ -158,25 +159,25 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 	                        </div>
 
                           	<div class="col-md-6 pb-xl-1 py-xl-1">
-                          	    <h5 class="pb-xl-1 py-xl-1">Status Date</h5>
-                            <select id="projectinput6" name="interested" class="form-control">
-                              <option value="none" selected="" disabled="">Status Date</option>
-                              <option value="billing">Billing</option>
-                              <option value="development">Development</option>
-                              <option value="marketing">Marketing</option>
-                              <option value="maintenance">Maintenance</option>
+                          	    <h5 class="pb-xl-1 py-xl-1">Status</h5>
+                            <select id="projectinput6" name="status" class="form-control">
+                              <option value="none" selected="" disabled="">-- Status --</option>
+                              <option value="1">Billing</option>
+                              <option value="2">Development</option>
+                              <option value="3">Marketing</option>
+                              <option value="4">Maintenance</option>
                             </select>
                           </div>
 
                           <div class="col-lg-12">
                             <h5 class="pb-xl-1 py-xl-1">Detail Project</h5>
-                            <textarea id="" rows="5" class="form-control" name="comment" placeholder="Tulis Detail Project"></textarea>
+                            <textarea id="" rows="5" class="form-control" name="detail" placeholder="Tulis Detail Project"></textarea>
                           </div>
 
                           <div class="col-md-12 pb-xl-1 py-xl-1">
                           	<h4><b>Attach File :</b></h4>
               								<fieldset class="form-group">
-                                <input type="file" class="form-control-file" id="exampleInputFile">
+                                <input type="file" class="form-control-file" name="upload" id="exampleInputFile">
                               </fieldset>
                           </div>
 
