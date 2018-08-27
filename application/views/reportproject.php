@@ -278,7 +278,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
   <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
   
-  <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"
   type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.responsive.min.js"

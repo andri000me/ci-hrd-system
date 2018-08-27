@@ -111,7 +111,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
     <div class="content-wrapper">
 		<div>
 			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>PROJECT DETAIL</b></h1>
+      <h4><?=validation_errors()?></h4>
+      <h4><?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?></h4>
 		</div>
+    <form method="POST" enctype="multipart/form-data">
       <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2">
           <div class="row breadcrumbs-top">
@@ -138,31 +141,31 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                     <h1 class="text-center" style="padding:10px 0 10px 0;"><b>REPORT</b></h1>
                   </div>
                   <div class="row">
-                    <div class="col-md-12 pb-xl-1 py-xl-1">
+                    <!-- <div class="col-md-12 pb-xl-1 py-xl-1">
                       <h5 class="pb-xl-1 py-xl-1">Report Title</h5>
                         <input type="text" id="" class="form-control" placeholder="Report Title" name="fname">
-                      </div>
+                      </div> -->
 
                     <div class="col-lg-12">
-                      <h5 class="pb-xl-1 py-xl-1">Detail Project</h5>
-                      <textarea id="" rows="5" class="form-control" name="comment" placeholder="Tulis Detail Project"></textarea>
+                      <h5 class="pb-xl-1 py-xl-1">Report</h5>
+                      <textarea id="" rows="5" class="form-control" name="report" placeholder="Tulis Detail Project"></textarea>
                     </div>
 
                       <div class="col-md-6 pb-xl-1 py-xl-1">
-                          <h5 class="pb-xl-1 py-xl-1">Status Date (Option)</h5>
-                      <select id="projectinput6" name="interested" class="form-control">
-                        <option value="none" selected="" disabled="">Status Date</option>
-                        <option value="billing">Billing</option>
-                        <option value="development">Development</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="maintenance">Maintenance</option>
+                          <h5 class="pb-xl-1 py-xl-1">Status (Option)</h5>
+                      <select id="projectinput6" name="status" class="form-control">
+                        <option value="" selected="" disabled="">-- Status --</option>
+                        <option value="1">Billing</option>
+                        <option value="2">Development</option>
+                        <option value="3">Marketing</option>
+                        <option value="4">Maintenance</option>
                       </select>
                     </div>
 
                     <div class="col-md-6 pb-xl-1 py-xl-1">
                       <h5 class="pb-xl-1 py-xl-1">Attach File : (Option)</h5>
                         <fieldset class="form-group">
-                          <input type="file" class="form-control-file" id="exampleInputFile">
+                          <input type="file" name="upload" class="form-control-file" id="exampleInputFile">
                         </fieldset>
                     </div>
 
@@ -176,6 +179,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               </div>
             </div>
       </div>
+      </form>
       <div class="content-body">
         <!-- Basic form layout section start -->
         <section id="horizontal-form-layouts">
