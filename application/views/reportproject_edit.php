@@ -145,7 +145,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                         	<div class="col-md-12 pb-xl-1 py-xl-1">
                         	  <h5 class="pb-xl-1 py-xl-1">Project Name</h5>
 	                            <input type="text" id="projectinput1" class="form-control" placeholder="Project Name"
-	                            name="name">
+	                            name="name" value="<?=$row->project_name?>">
                           	</div>
 
                           	<div class="col-md-6 pb-xl-1 py-xl-1">
@@ -154,7 +154,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 		                            <div class="input-group-prepend">
 		                              <span class="input-group-text"><i class="ft-calendar"></i></span>
 		                            </div>
-		                            <input id="" class="form-control" name="date" type="date">
+		                            <input id="" class="form-control" name="date" type="date" value="<?=$row->project_start?>">
 		                          </div>
 	                        </div>
 
@@ -162,22 +162,31 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           	    <h5 class="pb-xl-1 py-xl-1">Status</h5>
                             <select id="projectinput6" name="status" class="form-control">
                               <option value="none" selected="" disabled="">-- Status --</option>
-                              <option value="1">Billing</option>
-                              <option value="2">Development</option>
-                              <option value="3">Marketing</option>
-                              <option value="4">Maintenance</option>
+                              <option value="1" <?=$njeh = ($row->project_status == 1) ? 'selected="selected"':''?>>
+                                Billing
+                              </option>
+                              <option value="2" <?=$njeh = ($row->project_status == 2) ? 'selected="selected"':''?>>
+                                Development
+                              </option>
+                              <option value="3" <?=$njeh = ($row->project_status == 3) ? 'selected="selected"':''?>>
+                                Marketing
+                              </option>
+                              <option value="4" <?=$njeh = ($row->project_status == 4) ? 'selected="selected"':''?>>
+                                Maintenance
+                              </option>
                             </select>
                           </div>
 
                           <div class="col-lg-12">
                             <h5 class="pb-xl-1 py-xl-1">Detail Project</h5>
-                            <textarea id="" rows="5" class="form-control" name="detail" placeholder="Tulis Detail Project"></textarea>
+                            <textarea id="" rows="5" class="form-control" name="detail" placeholder="Tulis Detail Project"><?=$row->project_detail?></textarea>
                           </div>
 
                           <div class="col-md-12 pb-xl-1 py-xl-1">
+                            <a target="_blank" href="<?=base_url()?>clients/project/<?=$row->file?>"><?=$row->file?></a>
                           	<h4><b>Attach File :</b></h4>
               								<fieldset class="form-group">
-                                <input type="file" class="form-control-file" name="uploadreport" id="exampleInputFile">
+                                <input type="file" class="form-control-file" name="upload" id="exampleInputFile">
                               </fieldset>
                           </div>
 

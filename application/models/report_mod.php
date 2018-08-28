@@ -67,6 +67,28 @@ class Report_mod extends CI_Model {
         }
     }
 
+    function cek_project($id = null)
+    {
+        $this->db->select("ds_project.*, ds_users.name, ds_users.img");
+        $this->db->order_by('id','desc');
+        $this->db->where('ds_project.id', mysql_real_escape_string($id));
+        $this->db->join('ds_users', 'ds_project.user_id = ds_users.id');
+        $i = $this->db->get('ds_project', 1, 0);
+
+        return $var = ($i->num_rows() > 0) ? $i->row() : false;
+    }
+
+    function cek_report($id = null)
+    {
+        $this->db->select("ds_report.*, ds_users.name, ds_users.img");
+        $this->db->order_by('id','desc');
+        $this->db->where('id_project', mysql_real_escape_string($id));
+        $this->db->join('ds_users', 'ds_report.id_user = ds_users.id');
+       	$i = $this->db->get('ds_report', 1, 0);
+
+        return $var = ($i->num_rows() > 0) ? $i->row() : false;
+    }
+
     function add($data=null)
     {
         $return = 0;
@@ -79,11 +101,12 @@ class Report_mod extends CI_Model {
         return $return;
     }
 
-    function update($data,$user_id=0)
+    function update($data,$id=0)
     {
-        $this->db->where('id',  mysql_real_escape_string($user_id));
+        $this->db->where('id',  mysql_real_escape_string($id));
         $this->db->update('ds_project', $data);
     }
+
 
     function add_detail($data=null){
     	$return = 0;
@@ -96,9 +119,9 @@ class Report_mod extends CI_Model {
         return $return;
     }
 
-    function update_detail($data,$user_id=0)
+    function update_detail($data,$id=0)
     {
-        $this->db->where('id',  mysql_real_escape_string($user_id));
+        $this->db->where('id',  mysql_real_escape_string($id));
         $this->db->update('ds_report', $data);
     }
 }

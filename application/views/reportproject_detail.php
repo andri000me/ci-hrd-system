@@ -165,7 +165,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                     <div class="col-md-6 pb-xl-1 py-xl-1">
                       <h5 class="pb-xl-1 py-xl-1">Attach File : (Option)</h5>
                         <fieldset class="form-group">
-                          <input type="file" name="upload" class="form-control-file" id="exampleInputFile">
+                          <input type="file" name="uploadreport" class="form-control-file" id="exampleInputFile">
                         </fieldset>
                     </div>
 
@@ -190,29 +190,69 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <div class="card-body">
                     <form class="form form-horizontal">
                       <div class="form-body">
-                        <h1 class="form-section"><b>TRAVELOOK</b></h1>
+                        <h1 class="form-section"><b><?=$project[0]['project_name']?></b></h1>
                           <div class="list-group-item">
                             <h4 class="list-group-item-heading"><b>START DATE :</b></h4>
                             <div class="list-group-item-text">
-                               February 20, 2018 (30 Days)<br>
+                              <?php
+                                $mulaiproject = date('F d, Y', strtotime($project[0]['project_start']));
+                                $mulai = date_create($mulaiproject);
+                                $sekarang = date_create(date('Y-m-d'));
+                                $diff = date_diff( $mulai, $sekarang );
+                                
+                                if ($diff->m != 0 && $diff->y != 0) {
+                                  $selisihwaktu = $diff->y.' Years '.$diff->m.' Month '.$diff->d.' Days';
+                                }
+                                elseif($diff->m == 0 && $diff->y != 0){
+                                  $selisihwaktu = $diff->y.' Years '.$diff->m.' Month '.$diff->d.' Days';
+                                }
+                                elseif ($diff->m != 0 && $diff->y == 0) {
+                                  $selisihwaktu = $diff->m.' Month '.$diff->d.' Days';
+                                }
+                                elseif ($diff->m == 0 && $diff->y == 0) {
+                                  $selisihwaktu = $diff->d.' Days';
+                                }
+                              ?>
+                               <?=$mulaiproject?> (<?=$selisihwaktu?>)<br>
                              </div>
                           </div>
+                          <?php
+                          if ($project[0]['project_status'] == '1') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-danger round">Billing</button>';
+                          }
+                          elseif ($project[0]['project_status'] == '2') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-warning round">Development</button>';
+                          }
+                          elseif ($project[0]['project_status'] == '3') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-success round">Marketing</button>';
+                          }
+                          elseif ($project[0]['project_status'] == '4') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-info round">Maintenance</button>';
+                          }
+
+                        ?>
                           <div class="list-group-item">
                             <h4 class="list-group-item-heading"><b>STATUS</b></h4>
                             <div class="list-group-item-text">
-                               <button type="button" class="btn btn-sm btn-outline-warning round">Development</button>
+                               <?=$status?>
                              </div>
                           </div>
                           <div class="list-group-item">
                             <h4 class="list-group-item-heading"><b>DETAIL PROJECT :</b></h4>
                             <div class="list-group-item-text">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                               <?=$project[0]['project_detail']?><br>
                              </div>
                           </div>
                           <div class="list-group-item">
                             <h4 class="list-group-item-heading"><b>ATTACH FILE</b></h4>
                             <div class="list-group-item-text">
-                               Homepage-travelook.jpg<br>
+                               <?=$project[0]['file']?><br>
+                             </div>
+                          </div>
+                          <div class="list-group-item">
+                            <h4 class="list-group-item-heading"><b>UPLOADED BY</b></h4>
+                            <div class="list-group-item-text">
+                               <?=$project[0]['name']?><br>
                              </div>
                           </div>
                       </div>
@@ -221,7 +261,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                         <!-- <button type="button" class="btn btn-warning mr-1">
                           <i class="ft-x"></i> Cancel
                         </button> -->
-                        <a href="edit-project.html" type="submit" class="btn btn-info">
+                        <a href="<?=base_url()?>reportproject/edit/<?=$project[0]['id']?>" type="submit" class="btn btn-info">
                           <i class="ft-edit-2"></i> EDIT
                         </a>
                       </div>
@@ -231,19 +271,18 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
               </div>
             </div>
              <div class="col-md-8">
+              <?php if(!empty($report)){ ?>
+              <?php foreach($report as $key => $value){ ?>
               <div class="card">
                 <div class="card-content collpase show">
                   <div class="card-body">
-                    <form class="form form-horizontal">
+                    <form class="form form-horizontal" method="POST" action="<?=base_url()?>reportproject/edit_report/<?=$project[0]['id']?>/<?=$value['id']?>" enctype="multipart/form-data">
                       <div class="form-body">
                         <div class="form-group row">
                           <div class="col-md-3 pb-xl-1 py-xl-1">
                             <h4><b>ATTACH FILE :</b></h4>
                               <div>
-                                Homepage-travelook.jpg<hr>
-                              </div>
-                              <div>
-                                Homepage-travelook.psd<hr>
+                                <?=$value['file']?><hr>
                               </div>
                           </div>
                           <div class="col-md-7 pb-xl-1 py-xl-1">
@@ -251,21 +290,24 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                               <table width="100%">
                                 <tbody>
                                   <td>
-                                    <h4><b>June 15, 2018</b></h4>
-                                    <h5>17:00</h5>
+                                    <?php
+                                      $tanggal = date('F d, Y', strtotime($value['date']));
+                                      $jam = date('G:i', strtotime($value['date'])); 
+                                    ?>
+                                    <h4><b><?=$tanggal?></b></h4>
+                                    <h5><?=$jam?></h5>
                                   </td>
                                   <td class="right">
                                     <span class="avatar avatar-xs">
-                                    <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-5.png" alt="avatar">
+                                    <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$value['img']?>" alt="avatar">
                                   </span>
-                                  <span>Muhammad Tison</span>
+                                  <span><?=$value['name']?></span>
                                   </td>
                                 </tbody>
                               </table>
                             </div>
                             <div class="list-group-item">
-                              <h6>Hari ini saya mengerjakan :<br><br>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
+                              <h6><?=$value['report']?></h6>
                             </div>
                           </div>
                           <div class="col-md-2 pb-xl-1 py-xl-1">
@@ -286,12 +328,16 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
+                                    
                                     <div class="modal-body">
-                                      <textarea id="" style="height:250px;" class="form-control" name="" placeholder="" value="">Hari ini saya mengerjakan :Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                      <textarea id="" style="height:250px;" class="form-control" name="report<?=$value['id']?>" placeholder="" value=""><?=$value['report']?></textarea>
+                                      <a target="_blank" href="<?=base_url()?>clients/report/<?=$value['file']?>"><?=$value['file']?></a>
+                                      <input type="file" name="uploadreport<?=$value['id']?>" class="form-control-file" id="exampleInputFile">
+                                      <input type="hidden" name="id">
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-outline-primary">Save changes</button>
+                                      <button type="submit" class="btn btn-outline-primary">Save changes</button>
                                     </div>
                                   </div>
                                 </div>
@@ -304,55 +350,13 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   </div>
                 </div>
               </div>
-
-              <div class="card">
-                <div class="card-content collpase show">
-                  <div class="card-body">
-                    <form class="form form-horizontal">
-                      <div class="form-body">
-                        <div class="form-group row">
-                          <div class="col-md-3 pb-xl-1 py-xl-1">
-                            <h4><b>ATTACH FILE :</b></h4>
-                              <div>
-                                About-travelook.jpg<hr>
-                              </div>
-                              <div>
-                                about-travelook.psd<hr>
-                              </div>
-                          </div>
-                          <div class="col-md-7 pb-xl-1 py-xl-1">
-                            <div class="list-group-item">
-                              <table width="100%">
-                                <tbody>
-                                  <td>
-                                    <h4><b>June 10, 2018</b></h4>
-                                    <h5>17:00</h5>
-                                  </td>
-                                  <td class="right">
-                                      <span class="avatar avatar-xs">
-                                        <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-9.png" alt="avatar">
-                                      </span>
-                                      <span>Yusuf Iskandar</span>
-                                  </td>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div class="list-group-item">
-                              <h6>Hari ini saya mengerjakan :<br><br>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
-                            </div>
-                          </div>
-                          <div class="col-md-2 pb-xl-1 py-xl-1">
-                              <button type="submit" class="btn btn-info">
-                                <i class="ft-edit-2"></i> EDIT
-                              </button>
+              <?php } ?>
+              <?php } ?>
+              <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="project-bugs-list_paginate">
+                            <?=$pagination?>
                           </div>
                         </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

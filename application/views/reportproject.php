@@ -131,9 +131,14 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                     <a href="<?=base_url()?>reportproject/add"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> CREATE PROJECT</button></a>
                   </div>
                 </div>
+
                 <div class="card-content">
                   <div class="card-body">
                     <!-- Task List table -->
+                    <?php if(empty($row)){
+                      echo "<h1 style='text-align:center;'>TIDAK ADA DATA</h1>";
+                    }?>
+                    <?php if(!empty($row)) { ?>
                     <div class="table-responsive">
                       <table id="project-bugs-list" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle">
                         <thead>
@@ -148,110 +153,104 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           </tr>
                         </thead>
                         <tbody>
+                        <?php 
+                        if ($number != null) {
+                          $i = $number+1;
+                        }
+                        else{
+                          $i = 1;
+                        } 
+                        ?>
+                        <?php foreach ($row as $key => $isi) { ?>
+                        <?php
+                          $tanggal = date('F d, Y', strtotime($isi['project_start']));
+                          if ($isi['project_status'] == '1') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-danger round">Billing</button>';
+                          }
+                          elseif ($isi['project_status'] == '2') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-warning round">Development</button>';
+                          }
+                          elseif ($isi['project_status'] == '3') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-success round">Marketing</button>';
+                          }
+                          elseif ($isi['project_status'] == '4') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-info round">Maintenance</button>';
+                          }
+
+                        ?>
                           <tr>
-                            <td><a href="#" class="text-bold-600">1</a></td>
+                            <td><p class="text-bold-600"><?=$i?></p></td>
                             <td>
-                              <a href="project-detail.html" class="text-bold-600">Travelook</a>
+                              <a href="<?=base_url()?>reportproject/detail/<?=$isi['id'];?>" class="text-bold-600"><?=$isi['project_name'];?></a>
                             </td>
                             <td class="text-center">
-							                 <h5>June 20, 2018</h5>
-                               <h6>(Project Since February 2, 2018)</h6>
+                               <?php if(!empty($lastupdate[$i])) { ?>
+							                 <h5><?php echo date('F d, Y', strtotime($lastupdate[$i]->date));?></h5>
+                               <?php } else { ?>
+                               <h5>-</h5>
+                               <?php } ?>
+                               <h6>(Project Since <?=$tanggal?>)</h6>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-sm btn-outline-warning round">Development</button>
+                              <?=$status?>
                             </td>
+                            <?php if(!empty($lastupdate[$i])){?>
 							              <td class="text-truncate">
                               <span class="avatar avatar-xs">
-                                <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-9.png" alt="avatar">
+                                <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$lastupdate[$i]->img?>" alt="avatar">
                               </span>
-                              <span>Yusuf Iskandar</span>
+                              <span><?=$lastupdate[$i]->name?></span>
                             </td>
 							              <td>
-                              <h5>500</h5>
+                              <h5><?=$jumlahreport[$i]?></h5>
                             </td>
-							
-                            <td>
-                              <span class="dropdown">
-                                <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" class="btn btn-info"><i class="ft-eye"> View</i></button>
-                                <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-                                  <a href="#" class="dropdown-item"><i class="ft-edit"></i> Report</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-edit-2"></i> Edit</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-trash"></i> Delete</a>
-                                </span>
-                              </span>
-                            </td>
-                          </tr>
-						              <tr>
-                            <td><a href="#" class="text-bold-600">2</a></td>
-                            <td>
-                              <a href="project-detail.html" class="text-bold-600">Smartfish Apps</a>
-                            </td>
-                            <td class="text-center">
-							                <h5>June 20, 2018</h5>
-                               <h6>(Project Since February 2, 2018)</h6>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-sm btn-outline-warning round">Development</button>
-                            </td>
-							              <td class="text-truncate">
+                            <?php } else { ?>
+                            <td class="text-truncate">
                               <span class="avatar avatar-xs">
-                                <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-5.png" alt="avatar">
+                                <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$isi['img']?>" alt="avatar">
                               </span>
-                              <span>Muhammad Tison</span>
+                              <span><?=$isi['name']?></span>
                             </td>
-							              <td>
-                              <h5>500</h5>
+                            <td>
+                              <h5>0</h5>
                             </td>
+							              <?php } ?>
                             <td>
                               <span class="dropdown">
                                 <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" class="btn btn-info"><i class="ft-eye"> View</i></button>
                                 <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-                                  <a href="#" class="dropdown-item"><i class="ft-edit"></i> Report</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-edit-2"></i> Edit</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-trash"></i> Delete</a>
+                                  <a href="<?=base_url()?>reportproject/detail/<?=$isi['id'];?>" class="dropdown-item"><i class="ft-edit"></i> Report</a>
+                                  <a href="<?=base_url()?>reportproject/edit/<?=$isi['id'];?>" class="dropdown-item"><i class="ft-edit-2"></i> Edit</a>
+                                  <!-- <a href="<?=base_url()?>reportproject/delete/<?=$isi['id'];?>" class="dropdown-item"><i class="ft-trash"></i> Delete</a> -->
                                 </span>
                               </span>
                             </td>
                           </tr>
-						  
-						              <tr>
-                            <td><a href="#" class="text-bold-600">3</a></td>
-                            <td>
-                              <a href="project-detail.html" class="text-bold-600">Putramatuta Group</a>
-                            </td>
-                            <td class="text-center">
-							                <h5>June 20, 2018</h5>
-                               <h6>(Project Since February 2, 2018)</h6>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-sm btn-outline-warning round">Development</button>
-                            </td>
-							              <td class="text-truncate">
-                              <span class="avatar avatar-xs">
-                                <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-7.png" alt="avatar">
-                              </span>
-                              <span>Debby</span>
-                            </td>
-							             <td>
-                              <h5>500</h5>
-                            </td>
-                            <td>
-                              <span class="dropdown">
-                                <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" class="btn btn-info"><i class="ft-eye"> View</i></button>
-                                <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-                                  <a href="#" class="dropdown-item"><i class="ft-edit"></i> Report</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-edit-2"></i> Edit</a>
-                                  <a href="#" class="dropdown-item"><i class="ft-trash"></i> Delete</a>
-                                </span>
-                              </span>
-                            </td>
-                          </tr>
+                          <?php $i++; ?>
+                          <?php } ?>
                         </tbody>
                       </table>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                          <div class="dataTables_info" id="project-bugs-list_info" role="status" aria-live="polite" style="padding-top: 0.85em;">
+                            <?php
+                              $hitungdata = $number+5;
+                              if ($hitungdata > $datacount) {
+                                $hitungdata = $datacount;
+                              }
+                            ?>
+                            Showing <?php echo $number+1; ?> to <?php echo $hitungdata; ?> of <?php echo $datacount; ?> entries
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="project-bugs-list_paginate">
+                            <?=$pagination?>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    <?php } ?>
                   </div>
                 </div>
               </div>

@@ -164,7 +164,8 @@ class Sakit extends MY_Controller {
 
     private function do_upload1()
     {
-        $new_name                       = time().$_FILES["userfile"]['name'];
+        /*$new_name                       = date('d-F-Y').$_FILES["userfile"]['name'];*/
+        $new_name                       = date('d-F-Y').' Surat Sakit '.$this->session->userdata('full_name');
         $config['file_name']            = $new_name;
         $config['upload_path']          = '././clients/sakit/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';

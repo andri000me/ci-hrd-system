@@ -364,14 +364,13 @@ class Teamlist extends MY_Controller {
 
     private function do_upload1()
     {
-        $new_name                       = time().$_FILES["upload1"]['name'];
+        $new_name                       = date().''.time().'foto profil';
         $config['file_name']            = $new_name;
         $config['upload_path']          = '././clients/user/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 5000;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
         $config['overwrite']            = TRUE;
+        
 
         
 
