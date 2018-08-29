@@ -110,6 +110,15 @@ class Teamlist_mod extends CI_Model {
         return $var = ($i->num_rows() > 0) ? $i->row() : false;
     }
 
+    function get_penilaian($data=null){
+        $this->db->select('*');
+        $this->db->order_by('id','desc');
+        $this->db->where('id_user', mysql_real_escape_string($data));
+        $i = $this->db->get('ds_penilaian', 1, 0);
+
+        return $var = ($i->num_rows() > 0) ? $i->row() : false;
+    }
+
     function add($data=null)
     {
         $return = 0;

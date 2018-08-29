@@ -124,6 +124,12 @@ class Teamlist extends MY_Controller {
         }
         $cuti = $this->teamlist_mod->get_cuti($id);
         $data['info'] = $i;
+
+        $ambilpenilaian = $this->teamlist_mod->get_penilaian($id);
+        $data['penilaian'] = '';
+        if (!empty($ambilpenilaian)) {
+            $data['penilaian'] = $ambilpenilaian;
+        }
         $data['sisacuti'] = '';
         if (!empty($cuti)) {
             $data['sisacuti'] = $cuti->cuti;

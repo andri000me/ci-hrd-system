@@ -240,8 +240,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <div class="card-body">
                     <div class="card-header">
                       <h2 class="card-title-center">PENILAIAN</h2>
+                      <h4><?=validation_errors()?></h4>
+                        <h4><?=$error = empty($msg) ? '' : '<div class="alert alert-danger error">'.$msg.'</div>'?></h4>
                     </div>
-                    <form method="POST" action="<?=base_url()?>penilaian/add" class="number-tab-steps wizard-circle">
+                    <form method="POST" enctype="multipart/form-data" class="number-tab-steps wizard-circle">
                       <!-- Step 1 -->
                       <h6>PEMAHAMAN TERHADAP TUGAS</h6>
                       <fieldset>
@@ -940,7 +942,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             </div>
                             <div class="form-group mt-2">
                               <label for=""><h6>Dalam kolom ini, Anda dipersilahkan untuk memberikan catatan-catatan yang dianggap perlu mengenai karyawan yang Anda nilai, terutama mengenai kondite (track record), proses, dan hasil kerja yang bersangkutan selama berada dibawah pengawasan Anda.</h6></label>
-                              <textarea name="" id="" rows="" class="form-control"></textarea>
+                              <textarea name="catatankhusus" id="" rows="" class="form-control"></textarea>
                             </div>
                           </div>
                         </div>
@@ -952,7 +954,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>AREA YANG HARUS DIPERBAIKI</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="" id="" rows="" class="form-control"></textarea>
+                          <textarea name="areadiperbaiki" id="" rows="" class="form-control"></textarea>
                         </div>
                       </fieldset>
                       <!-- Step 7 -->
@@ -962,7 +964,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>AREA YANG HARUS DIPERTAHANKAN</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="" id="" rows="" class="form-control"></textarea>
+                          <textarea name="areadipertahankan" id="" rows="" class="form-control"></textarea>
                         </div>
                       </fieldset>
                       <!-- Step 8 -->
@@ -972,9 +974,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>REKOMENDASI</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="" id="" rows="" class="form-control"></textarea>
+                          <textarea name="rekomendasi" id="" rows="" class="form-control"></textarea>
                         </div>
                       </fieldset>
+                      <button type="submit">SUBMIT</button>
                     </form>
                   </div>
                 </div>
@@ -998,10 +1001,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
 <!-- JS -->
   <script src="<?=base_url()?>assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <!-- <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script> -->
-  <!-- <script src="<?=base_url()?>assets/js/core/app-menu.min.js" type="text/javascript"></script> -->
-  <!-- <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script> -->
-  <!-- <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script> -->
+  <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script> 
+  <script src="<?=base_url()?>assets/js/core/app-menu.min.js" type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
   <!-- JS -->
   <script src="<?=base_url()?>assets/vendors/js/extensions/jquery.steps.min.js" type="text/javascript"></script>
 

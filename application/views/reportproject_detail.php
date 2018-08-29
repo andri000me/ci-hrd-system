@@ -123,7 +123,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="btn-group float-md-right pb-xl-2">
-    		  	<a href="project-report.html">
+    		  	<a href="<?=base_url()?>reportproject">
               <button class="btn btn-info round mr-1 my-1" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
     			  </a>
            <div id="heading42" class="">
@@ -314,11 +314,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                               <div class="form-group">
                               <!-- Button trigger modal -->
                               <button type="button" class="btn btn btn-info" data-toggle="modal"
-                              data-target="#iconModal">
+                              data-target="#iconModal<?=$value['id']?>">
                                 <i class="ft-edit-2"></i> EDIT
                               </button>
                               <!-- Modal -->
-                              <div class="modal fade text-left" id="iconModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
+                              <div class="modal fade text-left" id="iconModal<?=$value['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
                               aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">

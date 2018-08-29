@@ -312,11 +312,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
           <div id="recent-transactions" class="col-xl-4 col-lg-6 col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title-center"><?php echo $ambil_bulantahun; ?></h4>
-                <h5 class="p-xl-1"><b>TOTAL CUTI : 12<br>
+                <h4 class="card-title-center"><?php echo date('F Y'); ?></h4>
+                <h5 class="p-xl-1"><b>TOTAL CUTI : <?=$jumlahtotalcuti?><br>
                 <?php
-                
                 $maxcuti = 12;
+
                 $jumlah =  (int)$maxcuti - (int)$jumlahtotalcuti; 
                 
                ?>
@@ -328,7 +328,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <?php if(!empty($ambil_cuti)){ ?>
                   <?php foreach($ambil_cuti as $getcuti){ ?>
 
-                                            <?php 
+                  <?php 
                           if($getcuti['approved'] == 0) {
                               $status = 'Pending';
                           }
@@ -339,11 +339,12 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             $status = 'Rejected';
                           }
 
-                          ?>
+                  ?>
 
                  <p class="m-xl-0">
-                   <?php echo  $getcuti['tanggal_mulai'];?> - <?php echo  $getcuti['tanggal_akhir'];?> (<?php echo  $status ?>)
+                   <?php echo date('d F Y', strtotime($getcuti['tanggal_mulai']));?> - <?php echo  date('d F Y', strtotime($getcuti['tanggal_akhir']));?> (<?php echo  $status ?>)
                  </p>
+
                   <?php } ?>
                   <?php } ?>
                 </div><br>

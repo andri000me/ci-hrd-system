@@ -63,11 +63,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">Naufal</span>
+                  <span class="user-name text-bold-700"><?=$this->session->userdata('full_name')?></span>
                 </span>
                 <span class="avatar avatar-online">
                   <?php if (!empty($this->session->userdata('img'))) { ?>
-                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><i></i></span>
+                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><!-- <i></i> --></span>
                   <?php } ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
@@ -113,7 +113,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
     <div class="content-wrapper">
       <div class="content-body">
     		<div>
-    			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>WELCOME TO POWER MANAGEMENT, Naufal</b></h1>
+    			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>WELCOME TO POWER MANAGEMENT, <?=$this->session->userdata('full_name')?></b></h1>
     		</div>
 
        <!-- menu absen dll -->
@@ -256,87 +256,67 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                       </tr>
                     </thead>
                     <tbody>
+                      <?php 
+                        if ($number != null) {
+                          $i = $number+1;
+                        }
+                        else{
+                          $i = 1;
+                        } 
+                        ?>
+                        <?php foreach ($row as $key => $isi) { ?>
+                        <?php
+                          $tanggal = date('F d, Y', strtotime($isi['project_start']));
+                          if ($isi['project_status'] == '1') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-danger round">Billing</button>';
+                          }
+                          elseif ($isi['project_status'] == '2') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-warning round">Development</button>';
+                          }
+                          elseif ($isi['project_status'] == '3') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-success round">Marketing</button>';
+                          }
+                          elseif ($isi['project_status'] == '4') {
+                            $status = '<button type="button" class="btn btn-sm btn-outline-info round">Maintenance</button>';
+                          }
+
+                        ?>
                       <tr>
-                        <td class="text-truncate">1.</td>
-                        <td class="text-truncate"><a href="#">HTML The Mozia</a></td>
-						            <td class="text-truncate"><h5>February, 20 2018</h5></td>
+                        <td class="text-truncate"><?=$i?>.</td>
+                        <td class="text-truncate"><a href="<?=base_url()?>reportproject/detail/<?=$isi['id'];?>" class="text-bold-600"><?=$isi['project_name'];?></a></td>
+						            <td class="text-truncate">
+                          <?php if(!empty($lastupdate[$i])) { ?>
+                               <h5><?php echo date('F d, Y', strtotime($lastupdate[$i]->date));?></h5>
+                          <?php } else { ?>
+                               <h5>-</h5>
+                          <?php } ?>
+                        </td>
+                        <?php if(!empty($lastupdate[$i])){?>
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-4.png"
+                            <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$lastupdate[$i]->img?>"
                             alt="avatar">
                           </span>
-                          <span>Ajeng Nuraeni</span>
+                          <span><?=$lastupdate[$i]->name?></span>
                         </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">Billing</button>
-                        </td>
-                        <td class="text-truncate">325</td>
-                      </tr>
-                      <tr>
-                        <td class="text-truncate">2.</td>
-                        <td class="text-truncate"><a href="#">Travelook</a></td>
-						            <td class="text-truncate"><h5>February, 20 2018</h5></td>
+                        <?php } else { ?>
                         <td class="text-truncate">
                           <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-5.png"
+                            <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$isi['img']?>"
                             alt="avatar">
                           </span>
-                          <span>Muhammad Tison</span>
+                          <span><?=$isi['name']?></span>
                         </td>
+                        <?php } ?>
                         <td>
-                          <button type="button" class="btn btn-sm btn-outline-warning round">Development</button>
+                          <?=$status?>
                         </td>
-                        <td class="text-truncate">200</td>
+                        <td class="text-truncate"><?=$jumlahreport[$i]?></td>
                       </tr>
-                      <tr>
-                        <td class="text-truncate">3.</td>
-                        <td class="text-truncate"><a href="#">Ahimsa Update</a></td>
-						            <td class="text-truncate"><h5>February, 20 2018</h5></td>
-                        <td class="text-truncate">
-                          <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-6.png"
-                            alt="avatar">
-                          </span>
-                          <span>Dyah</span>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-outline-success round">Marketing</button>
-                        </td>
-                        <td class="text-truncate">250</td>
-                      </tr>
-                      <tr>
-                        <td class="text-truncate">4.</td>
-                        <td class="text-truncate"><a href="#">Smartfish</a></td>
-						            <td class="text-truncate"><h5>February, 20 2018</h5></td>
-                        <td class="text-truncate">
-                          <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-7.png"
-                            alt="avatar">
-                          </span>
-                          <span>Debby</span>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-outline-info round">Maintenance</button>
-                        </td>
-                        <td class="text-truncate">350</td>
-                      </tr>
-                      <tr>
-                        <td class="text-truncate">5.</td>
-                        <td class="text-truncate"><a href="#">KBPA</a></td>
-						            <td class="text-truncate"><h5>February, 20 2018</h5></td>
-                        <td class="text-truncate">
-                          <span class="avatar avatar-xs">
-                            <img class="box-shadow-2" src="<?=base_url()?>assets/images/portrait/small/avatar-s-9.png"
-                            alt="avatar">
-                          </span>
-                          <span>Yusuf Iskandar</span>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-outline-danger round">Billing</button>
-                        </td>
-                        <td class="text-truncate">300</td>
-                      </tr>
+                      <?php $i++; ?>
+                      <?php } ?>
                     </tbody>
+                    <?=$pagination?>
                   </table>
                 </div>
               </div>

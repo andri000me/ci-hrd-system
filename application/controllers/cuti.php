@@ -56,8 +56,20 @@ class Cuti extends MY_Controller {
             $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
             $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
             $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
-                            
-            $a[$i] = $diff[$i]->d + 1;
+            if ($value['approved'] == 1) {
+                $tahun = date("Y");
+                $tahunbeda1 = date("Y", strtotime($value['tanggal_mulai']));
+                $tahunbeda2 = date("Y", strtotime($value['tanggal_akhir']));
+                if ($tahun = $tahunbeda1 && $tahun = $tahunbeda2) {
+                    $a[$i] = $diff[$i]->d + 1;
+                }
+                else{
+                   $a[$i] = 0; 
+                }
+            }
+            else{
+                $a[$i] = 0;
+            }
             $i++;
         }
         $x = array_sum($a);
@@ -66,7 +78,6 @@ class Cuti extends MY_Controller {
 
    
     $data['ambil_cuti'] = $this->cuti_mod->get_cuti($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);
-    $data['ambil_bulantahun'] = date('F Y');
 
     $this->load->view('cuti',$data);
 

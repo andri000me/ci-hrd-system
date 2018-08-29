@@ -284,26 +284,57 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                 </div>
               </div>
             </div>
+            
             <div class="col-md-8 pb-xl-1 py-xl-1">
               <div class="card">
                 <div class="card-content">
+                  <?php if(!empty($penilaian)){ ?>
+                  <?php
+                    $tahunpenilaian = date('Y', strtotime($penilaian->date));
+                    $tahundepan = $tahunpenilaian + 1;
+                    $poin = $penilaian->pemahaman_tugas1 + $penilaian->pemahaman_tugas2 + $penilaian->pemahaman_tugas3 + $penilaian->pemahaman_tugas4 + $penilaian->pemahaman_tugas5 + $penilaian->pemahaman_tugas6 + $penilaian->pelaksanaan_tugas1 + $penilaian->pelaksanaan_tugas2 + $penilaian->pelaksanaan_tugas3 + $penilaian->pelaksanaan_tugas4 + $penilaian->pelaksanaan_tugas5 + $penilaian->pelaksanaan_tugas6 + $penilaian->penampilan_diri1 + $penilaian->penampilan_diri2 + $penilaian->sikap_kerja1 + $penilaian->sikap_kerja2 + $penilaian->sikap_kerja3 + $penilaian->sikap_kerja4 + $penilaian->sikap_kerja5 + $penilaian->sikap_kerja6;
+                  ?>
                   <div class="card-body">
                     <div>
-                      <h4><b>HASIL PENILAIAN 2017 : 350 Point</b></h4>
-                      <h5>GOAL 2018 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h5>
+                      <h4><b>HASIL PENILAIAN <?=$tahunpenilaian?> : <?=$poin?> Point</b></h4>
+                      <h5>GOAL <?=$tahundepan?> : <?=$penilaian->rekomendasi?></h5>
+                    </div>
+                    <div>
+                      <a href="<?=base_url()?>penilaian/add/<?=$info->id?>" class="sort btn btn-block btn-outline-info btn-round">DETAIL</a>
                     </div>
                   </div>
+                  <?php }else{ ?>
+                  <div class="card-body">
+                    <div>
+                      <h4><b>HASIL PENILAIAN BELUM ADA</b></h4>
+                      <h5>Silahkan Lakukan Penilaian Terlebih Dahulu !</h5>
+                    </div>
+                  </div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
+            
 
             <div class="col-md-4 pb-xl-1 py-xl-1">
               <div class="card">
                 <div class="card-content">
                   <div class="card-body">
                     <div>
-                      <h4><b>PENILAIAN 2018</b></h4>
-                      <a href="<?=base_url()?>penilaian" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
+                      <?php if(!empty($penilaian)){ ?>
+                      <?php
+                        $tahunpenilaian = date('Y', strtotime($penilaian->date));
+                        $tahundepan = $tahunpenilaian + 1;
+                      ?>
+                      <h4><b>PENILAIAN <?=$tahundepan?></b></h4>
+                      <a href="<?=base_url()?>penilaian/add/<?=$info->id?>" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
+                      <?php }else{ ?>
+                      <?php
+                        $tahunsekarang = date('Y');
+                      ?>
+                      <h4><b>PENILAIAN <?=$tahunsekarang?></b></h4>
+                      <a href="<?=base_url()?>penilaian/add/<?=$info->id?>" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
