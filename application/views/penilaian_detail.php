@@ -119,7 +119,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
       <div class="content-header row">
         <div class="content-header-left col-md-12 col-12 mb-2">
           <div>
-      			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>TEAM DETAIL</b></h1>
+      			<h1 class="text-center" style="padding:40px 0 40px 0;"><b>PENILAIAN <?=$row->name?></b></h1>
       		</div>
         </div>
       </div>
@@ -132,9 +132,12 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="btn-group float-md-right pb-xl-2 my-1">
-        <a href="<?=base_url()?>teamlist">
-              <button class="btn btn-info round" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
-      </a>
+          <a href="<?=base_url()?>penilaian/edit/<?=$row->id?>">
+            <button class="btn btn-info round" type="button">EDIT</button>
+          </a>
+          <a href="<?=base_url()?>teamlist">
+            <button class="btn btn-info round" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
+          </a>
           </div>
         </div>
       </div>
@@ -147,136 +150,210 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                 <div class="card-content">
                   <div class="card-body">
 
-                    <div class="form-group row">
-                      <div class="col-md-2">
-                        <?php if(!empty($info->img)){ ?>
-                        <img id="blah" src="<?=base_url()?>clients/user/<?php echo $info->img; ?>" alt="your image" width="100%" />
-                        <?php } ?>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="col-md-12 pb-xl-1 py-xl-1">
-                            <input type="text" id="projectinput1" class="form-control" placeholder="<?php echo $info->name; ?>"
-                            name="fname" disabled="">
-                          </div>
-
-                          <div class="col-md-12 pb-xl-1 py-xl-1">
-                            <input type="email" id="" class="form-control" placeholder="<?=$info->email?>"
-                            name="email" disabled="">
-                          </div>
-
-                          <div class="col-md-12 pb-xl-1 py-xl-1">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ft-calendar"></i></span>
-                              </div>
-                              <input id="" class="form-control" name="date" type="" value="<?=$info->since?>" disabled="">
-                            </div>
-                          </div>
-                      </div>
-                      <div class="col-md-5">
-
-                          <div class="col-md-12 pb-xl-1 py-xl-1">
-                            <input class="form-control" name="selected" placeholder="<?=$rule?>" disabled="">
-                          </div>
-
-                        <div class="col-md-12 pb-xl-1 py-xl-1">
-                          <input class="form-control" name="selected" placeholder="<?=$info->company?>" disabled="">
-                        </div>
-
-                        <div class="col-md-12 pb-xl-1 py-xl-1">
-                          <input type="text" id="" class="form-control" placeholder="Sisa Cuti : <?=$sisacuti?> Hari" disabled="">
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Task List table -->
+                    
                     <div class="table-responsive">
                       <table id="project-bugs-list" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle">
                         <thead>
                           <tr>
-                            <th>NO.</th>
-                            <th>MONTH</th>
-                            <th>TOTAL</th>
-              							<th>ABSEN</th>
-              							<th>SAKIT</th>
-              							<th>CUTI</th>
-              							<th>IZIN</th>
-              							<th>PROJECT</th>
+                            <th>QUESTION</th>
+                            <th>ANSWER/POINT</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td><a href="#" class="text-bold-600">1</a></td>
-                            <td>
-                              <h5>MAY 2018</h5>
-                            </td>
-                            <td>
-                              <h5>234</h5>
-                            </td>
-                            <td>
-                              <h5>20</h5>
+							               <td>
+                              <h5>Pemahaman pembuatan rencana / program kerja sesuai jabatannya</h5>
                             </td>
 							               <td>
-                              <h5>40</h5>
-                            </td>
-							               <td>
-                              <h5>5</h5>
-                            </td>
-							               <td>
-                              <h5>24</h5>
-                            </td>
-							               <td>
-                              <h5>49</h5>
+                              <h5><?=$row->pemahaman_tugas1?></h5>
                             </td>
                           </tr>
-						              <tr>
-                            <td><a href="#" class="text-bold-600">2</a></td>
-                            <td>
-                              <h5>APRIL 2018</h5>
+                          <tr>
+                             <td>
+                              <h5>Pemahaman terhadap proses / alur bisnis di unit kerjanya</h5>
                             </td>
-                            <td>
-                              <h5>20</h5>
-                            </td>
-							               <td>
-                              <h5>40</h5>
-                            </td>
-							               <td>
-                              <h5>10</h5>
-                            </td>
-							               <td>
-                              <h5>50</h5>
-                            </td>
-							               <td>
-                              <h5>30</h5>
-                            </td>
-                            <td>
-                              <h5>30</h5>
+                             <td>
+                              <h5><?=$row->pemahaman_tugas2?></h5>
                             </td>
                           </tr>
-						  
-						                <tr>
-                            <td><a href="#" class="text-bold-600">3</a></td>
-                            <td>
-                              <h5>MARET 2018</h5>
+                          <tr>
+                             <td>
+                              <h5>Pemahaman terhadap prosedur standar pelayanan konsumen</h5>
                             </td>
-                            <td>
-							               <h5>350</h5>
-                            </td>
-                            <td>
-                              <h5>30</h5>
-                            </td>
-							               <td>
-                              <h5>20</h5>
-                            </td>
-							               <td>
-                              <h5>5</h5>
-                            </td>
-							               <td>
-                              <h5>8</h5>
-                            </td>
-							               <td>
-                              <h5>23</h5>
+                             <td>
+                              <h5><?=$row->pemahaman_tugas3?></h5>
                             </td>
                           </tr>
+                          <tr>
+                             <td>
+                              <h5>Pemahaman terhadap prosedur standar kebersihan lingkungan kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pemahaman_tugas4?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Pemahaman tentang strategi pengembangan diri</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pemahaman_tugas5?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Pemahaman terhadap nilai-nilai budaya perusahaan (GROUP)</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pemahaman_tugas6?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Ketepatan waktu pelaksanaan rencana kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas1?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kecepatan waktu pelaksanaan kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas2?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Ketelitian dalam pengerjaan tugas</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas3?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kerapihan dalam penataan arsip / dokumen pekerjaan</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas4?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Ketahanan dalam bekerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas5?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Sistematika kerja (prosedural – sesuai SOP)</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->pelaksanaan_tugas6?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kebugaran dan kebersihan diri</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->penampilan_diri1?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kerapihan dalam berpakaian</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->penampilan_diri2?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Semangat kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja1?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kepatuhan menjalankan peraturan perusahaan</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja2?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kepatuhan terhadap instruksi kerja unit / pimpinan</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja3?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Penyesuaian diri terhadap lingkungan kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja4?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kepedulian terhadap lingkungan kerja</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja5?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>Kedisiplinan</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->sikap_kerja6?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>CATATAN KHUSUS</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->catatan_khusus?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>AREA YANG HARUS DIPERBAIKI</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->area_ygharusdiperbaiki?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>AREA YANG HARUS DIPERTAHANKAN</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->area_ygharusdipertahankan?></h5>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>
+                              <h5>REKOMENDASI</h5>
+                            </td>
+                             <td>
+                              <h5><?=$row->rekomendasi?></h5>
+                            </td>
+                          </tr>
+
+
                         </tbody>
                       </table>
                     </div>
@@ -284,61 +361,6 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                 </div>
               </div>
             </div>
-            
-            <div class="col-md-8 pb-xl-1 py-xl-1">
-              <div class="card">
-                <div class="card-content">
-                  <?php if(!empty($penilaian)){ ?>
-                  <?php
-                    $tahunpenilaian = date('Y', strtotime($penilaian->date));
-                    $tahundepan = $tahunpenilaian + 1;
-                    $poin = $penilaian->pemahaman_tugas1 + $penilaian->pemahaman_tugas2 + $penilaian->pemahaman_tugas3 + $penilaian->pemahaman_tugas4 + $penilaian->pemahaman_tugas5 + $penilaian->pemahaman_tugas6 + $penilaian->pelaksanaan_tugas1 + $penilaian->pelaksanaan_tugas2 + $penilaian->pelaksanaan_tugas3 + $penilaian->pelaksanaan_tugas4 + $penilaian->pelaksanaan_tugas5 + $penilaian->pelaksanaan_tugas6 + $penilaian->penampilan_diri1 + $penilaian->penampilan_diri2 + $penilaian->sikap_kerja1 + $penilaian->sikap_kerja2 + $penilaian->sikap_kerja3 + $penilaian->sikap_kerja4 + $penilaian->sikap_kerja5 + $penilaian->sikap_kerja6;
-                  ?>
-                  <div class="card-body">
-                    <div>
-                      <h4><b>HASIL PENILAIAN <?=$tahunpenilaian?> : <?=$poin?> Point</b></h4>
-                      <h5>GOAL <?=$tahundepan?> : <?=$penilaian->rekomendasi?></h5>
-                    </div>
-                    <div>
-                      <a href="<?=base_url()?>penilaian/detail/<?=$info->id?>" class="sort btn btn-block btn-outline-info btn-round">DETAIL</a>
-                    </div>
-                  </div>
-                  <?php }else{ ?>
-                  <div class="card-body">
-                    <div>
-                      <h4><b>HASIL PENILAIAN BELUM ADA</b></h4>
-                      <h5>Silahkan Lakukan Penilaian Terlebih Dahulu !</h5>
-                    </div>
-                  </div>
-                  <?php } ?>
-                </div>
-              </div>
-            </div>
-            
-
-            <div class="col-md-4 pb-xl-1 py-xl-1">
-              <div class="card">
-                <div class="card-content">
-                  <div class="card-body">
-                    <div>
-                      <?php if(!empty($penilaian)){ ?>
-                      <?php
-                        $tahunpenilaian = date('Y', strtotime($penilaian->date));
-                        $tahundepan = $tahunpenilaian + 1;
-                      ?>
-                      <h4><b>PENILAIAN <?=$tahundepan?></b></h4>
-                      <a href="<?=base_url()?>penilaian/add/<?=$info->id?>" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
-                      <?php }else{ ?>
-                      <?php
-                        $tahunsekarang = date('Y');
-                      ?>
-                      <h4><b>PENILAIAN <?=$tahunsekarang?></b></h4>
-                      <a href="<?=base_url()?>penilaian/add/<?=$info->id?>" class="sort btn btn-block btn-outline-success btn-round">IKUTI</a>
-                      <?php } ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
         </div>
@@ -362,7 +384,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
   <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
   <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
   
-  <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script>
+  <!-- <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script> -->
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"
   type="text/javascript"></script>
   <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.responsive.min.js"

@@ -10,13 +10,40 @@ class Cuti extends MY_Controller {
         
     }
 
+    function cek_login(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+    }
+
+    function cek_rule(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+        else{
+            $rule = $this->session->userdata('rule');
+            if ($rule != 1 && $rule != 2) {
+                redirect(base_url().'teamlist/detail/'.$this->session->userdata('user_id'));
+            }
+        }
+        
+    }
+
     function index()
     {
+
+        $this->cek_login();
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 		
         $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
-        $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
+        /*$this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');*/
 	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
         
         $data['msg']='';
@@ -54,18 +81,16 @@ class Cuti extends MY_Controller {
         $i = 1;
         foreach ($datacuti as $value) {
             $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
-            $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+            if (!empty($value['tanggal_akhir'])) {
+                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+            }
+            elseif (empty($value['tanggal_akhir'])) {
+                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+            }
+            
             $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
             if ($value['approved'] == 1) {
-                $tahun = date("Y");
-                $tahunbeda1 = date("Y", strtotime($value['tanggal_mulai']));
-                $tahunbeda2 = date("Y", strtotime($value['tanggal_akhir']));
-                if ($tahun = $tahunbeda1 && $tahun = $tahunbeda2) {
-                    $a[$i] = $diff[$i]->d + 1;
-                }
-                else{
-                   $a[$i] = 0; 
-                }
+                $a[$i] = $diff[$i]->d + 1;
             }
             else{
                 $a[$i] = 0;
@@ -107,6 +132,7 @@ function _set_pagination()
 }
 
 function detil_cuti () {
+    $this->cek_login();
     $ambilid = $this->session->userdata('user_id');
     $ambilnama = $this->session->userdata('full_name');
 
@@ -158,6 +184,8 @@ function detil_cuti () {
 }
 
 function approval(){
+    $this->cek_login();
+    $this->cek_rule();
     $where =null;
 
     $id = $this->input->get('per_page');

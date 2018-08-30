@@ -10,6 +10,31 @@ class Reportproject extends MY_Controller {
         
     }
 
+    function cek_login(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+    }
+
+    function cek_rule(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+        else{
+            $rule = $this->session->userdata('rule');
+            if ($rule != 1 && $rule != 2) {
+                redirect(base_url().'teamlist/detail/'.$this->session->userdata('user_id'));
+            }
+        }
+        
+    }
+
     function _set_pagination()
     {
         $config['next_link'] = 'Next';
@@ -34,6 +59,7 @@ class Reportproject extends MY_Controller {
 
     function index()
     {
+        $this->cek_login();
         $where = null;
 
         $id = $this->input->get('per_page');
@@ -91,6 +117,7 @@ class Reportproject extends MY_Controller {
     }
 
     function add() {
+        $this->cek_login();
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger error">', '</div>');
 
@@ -145,6 +172,7 @@ class Reportproject extends MY_Controller {
     }
 
     function edit($id=0){
+        $this->cek_login();
         $i = $this->report_mod->cek_project($id);
         $data['row'] = '';
         if ($i) {
@@ -200,6 +228,7 @@ class Reportproject extends MY_Controller {
     }
 
     function detail($id=0) {
+        $this->cek_login();
         if (empty($id)) {
             redirect(base_url().'reportproject');
         }
@@ -307,6 +336,7 @@ class Reportproject extends MY_Controller {
     }
 
     function edit_report($id=0,$id_report=0){
+        $this->cek_login();
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger error">', '</div>');
 

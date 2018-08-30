@@ -316,7 +316,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                       <?php $i++; ?>
                       <?php } ?>
                     </tbody>
-                    <?=$pagination?>
+                    <!-- <?=$pagination?> -->
                   </table>
                 </div>
               </div>

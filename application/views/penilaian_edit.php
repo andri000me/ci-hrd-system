@@ -262,23 +262,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal1" class="custom-control-input" id="pemahaman-5a" value="5" type="radio">
+                                  <input name="soal1" class="custom-control-input" id="pemahaman-5a" value="5" type="radio" <?=$njeh1 = ($row->pemahaman_tugas1 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5a">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal1" class="custom-control-input" id="pemahaman-4a" value="4" type="radio">
+                                  <input name="soal1" class="custom-control-input" id="pemahaman-4a" value="4" type="radio" <?=$njeh1 = ($row->pemahaman_tugas1 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4a">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal1" class="custom-control-input" id="pemahaman-3a" value="3" type="radio">
+                                  <input name="soal1" class="custom-control-input" id="pemahaman-3a" value="3" type="radio" <?=$njeh1 = ($row->pemahaman_tugas1 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3a">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal1" class="custom-control-input" id="pemahaman-2a" value="2" type="radio">
+                                  <input name="soal1" class="custom-control-input" id="pemahaman-2a" value="2" type="radio" <?=$njeh1 = ($row->pemahaman_tugas1 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2a">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal1" class="custom-control-input" id="pemahaman-1a" value="1" type="radio">
+                                  <input name="soal1" class="custom-control-input" id="pemahaman-1a" value="1" type="radio" <?=$njeh1 = ($row->pemahaman_tugas1 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1a">1</label>
                                 </div>
                               </div>
@@ -295,23 +295,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal2" class="custom-control-input" id="pemahaman-5b" value="5" type="radio">
+                                  <input name="soal2" class="custom-control-input" id="pemahaman-5b" value="5" type="radio" <?=$njeh2 = ($row->pemahaman_tugas2 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5b">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal2" class="custom-control-input" id="pemahaman-4b" value="4" type="radio">
+                                  <input name="soal2" class="custom-control-input" id="pemahaman-4b" value="4" type="radio" <?=$njeh2 = ($row->pemahaman_tugas2 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4b">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal2" class="custom-control-input" id="pemahaman-3b" value="3" type="radio">
+                                  <input name="soal2" class="custom-control-input" id="pemahaman-3b" value="3" type="radio" <?=$njeh2 = ($row->pemahaman_tugas2 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3b">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal2" class="custom-control-input" id="pemahaman-2b" value="2" type="radio">
+                                  <input name="soal2" class="custom-control-input" id="pemahaman-2b" value="2" type="radio" <?=$njeh2 = ($row->pemahaman_tugas2 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2b">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal2" class="custom-control-input" id="pemahaman-1b" value="1" type="radio">
+                                  <input name="soal2" class="custom-control-input" id="pemahaman-1b" value="1" type="radio" <?=$njeh2 = ($row->pemahaman_tugas2 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1b">1</label>
                                 </div>
                               </div>
@@ -328,23 +328,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal3" class="custom-control-input" id="pemahaman-5c" value="5" type="radio">
+                                  <input name="soal3" class="custom-control-input" id="pemahaman-5c" value="5" type="radio" <?=$njeh3 = ($row->pemahaman_tugas3 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5c">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal3" class="custom-control-input" id="pemahaman-4c" value="4" type="radio">
+                                  <input name="soal3" class="custom-control-input" id="pemahaman-4c" value="4" type="radio" <?=$njeh3 = ($row->pemahaman_tugas3 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4c">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal3" class="custom-control-input" id="pemahaman-3c" value="3" type="radio">
+                                  <input name="soal3" class="custom-control-input" id="pemahaman-3c" value="3" type="radio" <?=$njeh3 = ($row->pemahaman_tugas3 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3c">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal3" class="custom-control-input" id="pemahaman-2c" value="2" type="radio">
+                                  <input name="soal3" class="custom-control-input" id="pemahaman-2c" value="2" type="radio" <?=$njeh3 = ($row->pemahaman_tugas3 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2c">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal3" class="custom-control-input" id="pemahaman-1c" value="1" type="radio">
+                                  <input name="soal3" class="custom-control-input" id="pemahaman-1c" value="1" type="radio" <?=$njeh3 = ($row->pemahaman_tugas3 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1c">1</label>
                                 </div>
                               </div>
@@ -361,23 +361,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal4" class="custom-control-input" id="pemahaman-5d" value="5" type="radio">
+                                  <input name="soal4" class="custom-control-input" id="pemahaman-5d" value="5" type="radio" <?=$njeh4 = ($row->pemahaman_tugas4 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5d">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal4" class="custom-control-input" id="pemahaman-4d" value="4" type="radio">
+                                  <input name="soal4" class="custom-control-input" id="pemahaman-4d" value="4" type="radio" <?=$njeh4 = ($row->pemahaman_tugas4 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4d">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal4" class="custom-control-input" id="pemahaman-3d" value="3" type="radio">
+                                  <input name="soal4" class="custom-control-input" id="pemahaman-3d" value="3" type="radio" <?=$njeh4 = ($row->pemahaman_tugas4 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3d">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal4" class="custom-control-input" id="pemahaman-2d" value="2" type="radio">
+                                  <input name="soal4" class="custom-control-input" id="pemahaman-2d" value="2" type="radio" <?=$njeh4 = ($row->pemahaman_tugas4 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2d">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal4" class="custom-control-input" id="pemahaman-1d" value="1" type="radio">
+                                  <input name="soal4" class="custom-control-input" id="pemahaman-1d" value="1" type="radio" <?=$njeh4 = ($row->pemahaman_tugas4 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1d">1</label>
                                 </div>
                               </div>
@@ -394,23 +394,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal5" class="custom-control-input" id="pemahaman-5e" value="5" type="radio">
+                                  <input name="soal5" class="custom-control-input" id="pemahaman-5e" value="5" type="radio" <?=$njeh5 = ($row->pemahaman_tugas5 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5e">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal5" class="custom-control-input" id="pemahaman-4e" value="4" type="radio">
+                                  <input name="soal5" class="custom-control-input" id="pemahaman-4e" value="4" type="radio" <?=$njeh5 = ($row->pemahaman_tugas5 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4e">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal5" class="custom-control-input" id="pemahaman-3e" value="3" type="radio">
+                                  <input name="soal5" class="custom-control-input" id="pemahaman-3e" value="3" type="radio" <?=$njeh5 = ($row->pemahaman_tugas5 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3e">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal5" class="custom-control-input" id="pemahaman-2e" value="2" type="radio">
+                                  <input name="soal5" class="custom-control-input" id="pemahaman-2e" value="2" type="radio" <?=$njeh5 = ($row->pemahaman_tugas5 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2e">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal5" class="custom-control-input" id="pemahaman-1e" value="1" type="radio">
+                                  <input name="soal5" class="custom-control-input" id="pemahaman-1e" value="1" type="radio" <?=$njeh5 = ($row->pemahaman_tugas5 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1e">1</label>
                                 </div>
                               </div>
@@ -427,23 +427,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal6" class="custom-control-input" id="pemahaman-5f" value="5" type="radio">
+                                  <input name="soal6" class="custom-control-input" id="pemahaman-5f" value="5" type="radio" <?=$njeh6 = ($row->pemahaman_tugas6 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-5f">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal6" class="custom-control-input" id="pemahaman-4f" value="4" type="radio">
+                                  <input name="soal6" class="custom-control-input" id="pemahaman-4f" value="4" type="radio" <?=$njeh6 = ($row->pemahaman_tugas6 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-4f">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal6" class="custom-control-input" id="pemahaman-3f" value="3" type="radio">
+                                  <input name="soal6" class="custom-control-input" id="pemahaman-3f" value="3" type="radio" <?=$njeh6 = ($row->pemahaman_tugas6 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-3f">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal6" class="custom-control-input" id="pemahaman-2f" value="2" type="radio">
+                                  <input name="soal6" class="custom-control-input" id="pemahaman-2f" value="2" type="radio" <?=$njeh6 = ($row->pemahaman_tugas6 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-2f">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal6" class="custom-control-input" id="pemahaman-1f" value="1" type="radio">
+                                  <input name="soal6" class="custom-control-input" id="pemahaman-1f" value="1" type="radio" <?=$njeh6 = ($row->pemahaman_tugas6 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="pemahaman-1f">1</label>
                                 </div>
                               </div>
@@ -467,23 +467,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal7" class="custom-control-input" id="ketepatan-5a" value="5" type="radio">
+                                  <input name="soal7" class="custom-control-input" id="ketepatan-5a" value="5" type="radio" <?=$njeh21 = ($row->pelaksanaan_tugas1 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5a">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal7" class="custom-control-input" id="ketepatan-4a" value="4" type="radio">
+                                  <input name="soal7" class="custom-control-input" id="ketepatan-4a" value="4" type="radio" <?=$njeh21 = ($row->pelaksanaan_tugas1 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4a">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal7" class="custom-control-input" id="ketepatan-3a" value="3" type="radio">
+                                  <input name="soal7" class="custom-control-input" id="ketepatan-3a" value="3" type="radio" <?=$njeh21 = ($row->pelaksanaan_tugas1 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3a">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal7" class="custom-control-input" id="ketepatan-2a" value="2" type="radio">
+                                  <input name="soal7" class="custom-control-input" id="ketepatan-2a" value="2" type="radio" <?=$njeh21 = ($row->pelaksanaan_tugas1 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2a">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal7" class="custom-control-input" id="ketepatan-1a" value="1" type="radio">
+                                  <input name="soal7" class="custom-control-input" id="ketepatan-1a" value="1" type="radio" <?=$njeh21 = ($row->pelaksanaan_tugas1 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1a">1</label>
                                 </div>
                               </div>
@@ -500,23 +500,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal8" class="custom-control-input" id="ketepatan-5b" value="5" type="radio">
+                                  <input name="soal8" class="custom-control-input" id="ketepatan-5b" value="5" type="radio" <?=$njeh22 = ($row->pelaksanaan_tugas2 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5b">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal8" class="custom-control-input" id="ketepatan-4b" value="4" type="radio">
+                                  <input name="soal8" class="custom-control-input" id="ketepatan-4b" value="4" type="radio" <?=$njeh22 = ($row->pelaksanaan_tugas2 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4b">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal8" class="custom-control-input" id="ketepatan-3b" value="3" type="radio">
+                                  <input name="soal8" class="custom-control-input" id="ketepatan-3b" value="3" type="radio" <?=$njeh22 = ($row->pelaksanaan_tugas2 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3b">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal8" class="custom-control-input" id="ketepatan-2b" value="2" type="radio">
+                                  <input name="soal8" class="custom-control-input" id="ketepatan-2b" value="2" type="radio" <?=$njeh22 = ($row->pelaksanaan_tugas2 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2b">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal8" class="custom-control-input" id="ketepatan-1b" value="1" type="radio">
+                                  <input name="soal8" class="custom-control-input" id="ketepatan-1b" value="1" type="radio" <?=$njeh22 = ($row->pelaksanaan_tugas2 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1b">1</label>
                                 </div>
                               </div>
@@ -533,23 +533,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal9" class="custom-control-input" id="ketepatan-5c" value="5" type="radio">
+                                  <input name="soal9" class="custom-control-input" id="ketepatan-5c" value="5" type="radio" <?=$njeh23 = ($row->pelaksanaan_tugas3 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5c">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal9" class="custom-control-input" id="ketepatan-4c" value="4" type="radio">
+                                  <input name="soal9" class="custom-control-input" id="ketepatan-4c" value="4" type="radio" <?=$njeh23 = ($row->pelaksanaan_tugas3 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4c">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal9" class="custom-control-input" id="ketepatan-3c" value="3" type="radio">
+                                  <input name="soal9" class="custom-control-input" id="ketepatan-3c" value="3" type="radio" <?=$njeh23 = ($row->pelaksanaan_tugas3 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3c">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal9" class="custom-control-input" id="ketepatan-2c" value="2" type="radio">
+                                  <input name="soal9" class="custom-control-input" id="ketepatan-2c" value="2" type="radio" <?=$njeh23 = ($row->pelaksanaan_tugas3 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2c">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal9" class="custom-control-input" id="ketepatan-1c" value="1" type="radio">
+                                  <input name="soal9" class="custom-control-input" id="ketepatan-1c" value="1" type="radio" <?=$njeh23 = ($row->pelaksanaan_tugas3 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1c">1</label>
                                 </div>
                               </div>
@@ -566,23 +566,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal10" class="custom-control-input" id="ketepatan-5d" value="5" type="radio">
+                                  <input name="soal10" class="custom-control-input" id="ketepatan-5d" value="5" type="radio" <?=$njeh24 = ($row->pelaksanaan_tugas4 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5d">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal10" class="custom-control-input" id="ketepatan-4d" value="4" type="radio">
+                                  <input name="soal10" class="custom-control-input" id="ketepatan-4d" value="4" type="radio" <?=$njeh24 = ($row->pelaksanaan_tugas4 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4d">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal10" class="custom-control-input" id="ketepatan-3d" value="3" type="radio">
+                                  <input name="soal10" class="custom-control-input" id="ketepatan-3d" value="3" type="radio" <?=$njeh24 = ($row->pelaksanaan_tugas4 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3d">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal10" class="custom-control-input" id="ketepatan-2d" value="2" type="radio">
+                                  <input name="soal10" class="custom-control-input" id="ketepatan-2d" value="2" type="radio" <?=$njeh24 = ($row->pelaksanaan_tugas4 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2d">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal10" class="custom-control-input" id="ketepatan-1d" value="1" type="radio">
+                                  <input name="soal10" class="custom-control-input" id="ketepatan-1d" value="1" type="radio" <?=$njeh24 = ($row->pelaksanaan_tugas4 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1d">1</label>
                                 </div>
                               </div>
@@ -599,23 +599,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal11" class="custom-control-input" id="ketepatan-5e" value="5" type="radio">
+                                  <input name="soal11" class="custom-control-input" id="ketepatan-5e" value="5" type="radio" <?=$njeh25 = ($row->pelaksanaan_tugas5 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5e">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal11" class="custom-control-input" id="ketepatan-4e" value="4" type="radio">
+                                  <input name="soal11" class="custom-control-input" id="ketepatan-4e" value="4" type="radio" <?=$njeh25 = ($row->pelaksanaan_tugas5 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4e">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal11" class="custom-control-input" id="ketepatan-3e" value="3" type="radio">
+                                  <input name="soal11" class="custom-control-input" id="ketepatan-3e" value="3" type="radio" <?=$njeh25 = ($row->pelaksanaan_tugas5 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3e">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal11" class="custom-control-input" id="ketepatan-2e" value="2" type="radio">
+                                  <input name="soal11" class="custom-control-input" id="ketepatan-2e" value="2" type="radio" <?=$njeh25 = ($row->pelaksanaan_tugas5 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2e">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal11" class="custom-control-input" id="ketepatan-1e" value="1" type="radio">
+                                  <input name="soal11" class="custom-control-input" id="ketepatan-1e" value="1" type="radio" <?=$njeh25 = ($row->pelaksanaan_tugas5 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1e">1</label>
                                 </div>
                               </div>
@@ -632,23 +632,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal12" class="custom-control-input" id="ketepatan-5f" value="5" type="radio">
+                                  <input name="soal12" class="custom-control-input" id="ketepatan-5f" value="5" type="radio" <?=$njeh26 = ($row->pelaksanaan_tugas6 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-5f">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal12" class="custom-control-input" id="ketepatan-4f" value="4" type="radio">
+                                  <input name="soal12" class="custom-control-input" id="ketepatan-4f" value="4" type="radio" <?=$njeh26 = ($row->pelaksanaan_tugas6 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-4f">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal12" class="custom-control-input" id="ketepatan-3f" value="3" type="radio">
+                                  <input name="soal12" class="custom-control-input" id="ketepatan-3f" value="3" type="radio" <?=$njeh26 = ($row->pelaksanaan_tugas6 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3f">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal12" class="custom-control-input" id="ketepatan-2f" value="2" type="radio">
+                                  <input name="soal12" class="custom-control-input" id="ketepatan-2f" value="2" type="radio" <?=$njeh26 = ($row->pelaksanaan_tugas6 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-2f">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal12" class="custom-control-input" id="ketepatan-1f" value="1" type="radio">
+                                  <input name="soal12" class="custom-control-input" id="ketepatan-1f" value="1" type="radio" <?=$njeh26 = ($row->pelaksanaan_tugas6 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-1f">1</label>
                                 </div>
                               </div>
@@ -672,23 +672,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal13" class="custom-control-input" id="penampilan-5a" value="5" type="radio">
+                                  <input name="soal13" class="custom-control-input" id="penampilan-5a" value="5" type="radio" <?=$njeh31 = ($row->penampilan_diri1 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-5a">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal13" class="custom-control-input" id="penampilan-4a" value="4" type="radio">
+                                  <input name="soal13" class="custom-control-input" id="penampilan-4a" value="4" type="radio" <?=$njeh31 = ($row->penampilan_diri1 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-4a">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal13" class="custom-control-input" id="penampilan-3a" value="3" type="radio">
+                                  <input name="soal13" class="custom-control-input" id="penampilan-3a" value="3" type="radio" <?=$njeh31 = ($row->penampilan_diri1 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-3a">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal13" class="custom-control-input" id="penampilan-2a" value="2" type="radio">
+                                  <input name="soal13" class="custom-control-input" id="penampilan-2a" value="2" type="radio" <?=$njeh31 = ($row->penampilan_diri1 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-2a">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal13" class="custom-control-input" id="penampilan-1a" value="1" type="radio">
+                                  <input name="soal13" class="custom-control-input" id="penampilan-1a" value="1" type="radio" <?=$njeh31 = ($row->penampilan_diri1 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-1a">1</label>
                                 </div>
                               </div>
@@ -705,23 +705,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal14" class="custom-control-input" id="penampilan-5b" value="5" type="radio">
+                                  <input name="soal14" class="custom-control-input" id="penampilan-5b" value="5" type="radio" <?=$njeh32 = ($row->penampilan_diri2 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-5b">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal14" class="custom-control-input" id="penampilan-4b" value="4" type="radio">
+                                  <input name="soal14" class="custom-control-input" id="penampilan-4b" value="4" type="radio" <?=$njeh32 = ($row->penampilan_diri2 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-4b">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal14" class="custom-control-input" id="penampilan-3b" value="3" type="radio">
+                                  <input name="soal14" class="custom-control-input" id="penampilan-3b" value="3" type="radio" <?=$njeh32 = ($row->penampilan_diri2 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-3b">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal14" class="custom-control-input" id="penampilan-2b" value="2" type="radio">
+                                  <input name="soal14" class="custom-control-input" id="penampilan-2b" value="2" type="radio" <?=$njeh32 = ($row->penampilan_diri2 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-2b">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal14" class="custom-control-input" id="penampilan-1b" value="1" type="radio">
+                                  <input name="soal14" class="custom-control-input" id="penampilan-1b" value="1" type="radio" <?=$njeh32 = ($row->penampilan_diri2 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="penampilan-1b">1</label>
                                 </div>
                               </div>
@@ -745,23 +745,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal15" class="custom-control-input" id="semangat-5a" value="5" type="radio">
+                                  <input name="soal15" class="custom-control-input" id="semangat-5a" value="5" type="radio" <?=$njeh41 = ($row->sikap_kerja1 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5a">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal15" class="custom-control-input" id="semangat-4a" value="4" type="radio">
+                                  <input name="soal15" class="custom-control-input" id="semangat-4a" value="4" type="radio" <?=$njeh41 = ($row->sikap_kerja1 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4a">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal15" class="custom-control-input" id="semangat-3a" value="3" type="radio">
+                                  <input name="soal15" class="custom-control-input" id="semangat-3a" value="3" type="radio" <?=$njeh41 = ($row->sikap_kerja1 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-3a">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal15" class="custom-control-input" id="semangat-2a" value="2" type="radio">
+                                  <input name="soal15" class="custom-control-input" id="semangat-2a" value="2" type="radio" <?=$njeh41 = ($row->sikap_kerja1 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2a">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal15" class="custom-control-input" id="semangat-1a" value="1" type="radio">
+                                  <input name="soal15" class="custom-control-input" id="semangat-1a" value="1" type="radio" <?=$njeh41 = ($row->sikap_kerja1 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1a">1</label>
                                 </div>
                               </div>
@@ -778,23 +778,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal16" class="custom-control-input" id="semangat-5b" value="5" type="radio">
+                                  <input name="soal16" class="custom-control-input" id="semangat-5b" value="5" type="radio" <?=$njeh42 = ($row->sikap_kerja2 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5b">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal16" class="custom-control-input" id="semangat-4b" value="4" type="radio">
+                                  <input name="soal16" class="custom-control-input" id="semangat-4b" value="4" type="radio" <?=$njeh42 = ($row->sikap_kerja2 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4b">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal16" class="custom-control-input" id="semangat-3b" value="3" type="radio">
+                                  <input name="soal16" class="custom-control-input" id="semangat-3b" value="3" type="radio" <?=$njeh42 = ($row->sikap_kerja2 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-3b">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal16" class="custom-control-input" id="semangat-2b" value="2" type="radio">
+                                  <input name="soal16" class="custom-control-input" id="semangat-2b" value="2" type="radio" <?=$njeh42 = ($row->sikap_kerja2 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2b">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal16" class="custom-control-input" id="semangat-1b" value="1" type="radio">
+                                  <input name="soal16" class="custom-control-input" id="semangat-1b" value="1" type="radio" <?=$njeh42 = ($row->sikap_kerja2 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1b">1</label>
                                 </div>
                               </div>
@@ -811,23 +811,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal17" class="custom-control-input" id="semangat-5c" value="5" type="radio">
+                                  <input name="soal17" class="custom-control-input" id="semangat-5c" value="5" type="radio" <?=$njeh43 = ($row->sikap_kerja3 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5c">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal17" class="custom-control-input" id="semangat-4c" value="4" type="radio">
+                                  <input name="soal17" class="custom-control-input" id="semangat-4c" value="4" type="radio" <?=$njeh43 = ($row->sikap_kerja3 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4c">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal17" class="custom-control-input" id="semangat-3c" value="3" type="radio">
+                                  <input name="soal17" class="custom-control-input" id="semangat-3c" value="3" type="radio" <?=$njeh43 = ($row->sikap_kerja3 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="ketepatan-3c">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal17" class="custom-control-input" id="semangat-2c" value="2" type="radio">
+                                  <input name="soal17" class="custom-control-input" id="semangat-2c" value="2" type="radio" <?=$njeh43 = ($row->sikap_kerja3 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2c">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal17" class="custom-control-input" id="semangat-1c" value="1" type="radio">
+                                  <input name="soal17" class="custom-control-input" id="semangat-1c" value="1" type="radio" <?=$njeh43 = ($row->sikap_kerja3 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1c">1</label>
                                 </div>
                               </div>
@@ -844,23 +844,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal18" class="custom-control-input" id="semangat-5d" value="5" type="radio">
+                                  <input name="soal18" class="custom-control-input" id="semangat-5d" value="5" type="radio" <?=$njeh44 = ($row->sikap_kerja4 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5d">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal18" class="custom-control-input" id="semangat-4d" value="4" type="radio">
+                                  <input name="soal18" class="custom-control-input" id="semangat-4d" value="4" type="radio" <?=$njeh44 = ($row->sikap_kerja4 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4d">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal18" class="custom-control-input" id="semangat-3d" value="3" type="radio">
+                                  <input name="soal18" class="custom-control-input" id="semangat-3d" value="3" type="radio" <?=$njeh44 = ($row->sikap_kerja4 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-3d">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal18" class="custom-control-input" id="semangat-2d" value="2" type="radio">
+                                  <input name="soal18" class="custom-control-input" id="semangat-2d" value="2" type="radio" <?=$njeh44 = ($row->sikap_kerja4 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2d">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal18" class="custom-control-input" id="semangat-1d" value="1" type="radio">
+                                  <input name="soal18" class="custom-control-input" id="semangat-1d" value="1" type="radio" <?=$njeh44 = ($row->sikap_kerja4 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1d">1</label>
                                 </div>
                               </div>
@@ -877,23 +877,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal19" class="custom-control-input" id="semangat-5e" value="5" type="radio">
+                                  <input name="soal19" class="custom-control-input" id="semangat-5e" value="5" type="radio" <?=$njeh45 = ($row->sikap_kerja5 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5e">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal19" class="custom-control-input" id="semangat-4e" value="4" type="radio">
+                                  <input name="soal19" class="custom-control-input" id="semangat-4e" value="4" type="radio" <?=$njeh45 = ($row->sikap_kerja5 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4e">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal19" class="custom-control-input" id="semangat-3e" value="3" type="radio">
+                                  <input name="soal19" class="custom-control-input" id="semangat-3e" value="3" type="radio" <?=$njeh45 = ($row->sikap_kerja5 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-3e">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal19" class="custom-control-input" id="semangat-2e" value="2" type="radio">
+                                  <input name="soal19" class="custom-control-input" id="semangat-2e" value="2" type="radio" <?=$njeh45 = ($row->sikap_kerja5 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2e">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal19" class="custom-control-input" id="semangat-1e" value="1" type="radio">
+                                  <input name="soal19" class="custom-control-input" id="semangat-1e" value="1" type="radio" <?=$njeh45 = ($row->sikap_kerja5 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1e">1</label>
                                 </div>
                               </div>
@@ -910,23 +910,23 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             <div class="form-group">
                               <div class="input-group mb-1 my-1">
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal20" class="custom-control-input" id="semangat-5f" value="5" type="radio">
+                                  <input name="soal20" class="custom-control-input" id="semangat-5f" value="5" type="radio" <?=$njeh46 = ($row->sikap_kerja6 == '5') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-5f">5</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal20" class="custom-control-input" id="semangat-4f" value="4" type="radio">
+                                  <input name="soal20" class="custom-control-input" id="semangat-4f" value="4" type="radio" <?=$njeh46 = ($row->sikap_kerja6 == '4') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-4f">4</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal20" class="custom-control-input" id="semangat-3f" value="3" type="radio">
+                                  <input name="soal20" class="custom-control-input" id="semangat-3f" value="3" type="radio" <?=$njeh46 = ($row->sikap_kerja6 == '3') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-3f">3</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal20" class="custom-control-input" id="semangat-2f" value="2" type="radio">
+                                  <input name="soal20" class="custom-control-input" id="semangat-2f" value="2" type="radio" <?=$njeh46 = ($row->sikap_kerja6 == '2') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-2f">2</label>
                                 </div>
                                 <div class="d-inline-block custom-control custom-radio mr-1">
-                                  <input name="soal20" class="custom-control-input" id="semangat-1f" value="1" type="radio">
+                                  <input name="soal20" class="custom-control-input" id="semangat-1f" value="1" type="radio" <?=$njeh46 = ($row->sikap_kerja6 == '1') ? 'checked="checked"':''?>>
                                   <label class="custom-control-label" for="semangat-1f">1</label>
                                 </div>
                               </div>
@@ -944,7 +944,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                             </div>
                             <div class="form-group mt-2">
                               <label for=""><h6>Dalam kolom ini, Anda dipersilahkan untuk memberikan catatan-catatan yang dianggap perlu mengenai karyawan yang Anda nilai, terutama mengenai kondite (track record), proses, dan hasil kerja yang bersangkutan selama berada dibawah pengawasan Anda.</h6></label>
-                              <textarea name="catatankhusus" id="" rows="" class="form-control"></textarea>
+                              <textarea name="catatankhusus" id="" rows="" class="form-control"><?=$row->catatan_khusus?></textarea>
                             </div>
                           </div>
                         </div>
@@ -956,7 +956,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>AREA YANG HARUS DIPERBAIKI</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="areadiperbaiki" id="" rows="" class="form-control"></textarea>
+                          <textarea name="areadiperbaiki" id="" rows="" class="form-control"><?=$row->area_ygharusdiperbaiki?></textarea>
                         </div>
                       </fieldset>
                       <!-- Step 7 -->
@@ -966,7 +966,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>AREA YANG HARUS DIPERTAHANKAN</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="areadipertahankan" id="" rows="" class="form-control"></textarea>
+                          <textarea name="areadipertahankan" id="" rows="" class="form-control"><?=$row->area_ygharusdipertahankan?></textarea>
                         </div>
                       </fieldset>
                       <!-- Step 8 -->
@@ -976,7 +976,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                           <h3><b>REKOMENDASI</b></h3>
                         </div>
                         <div class="form-group mt-2">
-                          <textarea name="rekomendasi" id="" rows="" class="form-control"></textarea>
+                          <textarea name="rekomendasi" id="" rows="" class="form-control"><?=$row->rekomendasi?></textarea>
                         </div>
                       </fieldset>
                       <button type="submit">SUBMIT</button>

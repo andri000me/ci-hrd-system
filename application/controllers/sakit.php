@@ -13,10 +13,34 @@ class Sakit extends MY_Controller {
         
     }
 
+    function cek_login(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+    }
 
+    function cek_rule(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+        else{
+            $rule = $this->session->userdata('rule');
+            if ($rule != 1 && $rule != 2) {
+                redirect(base_url().'teamlist/detail/'.$this->session->userdata('user_id'));
+            }
+        }
+        
+    }
 
     function index()
     {
+        $this->cek_login();
         $ambilid = $this->session->userdata('user_id');
 
         //START HITUNG TOTAL SAKIT
@@ -27,8 +51,13 @@ class Sakit extends MY_Controller {
             $i = 1;
             foreach ($datasakit as $value) {
                 $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
-                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
-                $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
+                if (!empty($value['tanggal_akhir'])) {
+                    $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                }
+                elseif (empty($value['tanggal_akhir'])) {
+                    $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                }
+                 $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
 
                 $a[$i] = $diff[$i]->d + 1;
                 $i++;
@@ -42,7 +71,7 @@ class Sakit extends MY_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 
         $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
-        $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
+        /*$this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');*/
 	    /*$this->form_validation->set_rules('alasan', 'Alasan', 'required');*/
         $data['msg'] = '';
         if ($this->form_validation->run() == TRUE)
@@ -112,6 +141,7 @@ class Sakit extends MY_Controller {
     }
     
     function detil_sakit () {
+        $this->cek_login();
         $ambilid = $this->session->userdata('user_id');
         $ambilnama = $this->session->userdata('full_name');
 

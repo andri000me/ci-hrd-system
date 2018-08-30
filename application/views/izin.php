@@ -71,10 +71,12 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">Naufal</span>
+                  <span class="user-name text-bold-700"><?=$this->session->userdata('full_name')?></span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="<?=base_url()?>assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span>
+                  <?php if (!empty($this->session->userdata('img'))) { ?>
+                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><!-- <i></i> --></span>
+                  <?php } ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
                 <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
@@ -320,16 +322,30 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <?php foreach($ambil_izin as $getizin){ ?>
 
                  <p class="m-xl-0">
-                   <?php 
+                   <?php
+                      if($getizin['approved'] == 0) {
+                              $status = 'Pending';
+                          }
+                          elseif($getizin['approved'] == 1) {
+                              $status = 'Approved';
+                          }
+                          else {
+                            $status = 'Rejected';
+                          }
                       $tanggalmulai = date('d F Y', strtotime($getizin['tanggal_mulai']));
                       $tanggalakhir = date('d F Y', strtotime($getizin['tanggal_akhir']));
                    ?>
-                   <?php echo  $tanggalmulai;?> - <?php echo  $tanggalakhir;?>
+                   <?php if(!empty($getizin['tanggal_akhir'])){?>
+                   <?php echo  $tanggalmulai;?> - <?php echo  $tanggalakhir;?> (<?=$status?>)
+                   <?php }elseif(empty($getizin['tanggal_akhir'])){ ?>
+                   <?php echo  $tanggalmulai;?> (<?=$status?>)
+                   <?php } ?>
                  </p>
                   <?php } ?>
                   <?php } ?>
                 </div><br>
                 <a class="btn btn-block btn-success " href="<?=base_url()?>izin/detil_izin">Detil</a>
+                <a class="btn btn-block btn-success " href="<?=base_url()?>izin/approval">Approval</a>
               </div>
             </div>
           </div>

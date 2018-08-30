@@ -54,4 +54,40 @@ class Izin_mod extends CI_Model {
             return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
         }
     }
+
+    function get_izin_all($rows=false,$where=null,$limit=false,$skip=0,$take=5)
+    {
+        $this->db->select("ds_izin.*,ds_users.name");
+        $this->db->order_by('id','desc');
+
+        if($limit) {
+            $this->db->limit($take,$skip);
+        }
+
+        if(!empty ($where)){
+            if(count($where)){
+                foreach ($where as $key=>$val){
+                    if(!empty ($val)){
+                        $this->db->where($key, mysql_real_escape_string($val));
+                    }else{
+                        $this->db->where($key, NULL, FALSE);
+                    }
+                }
+            }
+        }
+        $this->db->join('ds_users', 'ds_izin.id_user = ds_users.id');
+        $i = $this->db->get('ds_izin');
+
+        if($rows){
+            return $i->num_rows();
+        }else{
+            return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
+        }
+    }
+
+    function update_status($data,$id=0)
+    {
+        $this->db->where('id', mysql_real_escape_string($id));
+        $this->db->update('ds_izin', $data);
+    }
 }

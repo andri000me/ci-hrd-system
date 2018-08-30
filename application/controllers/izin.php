@@ -9,8 +9,34 @@ class Izin extends MY_Controller {
         
     }
 
+    function cek_login(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+    }
+
+    function cek_rule(){
+        $id = $this->session->userdata('user_id');
+        if (empty($id)) {
+            $url = 'login?url='.uri_string();
+            $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?'.$_SERVER['QUERY_STRING'] : '';
+            redirect(base_url().$url);
+        }
+        else{
+            $rule = $this->session->userdata('rule');
+            if ($rule != 1 && $rule != 2) {
+                redirect(base_url().'teamlist/detail/'.$this->session->userdata('user_id'));
+            }
+        }
+        
+    }
+
     function index()
     {
+        $this->cek_login();
         $ambilid = $this->session->userdata('user_id');
         //START HITUNG TOTAL IZIN
         $jumlahizin = $this->izin_mod->get_izin(false,array('id_user' => $ambilid),false);
@@ -20,10 +46,21 @@ class Izin extends MY_Controller {
             $i = 1;
             foreach ($dataizin as $value) {
                 $awal[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
-                $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                if (!empty($value['tanggal_akhir'])) {
+                    $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_akhir'])));
+                }
+                elseif (empty($value['tanggal_akhir'])) {
+                    $akhir[$i] = date_create(date('Y-m-d', strtotime($value['tanggal_mulai'])));
+                }
+                
                 $diff[$i] = date_diff( $awal[$i], $akhir[$i] );
-        
-                $a[$i] = $diff[$i]->d + 1;
+                
+                if ($value['approved'] == 1) {
+                    $a[$i] = $diff[$i]->d + 1;
+                }
+                else{
+                    $a[$i] = 0;
+                }
                 $i++;
             }
         $x = array_sum($a);
@@ -34,7 +71,7 @@ class Izin extends MY_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 		
 	    $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
-        $this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');
+        /*$this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');*/
 	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
         
         $data['msg']='';
@@ -100,7 +137,7 @@ class Izin extends MY_Controller {
     }
 
 function detil_izin () {
-
+    $this->cek_login();
     $ambilid = $this->session->userdata('user_id');
     $ambilnama = $this->session->userdata('full_name');
 
@@ -111,7 +148,7 @@ function detil_izin () {
     $url = '?';
 
 
-    $config['base_url'] = base_url(FALSE).'sakit/detil_sakit?';
+    $config['base_url'] = base_url(FALSE).'izin/detil_izin?';
 
     $config['total_rows'] = $this->izin_mod->get_izin(true,$where);
 
@@ -147,6 +184,86 @@ function detil_izin () {
     /*$data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);*/
 
     $this->load->view('izin_detil',$data);
+}
+
+function approval(){
+    $this->cek_login();
+    $this->cek_rule();
+    $where=null;
+
+    $id = $this->input->get('per_page');
+
+    $url = '?';
+
+
+    $config['base_url'] = base_url(FALSE).'izin/approval?';
+
+    $config['total_rows'] = $this->izin_mod->get_izin_all(true,$where);
+
+    $config['per_page'] = 5;
+
+    $config['cur_page'] = empty($id) ? 0 : $id;
+
+    $config['page_query_string'] = TRUE;
+
+    foreach ($this->_set_pagination() as $key=>$val){
+
+        $config[$key] = $val;
+
+    }
+
+    $this->pagination->initialize($config);
+
+    $skip = $config['cur_page'];
+
+    $take = $config['per_page'];
+
+    $data['number'] = $config['cur_page'];
+
+    /*$data['namauser'] = $ambilnama;*/
+
+    $data['datacount'] = $this->izin_mod->get_izin_all(true,$where);
+
+    $data['pagination'] = $this->pagination->create_links();
+
+    $data['ambil_izin'] = $this->izin_mod->get_izin_all(false,$where,true,$skip,$take);
+
+
+    /*$data['ambil_sakit'] = $this->sakit_mod->get_sakit($rows=false,$where=array('id_user' => $ambilid),$limit=true,$skip=0,$take=5);*/
+
+    $this->load->view('izin_admin',$data);
+}
+
+function approve(){
+    $id = $this->input->get('a');
+    $data = $this->input->get('x');
+    if ($id != null) {
+        if ($data != null) {
+            $data_update = array('approved' => $data);
+
+            $this->izin_mod->update_status($data_update,$id);
+
+            redirect(base_url().'izin/approval');
+        }
+        else{redirect(base_url().'izin');}
+    }
+    else{redirect(base_url().'izin');}
+}
+
+function reject(){
+    $id = $this->input->get('a');
+    $data = $this->input->get('x');
+    if ($id != null) {
+        if ($data != null) {
+            $data_update = array('approved' => $data);
+
+            $this->izin_mod->update_status($data_update,$id);
+
+            redirect(base_url().'izin/approval');
+        }
+        else{redirect(base_url().'izin');}
+    }
+    else{redirect(base_url().'izin');}
 }
 
 

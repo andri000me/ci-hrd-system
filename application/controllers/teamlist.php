@@ -9,28 +9,6 @@ class Teamlist extends MY_Controller {
         $this->load->model('teamlist_mod');
     }
 
-    function _set_pagination()
-    {
-        $config['next_link'] = 'Next';
-        $config['prev_link'] = 'Prev';
-        $config['next_tag_open'] = '<li class="custompagination paginate_button page-item next">';
-        $config['next_tag_close'] = '</li>';
-        $config['prev_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
-        $config['prev_tag_close'] = '</li>';
-        $config['full_tag_open'] = '<ul class="pagination" style="justify-content: flex-end;">';
-        $config['full_tag_close'] = '</ul>';
-        $config['num_tag_open'] = '<li class="custompagination paginate_button page-item">';
-        $config['num_tag_close'] = '</li>';
-        $config['first_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li class="custompagination paginate_button page-item next">';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="paginate_button page-item active"><a class="page-link">';
-        $config['cur_tag_close'] = '</a></li>';
-
-        return $config;
-    }
-
     function cek_login(){
         $id = $this->session->userdata('user_id');
         if (empty($id)) {
@@ -56,10 +34,31 @@ class Teamlist extends MY_Controller {
         
     }
 
+    function _set_pagination()
+    {
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $config['next_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+        $config['prev_tag_close'] = '</li>';
+        $config['full_tag_open'] = '<ul class="pagination" style="justify-content: flex-end;">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li class="custompagination paginate_button page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li class="custompagination paginate_button page-item previous">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="custompagination paginate_button page-item next">';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="paginate_button page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        return $config;
+    }
+
     function index()
     {
         
-
         $this->cek_rule();
 
     	$where = null;

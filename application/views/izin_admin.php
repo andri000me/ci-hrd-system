@@ -154,6 +154,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             <th>SAMPAI TANGGAL</th>
               				<th>ALASAN</th>
                             <th>STATUS</th>
+                            <th>ACTION</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -184,7 +185,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           <tr>
                             <td><a href="#" class="text-bold-600"><?php echo $i; ?></a></td>
                             <td>
-                              <a href="team-detail.html" class="text-bold-600"><h5><?=$namauser?></h5></a>
+                              <a href="team-detail.html" class="text-bold-600"><h5><?=$izin['name']?></h5></a>
                             </td>
                             <td>
                               <h5><?=$tanggalmulai?></h5>
@@ -197,6 +198,21 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             </td>
                             <td>
                               <h5><a href="#"><?=$status?></a></h5>
+                            </td>
+                            <td>
+                              <span class="dropdown">
+                                  <button id="btnSearchDrop2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info">
+                                    <i class="ft-eye">Approval</i>
+                                  </button>
+                                  <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
+                                    <a href="<?=base_url()?>izin/approve?a=<?=$izin['id']?>&x=1" class="dropdown-item info">
+                                      Approve
+                                    </a>
+                                    <a href="<?=base_url()?>izin/reject?a=<?=$izin['id']?>&x=2" class="dropdown-item danger">
+                                      Reject
+                                    </a>
+                                  </span>
+                                </span>
                             </td>
                           </tr>
                           <?php $i++; ?>

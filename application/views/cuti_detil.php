@@ -81,10 +81,12 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">Naufal</span>
+                  <span class="user-name text-bold-700"><?=$this->session->userdata('full_name')?></span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="<?=base_url()?>assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span>
+                  <?php if (!empty($this->session->userdata('img'))) { ?>
+                  <img src="<?=base_url()?>clients/user/<?=$this->session->userdata('img')?>" alt="avatar"><!-- <i></i> --></span>
+                  <?php } ?>
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
                 <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
@@ -186,7 +188,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                               <h5><?=$cuti['tanggal_mulai']?></h5>
                             </td>
 							              <td>
-                              <h5><?=$cuti['tanggal_akhir']?></h5>
+                              <h5><?=$njeh = (!empty($cuti['tanggal_akhir'])) ? $cuti['tanggal_akhir']:'-'?></h5>
                             </td>
 							<td>
                               <h5><a href="#"><?=$cuti['alasan']?></a></h5>
