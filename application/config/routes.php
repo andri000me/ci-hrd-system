@@ -41,6 +41,10 @@
 $route['default_controller'] = "dashboard";
 $route['404_override'] = '';
 
+$route['cron_punchout'] = 'absen/cron_punchout';
+$route['cron_add_jumlah_cuti'] = 'cuti/cron_add_jumlah_cuti';
+$route['cron_min_jumlah_cuti'] = 'cuti/cron_min_jumlah_cuti';
+
 
 /*$route['change-password'] = "account/setting";
 $route['profile'] = "account/profile";

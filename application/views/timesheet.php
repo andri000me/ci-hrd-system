@@ -1,274 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="loading" lang="en" data-textdirection="">
+
 <head>
-        <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="POWER MANAGEMENT">
+  <title>Team List - Dewanstudio Power Management</title>
+  <link rel="apple-touch-icon" href="<?=base_url()?>assets/images/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>assets/images/ico/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dewanstudio.com/reporting/assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://dewanstudio.com/reporting/assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://dewanstudio.com/reporting/assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="http://dewanstudio.com/reporting/assets/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="http://dewanstudio.com/reporting/assets/ico/favicon.png">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/vendors.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/app.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/core/menu/menu-types/horizontal-menu.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 
-<title>Dewanstudio Reporting System</title>
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/tables/extensions/rowReorder.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/tables/extensions/responsive.dataTables.min.css">
+  <!-- END CSS -->
+  <!-- CUSTOM CSS -->
+  <style type="text/css">
+    .custompagination a {
+      border: 1px solid #BABFC7;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      display: block;
+      line-height: 1.25;
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+  </style>
+  <!-- END CUSTOM CSS -->
 
-<!-- Bootstrap core CSS -->
-<link href="http://dewanstudio.com/reporting/assets/css/bootstrap.css" rel="stylesheet">
-<link href="http://dewanstudio.com/reporting/assets/css/datepicker.css" rel="stylesheet">
-<link href="http://dewanstudio.com/reporting/assets/css/bootstrap-wysihtml5.css" rel="stylesheet">
+</head>
 
-<!-- Custom styles for this template -->
-<link href="http://dewanstudio.com/reporting/assets/css/style.css" rel="stylesheet">
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="http://dewanstudio.com/reporting/assets/js/html5shiv.js"></script>
-  <script src="http://dewanstudio.com/reporting/assets/js/respond.min.js"></script>
-<![endif]-->
-<script type="text/javascript">
-    var base_url = 'http://dewanstudio.com/reporting/';
-</script>        <style>
-            .reason{color: red;}
-        </style>
-    </head>
-    <body>
+<body class="horizontal-layout horizontal-menu horizontal-menu-padding content-detached-left-sidebar   menu-expanded"
+data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-sidebar">
+  
+  <!-- fixed-top-->
+  <?php $this->load->view('inc/menuluar');?>
+
+
+  <div class="app-content container center-layout mt-2">
+
+    <div class="content-wrapper">
+
+      <div class="content-body">
+
+            <div>
+
+                <h1 class="text-center" style="padding:40px 0 40px 0;"><b>HRD SYSTEM</b></h1>
+
+            </div>
+
+
+
+        <!-- Menu System berdasarkan Level / Rule -->
         
-        <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>timesheet">Timesheet</a></li>
-            <li class="active">List</li>
-        </ul>
-        <div class="col-lg-12 sub-menu">
-            <form class="form-inline" role="form">
-                <?php if($maps){?>
-                    <div class="btn-group">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                          <span class="glyphicon glyphicon-filter"></span> Filter by supervise <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?=base_url()?>timesheet">My Timesheet</a></li>
-                            <?php foreach ($maps as $r){?>
-                            <li class="<?=$a=$supervise==$r['child_id']?'active':''?>"><a href="<?=base_url()?>timesheet?supervise=<?=$r['child_id']?>"><?=$r['name']?></a></li>
-                            <?php }?>
-                        </ul>
+        <?php 
+            
+          if(rule()==1){
+            $this->load->view('inc/menuadmin');
+          }
+          else{
+            $this->load->view('inc/menuteam');
+          }
+
+        ?>
+        
+        <!-- end Menu System -->
+  </div>
+
+
+  <div class="app-content container center-layout mt-2">
+    <div class="content-wrapper">
+      <div class="content-detached content-right">
+        <div class="">
+          <section class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                
+                
+                
+                  <?php if ($list){ ?>
+                  <form method="GET" enctype="multipart/form-data">
+                    <div class="row">
+                    <div class="col">
+                    
+                        <select id="select-employ" name="searchname" type="" class="form-control mr-1 my-1">
+                          <option value="">Masukan Nama</option>
+                          <?php foreach ($ateam as $key => $namateam) { ?>
+                          <option value="<?=$namateam['name']?>"><?=$namateam['name']?></option>
+                          <?php } ?>
+                        </select>
+                        
+                      </div>
+                      <!-- <div class="col">
+                        <input type="text" class="form-control mr-1 my-1" name="searchname" placeholder="Masukan Nama">
+                      </div> -->
+                      <div class="col">
+                        <select name="bulan" type="" class="form-control mr-1 my-1">
+                          <option value="">--||BULAN||--</option>
+                          <option value="01">Januari</option>
+                          <option value="02">Februari</option>
+                          <option value="03">Maret</option>
+                          <option value="04">April</option>
+                          <option value="05">Mei</option>
+                          <option value="06">Juni</option>
+                          <option value="07">Juli</option>
+                          <option value="08">Agustus</option>
+                          <option value="09">September</option>
+                          <option value="10">Oktober</option>
+                          <option value="11">November</option>
+                          <option value="12">Desember</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <select name="tahun" type="" class="form-control mr-1 my-1">
+                          <option value="">--||TAHUN||--</option>
+                          <?php
+                            $tahunini = date('Y');
+                            for ($i=$tahunini; $i >= 2000; $i--) {
+                          ?>
+                          <option value="<?=$i?>"><?=$i?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                      
+                      <div class="col">
+                        <button type="submit" class="btn mr-1 my-1">Search</button>
+                      </div>
+                      <div class="col">
+                        <a style="float: right;" href="<?=base_url()?>absen">
+                          <button class="btn btn-info round mr-1 my-1" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
+                        </a>
+                      </div>
                     </div>
-                <?php }?>
-                <a class="btn btn-success" data-toggle="modal" data-target="#modal-sort"><span class="glyphicon glyphicon-sort"></span> Sort</a>
-                <a class="btn btn-danger" href="<?=base_url()?>timesheet"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
-                <a class="btn btn-success" href="<?=base_url()?>timesheet/print_monthly/<?=$supervise?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Print</a>
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search by date">
-                </div>
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-            </form>
-        </div>
-        <div class="col-lg-12">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Punch in</th>
-                        <th>Punch out</th>
-                        <th>Modified</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if($rows){?>
-                        <?php foreach ($rows as $r){?>
-                            <?php
-                                $punch_in = true;
-                                $punch_out = true;
-                                if($r['punch_in'] > setting('punch_in')){
-                                    $punch_in = false;
-                                }
-                                if(!empty($r['punch_out'])){
-                                    if($r['punch_out'] < setting('punch_out')){
-                                        $punch_out = false;
-                                    }
-                                } 
-                            ?>
-                            <tr>
-                                <td>
-                                    <!--<a class="link-detail" data-toggle="modal" data-target="#report-<?=$r['id']?>" title="View report" href="#">--><?=format_date($r['punch_date'],'l jS \of M Y')?><!--</a>-->
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="report-<?=$r['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                              <h4 class="modal-title" id="myModalLabel">Detail report <?=format_date($r['punch_date'],'F d, Y')?></h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <?=$desc=empty($r['report']) ? 'No report' :nl2br($r['report'])?>
-                                            </div>
-                                            <?php if($r['user_id'] == user_id()){?>
-                                                <?php if($r['punch_date'] >= $update_date){?>
-                                                    <div class="modal-footer">
-                                                        <a class="btn btn-primary" href="<?=base_url().'timesheet/edit/'.$r['punch_date']?>">Edit report</a>
-                                                    </div>
-                                                <?php }?>
-                                            <?php }?>
-                                        </div><!-- /.modal-content -->
-                                      </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                </td>
-                                <td>
-                                    <?php $in=empty($r['punch_in'])?'-':substr($r['punch_in'],0,5);?>
-                                    <?php if(!$punch_in){?>
-                                    <a class="link-detail reason" data-toggle="modal" data-target="#reason-in-<?=$r['id']?>" title="View reason" href="#"><?=$in?></a>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="reason-in-<?=$r['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                              <h4 class="modal-title" id="myModalLabel">Detail reason (punch in)</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <?=$desc=empty($r['punch_in_desc']) ? 'No reason' :nl2br($r['punch_in_desc'])?>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                      </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                    <?php }else{?>
-                                        <?=$in?>
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php $out=empty($r['punch_out'])?'-':substr($r['punch_out'],0,5);?>
-                                    <?php if(!$punch_out){?>
-                                    <a class="link-detail reason" data-toggle="modal" data-target="#reason-out-<?=$r['id']?>" title="View reason" href="#"><?=$out?></a>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="reason-out-<?=$r['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                              <h4 class="modal-title" id="myModalLabel">Detail reason (punch out)</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <?=$desc=empty($r['punch_out_desc']) ? 'No reason' :nl2br($r['punch_out_desc'])?>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                      </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                    <?php }else{?>
-                                        <?=$out?>
-                                    <?php }?>
-                                </td>
-                                <td><?=format_date(date_utc($r['modified']),'F d, Y H:i:s')?></td>
-                            </tr>
-                        <?php }?>
-                    <?php }else{?>
-                        <tr>
-                            <td colspan="4">No data</td>
-                        </tr>
-                    <?php }?>
-                </tbody>
-            </table>
-            <div class="pagination"><?=$pagination?></div>
-        </div>
-        <div class="modal fade" id="modal-sort" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                  <form>
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Sort Data</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Field</label>
-                            <select class="form-control" name="field">
-                                <option value="punch_date">Date</option>
-                                <option value="punch_in">Punch in</option>
-                                <option value="punch_out">Punch out</option>
-                                <option value="modified">Modified</option>
-                            </select>
-                        </div>
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="sort" id="sort1" value="asc" checked>
-                            Sort by Ascending
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="sort" id="sort2" value="desc">
-                            Sort by Descending
-                          </label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" id="submit-comment" class="btn btn-primary">Submit</button>
-                    </div>
-                      <?php foreach ($url_sort as $f=>$v){?>
-                        <input type="hidden" name="<?=$f?>" value="<?=$v?>" />
-                      <?php }?>
                   </form>
+                  <?php } else {?>
+                    <a style="float: right;" href="<?=base_url()?>absen">
+                          <button class="btn btn-info round mr-1 my-1" type="button"><i class="ft-arrow-left icon-left"></i> Back to list</button>
+                        </a>
+                  <?php }?>
+                  <div class="heading-elements">
+                    <!-- <a href="<?=base_url()?>teamlist/add"><button class="btn btn-primary btn-md"><i class="ft-plus white"></i> NEW TEAM</button></a> -->
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-body">
+                    <!-- Task List table -->
+                    <div class="">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-12 col-md-6"></div>
+                      </div>
+                      <table id="project-bugs-list" class="table table-bordered row-grouping display no-wrap icheck table-middle table-responsive">
+                        <thead>
+                          <tr>
+                            <th class="padding-table">NO.</th>
+                            <?php if($list){ ?>
+                            <th class="padding-table">NAMA</th>
+                            <?php } ?>
+                            <th class="padding-table">PUNCH DATE</th>
+                            <th class="padding-table">PUNCH IN</th>
+                            <th class="padding-table">PUNCH OUT</th>
+                            <th class="padding-table">PUNCH IN REASON</th>
+                            <th class="padding-table">PUNCH OUT REASON</th>
+                            <th class="padding-table">REPORT</th>
+                            <th class="padding-table">OVERTIME</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                        if ($number != null) {
+                          $i = $number+1;
+                        }
+                        else{
+                          $i = 1;
+                        } 
+                        ?>
+                        <?php if(!empty($a)){ ?>
+                        <?php foreach ($a as $key => $isi) { ?>
+                        <tr>
+                            <td class="padding-table"><?php echo $i; ?></td>
+                            <?php if($list){ ?>
+                            <td class="padding-table"><?=$isi['name']?></td>
+                            <?php } ?>
+                            <td class="padding-table">
+                                <h5><?php echo date('d-m-Y',strtotime($isi['punch_date']));?></h5>
+                            </td>
+                            <td class="padding-table">
+                                <h5><?=$isi['punch_in']?></h5>
+                            </td>
+                            <td class="padding-table">
+                                <h5><?=$isi['punch_out']?></h5>
+                            </td>
+                            <td class="padding-table">
+                                <h5><?=$isi['punch_in_desc']?></h5>
+                            </td>
+                            <td class="padding-table">
+                                <h5><?=$isi['punch_out_desc']?></h5>
+                            </td>
+                            <td class="padding-table">
+                                <h5><?=$isi['report']?></h5>
+                            </td>
+                            <td class="padding-table">
+                              <?php if ($isi['punch_out'] > setting('punch_over')) {
+                                $jamcheckout = date_create_from_format('H:i:s', $isi['punch_out']);
+                                $jammulailembur = date_create_from_format('H:i:s', setting('punch_over'));
+                                $lamalembur = date_diff($jamcheckout,$jammulailembur);
+
+                                echo ''.$lamalembur->h.' Jam '.$lamalembur->i.' Menit';
+                              } ?>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                        <?php } ?>
+                        <?php } ?>
+                        </tbody>
+                      </table>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                          <div class="dataTables_info" id="project-bugs-list_info" role="status" aria-live="polite" style="padding-top: 0.85em;">
+                            <?php
+                              $hitungdata = $number+5;
+                              if ($hitungdata > $datacount) {
+                                $hitungdata = $datacount;
+                              }
+                            ?>
+                            Showing <?php echo $number+1; ?> to <?php echo $hitungdata; ?> of <?php echo $datacount; ?> entries
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="project-bugs-list_paginate">
+                            <?=$pagination?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
         </div>
-
-         <!-- Footer -->
+      </div>
+    </div>
+  </div>
+</div></div>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  
+ <!-- Footer -->
   <footer class="footer footer-transparent footer-light navbar-shadow">
     <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout">
       <span class="float-md-center d-block d-md-inline-block">Copyright &copy; 2018 DEWANSTUDIO, All rights reserved. </span>
     </p>
   </footer>
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-            <!-- JavaScript plugins (requires jQuery) -->
-            <script type="text/javascript" src="http://dewanstudio.com/reporting/assets/js/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="http://dewanstudio.com/reporting/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://dewanstudio.com/reporting/assets/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="http://dewanstudio.com/reporting/assets/js/wysihtml5-0.3.0.js"></script>
-    <script type="text/javascript" src="http://dewanstudio.com/reporting/assets/js/bootstrap-wysihtml5.js"></script>
+  <!-- end Footer -->
+  
+  <!-- JS -->
+  <script src="<?=base_url()?>assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="<?=base_url()?>assets/vendors/js/ui/jquery.sticky.js"></script>
+  <script src="<?=base_url()?>assets/js/core/app-menu.min.js" type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/js/core/app.min.js" type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
+  
+  <!-- <script src="<?=base_url()?>assets/vendors/js/tables/jquery.dataTables.min.js" type="text/javascript"></script> -->
+  <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"
+  type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.responsive.min.js"
+  type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js"
+  type="text/javascript"></script>
+  <script src="<?=base_url()?>assets/js/scripts/pages/project-bug-list.min.js" type="text/javascript"></script>
+  <!-- JS -->
 
-    <script type="text/javascript">
-        $(window).load(function() {
-            hideError();
-        });
-        $(function(){
-            $('a.top-menu,a.link-detail').tooltip({
-                placement:'bottom'
-            });
-            $('a.link-top').tooltip({
-                placement:'top'
-            });
-            if($( ".datepicker" ).length){
-                $( ".datepicker" ).datepicker({
-                        format:'yyyy-mm-dd'
-                });
-            }
-            if($( ".htmlarea" ).length){
-                $('.htmlarea').wysihtml5();
-            }
-            $('div.list-group-item-link').click(function(){
-                if($(this).attr('href') != undefined)
-               location.href = $(this).attr('href'); 
-            });
-        });
-        function hideError()
-        {
-            if($('.error').length > 0){
-                setTimeout("$('.error').fadeOut()",5000);
-            }
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+<script>
+    $(document).ready(function () {
+      $('#select-employ').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
+  
+<!-- Fungsi Modal Html Cek Tanggal Merah dan Absen -->
+<?php $this->load->view('inc/menucekabsen');?>
 
-        function validateEmail(email) 
-        { 
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        } 
-    </script>
+</body>
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-    </body>
 </html>
+

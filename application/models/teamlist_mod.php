@@ -18,9 +18,9 @@ class Teamlist_mod extends CI_Model {
     {
 
         $data = array();
-        $data[$this->rule_administrator] = 'BOS';
+        $data[$this->rule_administrator] = 'BOSS';
         $data[$this->rule_hrd] = 'HRD';
-        $data[$this->rule_team] = 'STAF';
+        $data[$this->rule_team] = 'STAFF';
         $data[$this->rule_client] = 'CLIENT';
 
         if(!$arr){
@@ -61,25 +61,51 @@ class Teamlist_mod extends CI_Model {
 
     function get_teamlist($rows=false,$where=null,$limit=false,$skip=0,$take=10)
     {
-        $this->db->select("*");
-        $this->db->order_by('id','desc');
+        $this->db->select("*"); 
+
+        $array = array('status' => mysql_real_escape_string("aktif"), 'rule !=' => mysql_real_escape_string("1"));
+        $this->db->where($array);
 
         if($limit) {
             $this->db->limit($take,$skip);
         }
 
-        if(!empty ($where)){
-            if(count($where)){
-                foreach ($where as $key=>$val){
-                    if(!empty ($val)){
-                        $this->db->where($key, mysql_real_escape_string($val));
-                    }else{
-                        $this->db->where($key, NULL, FALSE);
-                    }
-                }
-            }
-        }
+        // if(!empty ($where)){
+        //     if(count($where)){
+        //         foreach ($where as $key=>$val){
+        //             if(!empty ($val)){
+        //                 $this->db->where($key, mysql_real_escape_string($val));
+        //             }else{
+        //                 $this->db->where($key, NULL, FALSE);
+        //             }
+        //         }
+        //     }
+        // }
         //$this->db->join('ds_admins', 'register.created_by = ds_admins.id','left');
+        $i = $this->db->get('ds_users');
+
+        if($rows){
+            return $i->num_rows();
+        }else{
+            return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
+        }
+    }
+    
+    function get_teamlist_adminv($rows=false,$where=null,$limit=false,$skip=0,$take=10)
+    {
+        $this->db->select("*"); 
+
+        $array = array('status' => mysql_real_escape_string("aktif"), 'rule !=' => mysql_real_escape_string("1"));
+        $this->db->where($array);
+
+        $this->db->order_by('last_punch_date','desc');
+
+        $this->db->order_by('last_punch_in','asc');
+
+        if($limit) {
+            $this->db->limit($take,$skip);
+        }
+        
         $i = $this->db->get('ds_users');
 
         if($rows){
@@ -101,6 +127,19 @@ class Teamlist_mod extends CI_Model {
         }
     }
 
+    function get_sakit_now($data=null,$rows=false){
+        $this->db->from('ds_sakit');
+        $this->db->where('tanggal_mulai <=',date('Y-m-d'));
+        $this->db->where('tanggal_akhir >=',date('Y-m-d'));
+        $i = $this->db->get();
+
+        if($rows){
+            return $i->num_rows();
+        }else{
+            return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
+        }
+    }
+
     function get_cuti($data=null)
     {
         $this->db->select('*');
@@ -110,13 +149,17 @@ class Teamlist_mod extends CI_Model {
         return $var = ($i->num_rows() > 0) ? $i->row() : false;
     }
 
-    function get_penilaian($data=null){
+    function get_penilaian($data=null,$rows=false){
         $this->db->select('*');
         $this->db->order_by('id','desc');
         $this->db->where('id_user', mysql_real_escape_string($data));
-        $i = $this->db->get('ds_penilaian', 1, 0);
+        $i = $this->db->get('ds_penilaian');
 
-        return $var = ($i->num_rows() > 0) ? $i->row() : false;
+        if($rows){
+            return $i->num_rows();
+        }else{
+            return $var = ($i->num_rows() > 0) ? $i->result_array() : FALSE;
+        }
     }
 
     function add($data=null)
@@ -155,12 +198,58 @@ class Teamlist_mod extends CI_Model {
         $this->db->update('ds_jumlah_cuti', $data);
     }
 
-
-    function delete($id=0)
+    function non_aktif($data,$where){
+        $this->db->where($data);
+        $this->db->update('ds_users', $where);
+    }
+    function delete($id)
     {
+        // $this->db->where($where);
+        // $this->db->update('ds_users', $data);
         $this->db->where('id', mysql_real_escape_string($id));
         $this->db->delete('ds_users');
     }
+    function delete_cuti($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_cuti');
+    }
+    function delete_izin($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_izin');
+    }
+    function delete_jumlah_cuti($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_jumlah_cuti');
+    }
+    function delete_penilaian($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_penilaian');
+    }
+    function delete_project($id=0)
+    {
+        $this->db->where('user_id', mysql_real_escape_string($id));
+        $this->db->delete('ds_project');
+    }
+    function delete_report($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_report');
+    }
+    function delete_sakit($id=0)
+    {
+        $this->db->where('id_user', mysql_real_escape_string($id));
+        $this->db->delete('ds_sakit');
+    }
+    function delete_absen($id=0)
+    {
+        $this->db->where('user_id', mysql_real_escape_string($id));
+        $this->db->delete('ds_today');
+    }
+
 
 
 

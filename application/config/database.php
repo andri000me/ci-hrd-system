@@ -41,9 +41,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'dsplan';
+$db['default']['username'] = 'u9009356_dsplan';
+$db['default']['password'] = 'dewakesasardihutan';
+$db['default']['database'] = 'u9009356_dsplan';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

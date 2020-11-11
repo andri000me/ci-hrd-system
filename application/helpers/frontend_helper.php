@@ -57,6 +57,33 @@ if(!function_exists("date_now"))
     }
 }
 
+if(!function_exists("date_yesterday"))
+{
+    function date_yesterday($time=false)
+    {
+        date_default_timezone_set('UTC');
+        if($time){
+            return date('Y-m-d H:i:s',strtotime("-1 days"));
+        }else {
+           return date('Y-m-d',strtotime("-1 days"));
+        }
+    }
+}
+
+
+if(!function_exists("date_now_ymd"))
+{
+    function date_now_ymd($time=false)
+    {
+        date_default_timezone_set('UTC');
+        if($time){
+            return date('Y-m-d H:i:s');
+        }else {
+           return date('Y-m-d');
+        }
+    }
+}
+
 if(!function_exists("format_date"))
 {
     function format_date($date,$format = 'F d, Y')
@@ -233,6 +260,16 @@ if(!function_exists("date_utc"))
     }
 }
 
+if(!function_exists("date_utc_ymd"))
+{
+    function date_utc_ymd($date)
+    {
+        $date = date("Y-m-d", strtotime('+'._xml('utc_id').' hours', strtotime($date)));
+
+        return $date;
+    }
+}
+
 /*
  * Total notification yang belum dibaca
  */
@@ -283,6 +320,20 @@ if(!function_exists("setting"))
     }
 }
 
+if(!function_exists("kpnpush"))
+{
+    function kpnpush($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('tglpush_mod');
+
+        $value = $CI->tglpush_mod->get_value($id);
+        return $value;
+
+
+    }
+}
+
 if(!function_exists("set_link_url"))
 {
     function set_link_url($val = '')
@@ -328,5 +379,178 @@ if(!function_exists("contains"))
             return true;
         else
             return false;
+    }
+}
+
+if(!function_exists("jumlah_projek"))
+{
+    function jumlah_projek($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_project($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_projek_y"))
+{
+    function jumlah_projek_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_project_y($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_punchin_y"))
+{
+    function jumlah_punchin_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_punchin_y($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_sakit_y"))
+{
+    function jumlah_sakit_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_sakit_y($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_cuti_y"))
+{
+    function jumlah_cuti_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_cuti_y($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_izin_y"))
+{
+    function jumlah_izin_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_izin_y($id);
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_tugas_y"))
+{
+    function jumlah_tugas_y($id = '')
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_tugas_y($id);
+        return $value;
+
+
+    }
+}
+
+// NOTIF PENDING
+
+if(!function_exists("jumlah_cuti_pending"))
+{
+    function jumlah_cuti_pending()
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_cuti_pending();
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_izin_pending"))
+{
+    function jumlah_izin_pending()
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_izin_pending();
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("jumlah_tugas_pending"))
+{
+    function jumlah_tugas_pending()
+    {
+    	$CI =& get_instance();
+        $CI->load->model('dashboard_mod');
+
+        $value = $CI->dashboard_mod->get_count_tugas_pending();
+        return $value;
+
+
+    }
+}
+
+if(!function_exists("tanggalMerah"))
+{
+    function tanggalMerah($value = '')
+    {
+    	$array = json_decode(file_get_contents("https://raw.githubusercontent.com/guangrei/Json-Indonesia-holidays/master/calendar.json"),true);
+        
+        //check tanggal merah berdasarkan libur nasional
+        if(isset($array[$value])):
+            return "<span>Tanggal Merah ".$array[$value]["deskripsi"]."</span>";
+
+        //check tanggal merah berdasarkan hari minggu
+        elseif(date("D",strtotime($value))==="Sun"):
+
+            $valueMinggu = "Tanggal Merah Hari Minggu";
+            return $valueMinggu;		 
+            
+        elseif(date("D",strtotime($value))==="Sat"):		
+            return "Tanggal Merah Hari Sabtu";
+
+        //bukan tanggal merah
+        else:
+
+            $value = "bukan tanggal merah";
+            return $value;
+
+        endif;
+
+
     }
 }
