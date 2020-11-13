@@ -401,11 +401,11 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                         </button> -->
 
-                        <a href="<?=base_url()?>reportproject/edit/<?=$project[0]['id']?>" type="submit" class="btn btn-info">
+                        <!-- <a href="<?=base_url()?>reportproject/edit/<?=$project[0]['id']?>" type="submit" class="btn btn-info">
 
                           <i class="ft-edit-2"></i> EDIT
 
-                        </a>
+                        </a> -->
 
                       </div>
 
