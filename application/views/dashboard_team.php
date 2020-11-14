@@ -185,7 +185,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                         <thead>
                           <tr>
                             <th>DATE</th>
-                            <th>NILAI REPORT</th>
+                            <th class="text-center">WFH</th>
+                            <th class="text-center">WFO</th>
                             <!-- <th>NILAI ABSEN</th> -->
                             <th>ABSEN</th>
                             <th>SAKIT</th>
@@ -206,48 +207,32 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                           <tr>
                             <td><?=$now?></td>
 
-                            <!-- PERHITUNGAN NILAI REPORT -->
+                            <!-- Work Status -->
                             <?php
-                              if ($jumlahproject != 0) {
-                                for ($z=0; $z < $jumlahproject; $z++) { 
-                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($project[$z]['date']))));
+                              $wfh = 0;
+                              $wfo = 0;
+                              if ($jumlahabsen != 0) {
+                                for ($z=0; $z < $jumlahabsen; $z++) {
+                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($absen[$z]['created']))));
                                   if ($diff->y == 0 && $diff->m == 0) {
-                                    $hasilnilaiproject[$z] = 2;
-                                  }
-                                  else{
-                                    $hasilnilaiproject[$z] = 0;
+                                    if ($absen[$z]['punch_work'] == 'wfh') {
+                                      $wfh = $wfh+1;
+                                    }
+                                    if ($absen[$z]['punch_work'] == 'wfo') {
+                                      $wfo = $wfo+1;
+                                    }
                                   }
                                 }
-                                $hasilnilaiprojectfinal = array_sum($hasilnilaiproject); 
                               }
-                              else{
-                                $hasilnilaiprojectfinal = 0;
-                              }
-
-
-                              if ($jumlahreport != 0) {
-                                for ($z=0; $z < $jumlahreport; $z++) { 
-                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($report[$z]['date']))));
-                                  if ($diff->y == 0 && $diff->m == 0) {
-                                    $hasilnilaireport[$z] = 1;
-                                  }
-                                  else{
-                                    $hasilnilaireport[$z] = 0;
-                                  }
-                                }
-                                $hasilnilaireportfinal = array_sum($hasilnilaireport); 
-                              }
-                              else{
-                                $hasilnilaireportfinal = 0;
-                              }
-
-                              $totalnilai = $hasilnilaiprojectfinal + $hasilnilaireportfinal;
                             ?>
-                            <td>
-                              <h5><?=$totalnilai?></h5>
+                            <td class="text-center">
+                                <?=$wfh?>
                             </td>
-                            <!-- END NILAI REPORT -->
-
+                            
+                            <td class="text-center">
+                              <?=$wfo?>
+                            </td>
+                            <!-- End Work Status -->
                             <!-- PERHITUNGAN NILAI ABSEN
                             <?php
                               if ($jumlahabsen != 0) {

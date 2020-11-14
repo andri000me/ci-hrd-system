@@ -111,10 +111,20 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   <textarea class="form-control" name="reason" id="inputReason" rows="5" placeholder="Enter your reason"><?=$reason?></textarea>
 
                 </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-                <a class="btn btn-default" href="<?=base_url()?>absen">Cancel</a>
+                <?php if($this->input->get('action') == "in") { ?>
+                <div class="form-group form-inline">
+                    <label for="work" style="margin-right:15px;">
+                      <input type="checkbox" class="form-control" name="work" id="work" value="wfh"> &nbsp;
+                      WFH
+                    </label>
+                </div>
+                <?php } ?>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 text-right">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-default" href="<?=base_url()?>absen">Cancel</a>
+                  </div>
+                </div>
 
             </form>
 
