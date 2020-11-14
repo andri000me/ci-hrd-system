@@ -103,7 +103,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
             <?php if(!$udahreport){ ?>
               <a data-toggle="collapse" data-parent="#accordionWrap4" href="#accordion42" aria-expanded="false"
 
-              aria-controls="accordion42" class="btn btn-info round my-1 collapsed"><i class="ft-edit"></i> Report</a>
+              aria-controls="accordion42" class="btn btn-info round my-1 collapsed"><i class="ft-edit"></i> Add New Report</a>
             <?php } ?>
             </div>
 
@@ -510,7 +510,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                               <div class="form-group">
 
                               <!-- Button trigger modal -->
-
+                              <?php if($this->session->userdata("user_id") == $value['id_user']) { ?>
                               <button type="button" class="btn btn btn-info" data-toggle="modal"
 
                               data-target="#iconModal<?=$value['id']?>">
@@ -518,6 +518,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                                 <i class="ft-edit-2"></i> EDIT
 
                               </button>
+                              <?php } ?>
 
                               <!-- Modal -->
 

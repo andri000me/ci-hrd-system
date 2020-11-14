@@ -19,6 +19,8 @@ class Reportproject extends MY_Controller {
         $this->load->model('teamlist_mod');
 
         $this->load->model('report_mod');     
+        
+        $this->load->model("user_mod");
 
         $this->clear_cache();
 
@@ -303,11 +305,8 @@ class Reportproject extends MY_Controller {
 
 
         $data['row'] = $this->report_mod->get_project($searchname,false,$where,true,$skip,$take);
-
         //Menelusuri apakah data project ada update report
-
         
-
         $i = 1;
 
         $row = $this->report_mod->get_project($searchname,false,$where);
@@ -726,7 +725,6 @@ class Reportproject extends MY_Controller {
                                         
                 }
            
-
 
             $i = $this->report_mod->add_detail($add_data);
 

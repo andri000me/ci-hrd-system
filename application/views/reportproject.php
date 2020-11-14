@@ -225,11 +225,11 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                             <th>PROJECT NAME</th>
 
-                            <th>UPDATED DATE</th>
+                            <th>LAST UPDATE</th>
 
                             <th>STATUS</th>
 
-                            <th>BY</th>
+                            <th>UPDATE BY</th>
 
               							<th>REPORT</th>
 
@@ -258,7 +258,6 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                         ?>
 
                         <?php foreach ($row as $key => $isi) { ?>
-
                         <?php
 
                           $tanggal = date('d-m-Y', strtotime($isi['project_start']));
@@ -361,16 +360,16 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             </td> -->
 
                             <td class="text-truncate">
-                            <?php if(!empty($isi['img'])){?>
-
+                            <?php  
+                                $report = $this->report_mod->getUserFromReport($isi["id"]);
+                                $user = $this->user_mod->get_byuid($report['id_user']);
+                            ?>
+                            <?php if(!empty($user->img)){?>
                               <span class="avatar avatar-xs">
-
-                                <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$isi['img']?>" alt="avatar">
-
+                                <img class="box-shadow-2" src="<?=base_url()?>clients/user/<?=$user->img?>" alt="avatar">
                               </span>
                             <?php } ?>
-
-                              <span><?=$isi['name']?></span>
+                            <span><?=$user->name?></span>
 
                             </td>
 

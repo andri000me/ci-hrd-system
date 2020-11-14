@@ -319,9 +319,6 @@ class Report_mod extends CI_Model {
         if($data != null){
 
             $this->db->insert('ds_report',$data);
-
-
-
             $return = $this->db->insert_id();
 
         }
@@ -351,5 +348,17 @@ class Report_mod extends CI_Model {
         $this->db->update('ds_users', $data);
 
     }
+
+    function getUserFromReport($projectId = null)
+    {
+        $this->db->select('id_user');
+        $this->db->from('ds_report');
+        $this->db->where('id_project', $projectId);
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(1);
+        $report = $this->db->get()->row_array();
+        return $report;
+    }
+
 
 }
