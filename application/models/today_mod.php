@@ -185,12 +185,18 @@ class Today_mod extends CI_Model {
 
     function getWork($user_id, $workStatus, $yeartMonth){
         $result = $this->db->query("SELECT COUNT(*) FROM `ds_today` where `user_id` = '".$user_id."' AND `punch_work` = '".$workStatus."' AND `created` like '".$yeartMonth."-%'")->row_array();
-        return $result["COUNT(*)"];
+        if($result)
+            return $result["COUNT(*)"];
+        else
+            return 0;
     }
 
     function getAbsenByDate($user_id, $yeartMonth){
         $result = $this->db->query("SELECT COUNT(*) FROM `ds_today` where `user_id` = '".$user_id."' AND `created` like '".$yeartMonth."-%'")->row_array();
-        return $result["COUNT(*)"];
+        if($result)
+            return $result["COUNT(*)"];
+        else
+            return 0;
     }
 
     function get_absen($rows=false,$where=null,$limit=false,$skip=0,$take=10)

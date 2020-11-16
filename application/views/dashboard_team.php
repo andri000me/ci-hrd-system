@@ -210,12 +210,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                             <!-- Work Status -->
                             <?php
-                              $wfh = 0;
-                              $wfo = 0;
-                              if ($jumlahabsen != 0) {
-                                $wfh = $this->today_mod->getWork($this->session->userdata("user_id"), 'wfh', $currentDate);
-                                $wfo = $this->today_mod->getWork($this->session->userdata("user_id"), 'wfo', $currentDate);
-                              }
+                              $wfh = $this->today_mod->getWork($userId, 'wfh', $currentDate);
+                              $wfo = $this->today_mod->getWork($userId, 'wfo', $currentDate);
                             ?>
                             <td class="text-center">
                                 <?=$wfh?>
@@ -228,12 +224,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                             <!-- PERHITUNGAN ABSEN -->
                             <?php
-                              if ($jumlahabsen != 0) {
-                                $hasilabsenfinal = $this->today_mod->getAbsenByDate($this->session->userdata("user_id"), $currentDate);
-                              }
-                              else{
-                                $hasilabsenfinal = 0;
-                              }
+                                $hasilabsenfinal = $this->today_mod->getAbsenByDate($userId, $currentDate);
                             ?>
                             <td>
                               <h5><?=$hasilabsenfinal?></h5>

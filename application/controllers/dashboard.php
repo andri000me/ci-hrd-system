@@ -213,9 +213,6 @@ class Dashboard extends MY_Controller {
 
         $data['info'] = $user;
 
-        $data['absen'] = $this->today_mod->get_absen(false,array('user_id' => $user_id));
-        $data['jumlahabsen'] = $this->today_mod->get_absen(true,array('user_id' => $user_id));
-
         $data['sakit'] = $this->sakit_mod->get_sakit(null,false,array('id_user' => $user_id));
         $data['jumlahsakit'] = $this->sakit_mod->get_sakit(null,true,array('id_user' => $user_id));
 
@@ -230,6 +227,7 @@ class Dashboard extends MY_Controller {
         $data['jumlahproject'] = $this->report_mod->get_project(null,true,array('user_id' => $user_id));
         $data['jumlahreport'] = $this->report_mod->get_report(true,array('id_user' => $user_id));
         $data['sisacuti'] = $this->teamlist_mod->get_cuti($user_id);
+        $data['userId'] = $user_id;
 
         $ambilpenilaian = $this->teamlist_mod->get_penilaian($user_id);
 
