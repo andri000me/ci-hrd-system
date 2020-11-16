@@ -202,6 +202,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                             $year = strtotime(date('M Y'));
                             //decrement bulan
                             $now = date('M Y', strtotime('-'.$month.'month',$year));
+                            $currentDate = date('Y-m', strtotime('-'.$month.'month',$year));
                             $dateambilnow = date('Y-m-d', strtotime('-'.$month.'month',$year));
                           ?>
                           <tr>
@@ -212,17 +213,8 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                               $wfh = 0;
                               $wfo = 0;
                               if ($jumlahabsen != 0) {
-                                for ($z=0; $z < $jumlahabsen; $z++) {
-                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($absen[$z]['created']))));
-                                  if ($diff->y == 0 && $diff->m == 0) {
-                                    if ($absen[$z]['punch_work'] == 'wfh') {
-                                      $wfh = $wfh+1;
-                                    }
-                                    if ($absen[$z]['punch_work'] == 'wfo') {
-                                      $wfo = $wfo+1;
-                                    }
-                                  }
-                                }
+                                $wfh = $this->today_mod->getWork($this->session->userdata("user_id"), 'wfh', $currentDate);
+                                $wfo = $this->today_mod->getWork($this->session->userdata("user_id"), 'wfo', $currentDate);
                               }
                             ?>
                             <td class="text-center">
@@ -233,52 +225,11 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
                               <?=$wfo?>
                             </td>
                             <!-- End Work Status -->
-                            <!-- PERHITUNGAN NILAI ABSEN
-                            <?php
-                              if ($jumlahabsen != 0) {
-                                for ($z=0; $z < $jumlahabsen; $z++) {
-                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($absen[$z]['created']))));
-                                  if ($diff->y == 0 && $diff->m == 0) {
-                                    if (format_date($absen[$z]['punch_in'], "H:i:s") > setting('punch_in')) {
-                                      $hasilnilaiabsen[$z] = -1;
-                                    }
-                                    else{
-                                      $hasilnilaiabsen[$z] = 1;
-                                    }
-                                  }
-                                  else{
-                                    $hasilnilaiabsen[$z] = 0;
-                                  }
-                                }
-                                $hasilnilaiabsenfinal = array_sum($hasilnilaiabsen);
-                              }
-                              else {
-                                $hasilnilaiabsenfinal = 0;
-                              }
-                            ?>
-                            <td>
-                              <h5><?=$hasilnilaiabsenfinal?></h5>
-                            </td>
-                            END NILAI ABSEN -->
 
                             <!-- PERHITUNGAN ABSEN -->
                             <?php
                               if ($jumlahabsen != 0) {
-                                for ($a=0; $a < $jumlahabsen; $a++) { 
-                                  $diff = date_diff(date_create($dateambilnow),date_create(date('Y-m-d', strtotime($absen[$a]['punch_date']))));
-                                  if ($diff->y == 0 && $diff->m == 0) {
-                                    if (!empty($absen[$a]['punch_out'])) {
-                                      $hasilabsen[$a] = 1;
-                                    }
-                                    else{
-                                      $hasilabsen[$a] = 1;
-                                    }
-                                  }
-                                  else{
-                                    $hasilabsen[$a] = 0;
-                                  }
-                                }
-                                $hasilabsenfinal = array_sum($hasilabsen);
+                                $hasilabsenfinal = $this->today_mod->getAbsenByDate($this->session->userdata("user_id"), $currentDate);
                               }
                               else{
                                 $hasilabsenfinal = 0;
