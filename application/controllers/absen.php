@@ -462,7 +462,7 @@ class Absen extends MY_Controller {
 
     }
 
-    function punch_in()
+    function punch_in($work=null)
 
     {
 
@@ -486,6 +486,10 @@ class Absen extends MY_Controller {
 
         $url = $this->input->get('url');
 
+        if($work == 'wfh')
+            $punch_work = 'wfh';
+        else
+            $punch_work = 'wfo';
         
 
         if(!$today){
@@ -499,6 +503,8 @@ class Absen extends MY_Controller {
                 'punch_date' => $punch_date,
 
                 'punch_in' => $punch_time,
+
+                'punch_work' => $punch_work,
 
                 'created' => $now,
 
@@ -721,16 +727,10 @@ class Absen extends MY_Controller {
         {
 
             $reason = $this->input->post('reason');
-            $work = $this->input->post('work');
-            
-            if($work == 'wfh')
-                $work = 'wfh';
-            else
-                $work = 'wfo';
 
             if($action == 'in'){
 
-               $data_update = array('punch_in_desc' => $reason, 'punch_work' => $work);
+               $data_update = array('punch_in_desc' => $reason);
                $data_update_last = array('last_punch_in_desc' => $reason); 
 
             }
@@ -738,8 +738,6 @@ class Absen extends MY_Controller {
                 $data_update = array('punch_out_desc' => $reason);
                 $data_update_last = array('last_punch_out_desc' => $reason);
             }
-
-
 
             $this->today_mod->update($data_update,$today->id);
             $this->today_mod->update_last($data_update_last);

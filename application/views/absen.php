@@ -123,39 +123,45 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                 <div class="pr-xl-1 px-xl-1">
 
-              <?php
+                  <?php
 
-                  $punch_in_class = 'btn-info';
+                      $punch_in_class = 'btn-info';
 
-                  if($punch_in=='1'){
+                      if($punch_in=='1'){
 
-                      $punch_in_class = 'btn-success';
+                          $punch_in_class = 'btn-success';
 
-                  }
+                      }
 
-                  if($punch_in=='2'){
+                      if($punch_in=='2'){
 
-                      $punch_in_class = 'btn-danger';
+                          $punch_in_class = 'btn-danger';
 
-                  }
+                      }
 
-                  $punch_out_class = 'btn-info';
+                      $punch_out_class = 'btn-info';
 
-                  if($punch_out=='1'){
+                      if($punch_out=='1'){
 
-                      $punch_out_class = 'btn-success';
+                          $punch_out_class = 'btn-success';
 
-                  }
+                      }
 
-                  if($punch_out=='2'){
+                      if($punch_out=='2'){
 
-                      $punch_out_class = 'btn-danger';
+                          $punch_out_class = 'btn-danger';
 
-                  }
+                      }
 
-              ?>
-
-                  <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in"' : ''?> <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in"' : ''?> class="btn btn-lg btn-block font-medium-1 mb-1 block-element <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
+                  ?>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> class="btn btn-lg btn-block font-medium-1 mb-1 block-element <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFH <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
+                    </div>
+                    <div class="col-md-6">
+                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> class="btn btn-lg btn-block font-medium-1 mb-1 block-element <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFO <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
+                    </div>
+                  </div>
 
                 </div>
 
