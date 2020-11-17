@@ -53,6 +53,7 @@
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendors/css/pickers/pickadate/pickadate.css">
 
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/plugins/pickers/daterange/daterange.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
   <!-- END CSS -->
 
@@ -146,7 +147,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
       								  <div class="col-lg-6">
 
-      									<h5>Mulai Tanggal</h5>
+      									<h5>Mulai Jam</h5>
 
       									<div class="input-group">
 
@@ -154,13 +155,18 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
       										<div class="input-group-prepend">
 
-      											<span class="input-group-text"><i class="ft-calendar"></i></span>
+      											<span class="input-group-text">
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+                                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                              </svg>
+                            </span>
 
       										</div>
 
       									  </div>
 
-      									  <input id="picker_from" name="tanggal_mulai" class="form-control datepicker" type="date">
+      									  <input id="picker_from" name="jam_mulai" class="form-control" type="text">
 
       									</div>
 
@@ -168,7 +174,7 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
       								  <div class="col-lg-6">
 
-      								    <h5>Sampai Tanggal</h5>
+      								    <h5>Sampai Jam</h5>
 
       									<div class="input-group">
 
@@ -176,13 +182,18 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
       										<div class="input-group-prepend">
 
-      											<span class="input-group-text"><i class="ft-calendar"></i></span>
+      											<span class="input-group-text">
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+                                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                              </svg>
+                            </span>
 
       										</div>
 
       									  </div>
 
-      									  <input id="picker_to" name="tanggal_akhir" class="form-control datepicker" type="date">
+      									  <input id="picker_to" name="jam_akhir" class="form-control" type="text">
 
       									</div>
 
@@ -286,21 +297,13 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                           }
 
-                      $tanggalmulai = date('d-m-Y', strtotime($getizin['tanggal_mulai']));
-
-                      $tanggalakhir = date('d-m-Y', strtotime($getizin['tanggal_akhir']));
+                      $tanggal = date('d-m-Y', strtotime($getizin['created']));
+                      $start_time = $getizin['start_time'];
+                      $end_time = $getizin['end_time'];
 
                    ?>
 
-                   <?php if(!empty($getizin['tanggal_akhir'])){?>
-
-                   <?php echo  $tanggalmulai;?> - <?php echo  $tanggalakhir;?> (<?=$status?>)
-
-                   <?php }elseif(empty($getizin['tanggal_akhir'])){ ?>
-
-                   <?php echo  $tanggalmulai;?> (<?=$status?>)
-
-                   <?php } ?>
+                  <span><?=$tanggal?>, <?php echo $start_time;?> - <?php echo $end_time;?> (<?=$status?>)</span>
 
                  </p>
 
@@ -389,7 +392,34 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
 
   <script src="<?=base_url()?>assets/js/scripts/ui/jquery-ui/date-pickers.min.js" type="text/javascript"></script>
-
+  <!-- timepicker -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $('#picker_from').timepicker({
+        timeFormat: 'H:mm',
+        interval: 30,
+        minTime: '08',
+        defaultTime: '08',
+        startTime: '08:00',
+        maxTime: '16:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false,
+    });
+    $('#picker_to').timepicker({
+        timeFormat: 'H:mm',
+        interval: 30,
+        defaultTime: '09',
+        minTime: '08:30',
+        maxTime: '17:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false,
+    });
+  });
+  </script>
+  <!-- end timepicker -->
   <!-- JS -->
 
 <!-- Fungsi Modal Html Cek Tanggal Merah dan Absen -->

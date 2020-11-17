@@ -165,9 +165,11 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                             <th>NAME</th>
 
-                            <th>MULAI TANGGAL</th>
+                            <th>TANGGAL</th>
+                            
+                            <th>MULAI JAM</th>
 
-                            <th>SAMPAI TANGGAL</th>
+                            <th>SAMPAI JAM</th>
 
               				<th>ALASAN</th>
 
@@ -221,9 +223,7 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
 
 
-                          $tanggalmulai = date('d-m-Y', strtotime($izin['tanggal_mulai']));
-
-                          $tanggalakhir = date('d-m-Y', strtotime($izin['tanggal_akhir']));
+                          $tanggal = date('d-m-Y', strtotime($izin['created']));
 
                           ?>
 
@@ -239,13 +239,19 @@ data-open="click" data-menu="horizontal-menu" data-col="content-detached-left-si
 
                             <td>
 
-                              <h5><?=$tanggalmulai?></h5>
+                              <h5><?=$tanggal?></h5>
+
+                            </td>
+
+                            <td>
+
+                              <h5><?=$izin['start_time']?></h5>
 
                             </td>
 
 							              <td>
 
-                              <h5><?=$njay = (!empty($izin['tanggal_akhir'])) ? $tanggalakhir:'-'?></h5>
+                              <h5><?=$izin['end_time']?></h5>
 
                             </td>
 

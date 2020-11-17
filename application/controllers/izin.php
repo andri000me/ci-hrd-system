@@ -155,9 +155,9 @@ class Izin extends MY_Controller {
 
 		
 
-	    $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
+	    $this->form_validation->set_rules('jam_mulai', 'Tanggal Mulai', 'required');
 
-        /*$this->form_validation->set_rules('tanggal_akhir', 'Sampai Tanggal', 'required');*/
+        $this->form_validation->set_rules('jam_akhir', 'Sampai Tanggal', 'required');
 
 	    $this->form_validation->set_rules('alasan', 'Alasan', 'required');
 
@@ -169,23 +169,24 @@ class Izin extends MY_Controller {
 
         {
 
-            $tanggalmulai = $this->input->post("tanggal_mulai");
+            // $tanggalmulai = $this->input->post("tanggal_mulai");
 
-            $tanggalakhir = $this ->input->post("tanggal_akhir");
+            // $tanggalakhir = $this ->input->post("tanggal_akhir");
 
+            $start_time = $this->input->post("jam_mulai");
+            $end_time = $this->input->post("jam_akhir");
             $alasan = $this->input->post("alasan");
-
             $approve = $this->input->post("approve");
-
             $id_user = $this->session->userdata('user_id');
-
-            
 
                 $add_data = array(
 
-                    'tanggal_mulai' => $tanggalmulai,
+                    // 'tanggal_mulai' => $tanggalmulai,
 
-                    'tanggal_akhir'=> $tanggalakhir,
+                    // 'tanggal_akhir'=> $tanggalakhir,
+                    'start_time' => $start_time,
+
+                    'end_time' => $end_time,
 
                     'alasan' => $alasan,
 
@@ -197,22 +198,22 @@ class Izin extends MY_Controller {
 
                 $tambah_izin = $this->izin_mod->add($add_data);
                 
-                $add_tm = array(
-                    'user_id' => user_id(),
-                    'punch_date' => $tanggalmulai,
-                    'punch_in' => '00:00:00',
-                    'punch_out' => '00:00:00',
-                    'report' =>  $alasan.'<br>'.' IZIN '.' ( Dari Tanggal '.$tanggalmulai.' Sampai tanggal '.$tanggalakhir.' )',
-                    'created' => date('Y-m-d H:i:s'),
-                );
-                $where_tm = array(
-                    'report' => $alasan.'<br>'.' IZIN '.' ( Dari Tanggal '.$tanggalmulai.' Sampai tanggal '.$tanggalakhir.' )',
-                );
-                if($tanggalmulai != date('Y-m-d')){
-                    $tambah_tm = $this->today_mod->add_tm($add_tm);
-                }elseif($tanggalmulai = date('Y-m-d')){
-                    $update_tm = $this->today_mod->update_tm($where_tm);
-                }
+                // $add_tm = array(
+                //     'user_id' => user_id(),
+                //     'punch_date' => $tanggalmulai,
+                //     'punch_in' => '00:00:00',
+                //     'punch_out' => '00:00:00',
+                //     'report' =>  $alasan.'<br>'.' IZIN '.' ( Dari Tanggal '.$tanggalmulai.' Sampai tanggal '.$tanggalakhir.' )',
+                //     'created' => date('Y-m-d H:i:s'),
+                // );
+                // $where_tm = array(
+                //     'report' => $alasan.'<br>'.' IZIN '.' ( Dari Tanggal '.$tanggalmulai.' Sampai tanggal '.$tanggalakhir.' )',
+                // );
+                // if($tanggalmulai != date('Y-m-d')){
+                //     $tambah_tm = $this->today_mod->add_tm($add_tm);
+                // }elseif($tanggalmulai = date('Y-m-d')){
+                //     $update_tm = $this->today_mod->update_tm($where_tm);
+                // }
 
                 if ($tambah_izin != 0){
 
@@ -239,10 +240,6 @@ class Izin extends MY_Controller {
                     $data['msg'] = "error";
 
                 }
-
-                
-
-
 
         }
 
