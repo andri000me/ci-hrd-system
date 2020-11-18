@@ -44,7 +44,14 @@
 
   <!-- END CSS -->
 
-
+  <!-- CUSTOM CSS -->
+  <style>
+  a.btn.disabled, fieldset:disabled a.btn {
+    cursor: no-drop;
+    pointer-events: all;
+  }
+  </style>
+  <!-- END CUSTOM CSS -->
 
 </head>
 
@@ -131,10 +138,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                       if($punch_in=='1'){
                           if($punch_work == 'wfh'){
                             $punch_in_class_wfh = 'btn-success';
-                            $punch_in_class_wfo = 'btn-secondary';
+                            $punch_in_class_wfo = 'btn-secondary disabled';
                           }
                           elseif($punch_work == 'wfo'){
-                            $punch_in_class_wfh = 'btn-secondary';
+                            $punch_in_class_wfh = 'btn-secondary disabled';
                             $punch_in_class_wfo = 'btn-success';
                           }
                       }
@@ -142,10 +149,10 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                       if($punch_in=='2'){
                           if($punch_work == 'wfh'){
                             $punch_in_class_wfh = 'btn-danger';
-                            $punch_in_class_wfo = 'btn-secondary';
+                            $punch_in_class_wfo = 'btn-secondary disabled';
                           }
                           if($punch_work == 'wfo'){
-                            $punch_in_class_wfh = 'btn-secondary';
+                            $punch_in_class_wfh = 'btn-secondary disabled';
                             $punch_in_class_wfo = 'btn-danger';
                           }
                       }
