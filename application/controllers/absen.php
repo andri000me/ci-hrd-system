@@ -173,6 +173,8 @@ class Absen extends MY_Controller {
 
         $punch_out = '0';
 
+        $punch_work = '';
+
         $punch_in_time = '';
 
         $punch_out_time = '';
@@ -188,6 +190,8 @@ class Absen extends MY_Controller {
                $punch_in = $today->punch_in > setting('punch_in') ? '2' : '1';
 
                $punch_in_time = $today->punch_in;
+
+               $punch_work = $today->punch_work;
 
             }
 
@@ -252,6 +256,8 @@ class Absen extends MY_Controller {
         $data['punch_in'] = $punch_in;
 
         $data['punch_out'] = $punch_out;
+
+        $data['punch_work'] = $punch_work;
 
         $data['punch_in_time'] = $punch_in_time;
 

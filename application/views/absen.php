@@ -125,18 +125,29 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
 
                   <?php
 
-                      $punch_in_class = 'btn-info';
+                      $punch_in_class_wfh = 'btn-info';
+                      $punch_in_class_wfo = 'btn-info';
 
                       if($punch_in=='1'){
-
-                          $punch_in_class = 'btn-success';
-
+                          if($punch_work == 'wfh'){
+                            $punch_in_class_wfh = 'btn-success';
+                            $punch_in_class_wfo = 'btn-secondary';
+                          }
+                          elseif($punch_work == 'wfo'){
+                            $punch_in_class_wfh = 'btn-secondary';
+                            $punch_in_class_wfo = 'btn-success';
+                          }
                       }
 
                       if($punch_in=='2'){
-
-                          $punch_in_class = 'btn-danger';
-
+                          if($punch_work == 'wfh'){
+                            $punch_in_class_wfh = 'btn-danger';
+                            $punch_in_class_wfo = 'btn-secondary';
+                          }
+                          if($punch_work == 'wfo'){
+                            $punch_in_class_wfh = 'btn-secondary';
+                            $punch_in_class_wfo = 'btn-danger';
+                          }
                       }
 
                       $punch_out_class = 'btn-info';
@@ -156,10 +167,28 @@ data-open="click" data-menu="horizontal-menu" data-col="2-columns">
                   ?>
                   <div class="row">
                     <div class="col-md-6">
-                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> class="btn btn-lg btn-block font-medium-1 mb-1 block-element <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFH <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
+                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> 
+                        <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfh"' : ''?> 
+                        class="btn btn-lg btn-block font-medium-1 mb-1 block-element 
+                        <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class_wfh?>">
+                        <span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFH 
+                          <?php if($punch_work == 'wfh') { ?>
+                            <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?>
+                          <?php } ?>
+                        </span>
+                      </a>
                     </div>
                     <div class="col-md-6">
-                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> class="btn btn-lg btn-block font-medium-1 mb-1 block-element <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class?>"><span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFO <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?></span></a>
+                      <a <?=$h=$punch_in=='0' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> 
+                        <?=$punch_in_time=='00:00:00' ? 'href="'.base_url().'absen/punch_in/wfo"' : ''?> 
+                        class="btn btn-lg btn-block font-medium-1 mb-1 block-element 
+                        <?=$punch_in_time=='00:00:00' ? 'btn-info' : $punch_in_class_wfo?>">
+                        <span class="glyphicon glyphicon-ok" style="color:white;"><i class="ft-check-circle"> </i> CHECK IN WFO 
+                          <?php if($punch_work == 'wfo') { ?>
+                            <?=$t=($punch_in!='0') ? '('.substr($punch_in_time,0,5).')':''?>
+                          <?php } ?>
+                        </span>
+                      </a>
                     </div>
                   </div>
 
